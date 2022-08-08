@@ -62,3 +62,7 @@ class ImageLoader {
 }
 
 new Accordeon(document.getElementById("form-main"));
+
+Each.all("#form-main *[data-default-value]").do((el) => {
+    el.value = el.getAttribute("data-default-value");
+});

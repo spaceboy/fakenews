@@ -31,6 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="column width-7">
+                    <div id="canvas-wrapper">
                     <div id="canvas" class="web">
                         <h2 id="canvas-title">Falešná zpráva</h2>
                         <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime">15.7.2022</span></div>
@@ -55,6 +56,7 @@
                             <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews</span></p>
                         </div-->
                     </div><!-- /#canvas -->
+                    </div><!-- /#canvas-wraper -->
                 </div><!-- /.column -->
                 <div class="column width-5">
                     <form id="form-main">
@@ -70,6 +72,10 @@
                                     <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy"></td>
                                 </tr>
                                 <tr>
+                                    <th><label for="form-title-align">Zarovnání</label></th>
+                                    <td colspan="2"><select name="title-align" id="form-title-align" data-default-value="left"><option value="left">doleva</option><option value="justify">do bloku</option><option value="center">na střed</option><option value="right">doprava</option></select></td>
+                                </tr>
+                                <tr>
                                     <th><label for="form-date">Datum</label></th>
                                     <td colspan="2"><input name="date" id="form-date" type="text" placeholder="Vložte datum"></td>
                                 </tr>
@@ -83,6 +89,10 @@
                                 <tr>
                                     <th><label for="form-perex">Perex</label></th>
                                     <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-perex-align">Zarovnání</label></th>
+                                    <td colspan="2"><select name="perex-align" id="form-perex-align" data-default-value="justify"><option value="left">doleva</option><option value="justify">do bloku</option><option value="center">na střed</option><option value="right">doprava</option></select></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-perex-position">Pozice perexu</label></th>
@@ -178,6 +188,10 @@ Můžete také použít i některé zvláštní značky pro zápis zlomků ((1/4
 Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženských ((+-) (++)) a dalších (^! ^? <> (<>) (<3) (-3) (=3) <= <=> =>).
 "Počítačové" uvozovky budou nahrazeny 'typografickými,' ale "zdvojené" uvozovky či apostrof zůstanou zachovány (McDonald''s, 10(^o), 20'' 30"").</textarea></td>
                                 </tr>
+                                <tr>
+                                    <th><label for="form-article-align">Zarovnání</label></th>
+                                    <td colspan="2"><select name="article-align" id="form-article-align" data-default-value="justify"><option value="left">doleva</option><option value="justify">do bloku</option><option value="center">na střed</option><option value="right">doprava</option></select></td>
+                                </tr>
                             </tbody>
                             <thead>
                                 <tr>
@@ -186,8 +200,16 @@ Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženský
                             </thead>
                             <tbody id="table-block-setup">
                                 <tr>
-                                    <th><label for="form-template">Vzhled</label></th>
+                                    <th><label for="form-template">Šablona</label></th>
                                     <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option></select></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-filename">Název obrázku</label></th>
+                                    <td colspan="2"><input id="form-filename" name="filename" placeholder="Např. fakenews" value="fakenews"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-fileformat">Typ obrázku</label></th>
+                                    <td colspan="2"><select id="form-fileformat" name="fileformat"><option value="jpg">JPG</option><option value="png">PNG</option></select></td>
                                 </tr>
                             </tbody>
                         </table>

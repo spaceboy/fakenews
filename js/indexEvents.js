@@ -7,6 +7,9 @@ Evnt.on("#form-main", {
             case "title":
                 Elem.from("#canvas-title").html(StringConvert.line(v));
                 break;
+            case "title-align":
+                Elem.from("#canvas-title").style("textAlign", v);
+                break;
             case "date":
                 v = v.trim();
                 if (v) {
@@ -18,6 +21,9 @@ Evnt.on("#form-main", {
                 break;
             case "perex":
                 Elem.from("#canvas .perex").html(StringConvert.multiline(v));
+                break;
+            case "perex-align":
+                Elem.from("#canvas .perex").style("textAlign", v);
                 break;
             case "perex-position":
                 switch (v) {
@@ -97,6 +103,9 @@ Evnt.on("#form-main", {
                     return StringConvert.multiline(agency ? `<b>${agency} &bull;</b> ` + article : article);
                 })());
                 break;
+            case "article-align":
+                Elem.from("#canvas .article").style("textAlign", v);
+                break;
             case "template":
                 Elem.from("#canvas").class(v);
                 break;
@@ -118,22 +127,34 @@ Evnt.on("#form-main", {
     }
 });
 
+function downloadImage (dataUrl) {
+    var link = document.createElement("a");
+    var filename = Elem.valueById("form-filename");
+    if (!filename) {
+        filename = "fakenews";
+    }
+    link.download = filename + "." + Elem.valueById("form-fileformat");
+    link.href = dataUrl;
+    link.click();
+}
+function showError (error) {
+    alert("ERROR\n" + error);
+}
+
 Evnt.on("#btn-download", "click", (e) => {
     e.preventDefault();
-    domtoimage
-        .toJpeg(
-            document.getElementById("canvas"),
-            {
-                quality: 0.9
-            }
-        )
-        .then(function (dataUrl) {
-            var link = document.createElement("a");
-            link.download = "fakenews.jpg";
-            link.href = dataUrl;
-            link.click();
-        })
-        .catch(function (error) {
-            alert("ERROR\n" + error);
-        });
+    switch (Elem.valueById("form-fileformat")) {
+        case "png":
+            domtoimage
+                .toPng(document.getElementById("canvas"))
+                .then(downloadImage)
+                .catch(showError);
+            break;
+        case "jpg":
+        default:
+            domtoimage
+                .toJpeg(document.getElementById("canvas"), {"quality": 0.9})
+                .then(downloadImage)
+                .catch(showError);
+    }
 });
