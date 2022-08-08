@@ -2,6 +2,10 @@ $color-img-description: #606060;
 $color-bg: white;
 
 
+/* --------------------------------------------------- */
+/* Článek                                              */
+/* --------------------------------------------------- */
+
 #canvas-wrapper
     padding: 5px;
 
@@ -50,6 +54,7 @@ $color-bg: white;
 
         .image
             display: inline-block;
+            max-width: 100%;
             overflow: hidden;
             position: relative;
 
@@ -90,12 +95,6 @@ $color-bg: white;
     .article
         order: 5;
 
-        p
-            text-indent: 1em;
-
-        p:first-child
-            text-indent: 0;
-
     .signature .generator
         background: darkred;
         color: wheat;
@@ -110,6 +109,87 @@ $color-bg: white;
             color: white;
 
 
+
+/* --------------------------------------------------- */
+/* Základní šablony článku (web, press, retro press)   */
+/* --------------------------------------------------- */
+
+#canvas.web
+
+    background: white;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+
+    #canvas-title
+        color: red;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+
+    #canvas-image .image .border
+        border-color: white;
+
+#canvas.press
+    background: whitesmoke;
+    font-family: serif;
+
+    #canvas-title
+        color: #202020;
+        font-family: serif;
+
+    .perex
+        text-align: left;
+
+    #canvas-image .image .border
+        border-color: whitesmoke;
+
+    .article
+        p
+            margin: 0;
+            text-indent: 1em;
+
+            &:first-child
+                margin-top: .5em;
+                text-indent: 0;
+
+#canvas.retro
+    background: white;
+    font-family: serif;
+    filter: sepia(80%);
+
+    #canvas-title
+        color: #202020;
+        font-family: serif;
+
+    .perex
+        text-align: left;
+
+    #canvas-image .image .border
+        border-color: white;
+
+    .article
+        p
+            margin: 0;
+            text-indent: 1em;
+
+            &:first-child
+                margin-top: .5em;
+                text-indent: 0;
+
+
+
+#canvas.landscape
+    display: block;
+
+    #canvas-image
+        float: left;
+        margin-right: 20px;
+        overflow: hidden;
+        width: 320px;
+
+    .clear
+        clear: both;
+
+/* --------------------------------------------------- */
+/* Editor                                              */
+/* --------------------------------------------------- */
 
 
 table.editor
@@ -170,12 +250,12 @@ table.editor
     button
         width: 8em;
 
+
+
+
 .invisible
     animation: animInvisible .3s 1;
     display: none;
-
-
-
 
 @keyframes animInvisible
     from
@@ -186,6 +266,7 @@ table.editor
         opacity: 0;
 
 
+/* Tlačítko pro download */
 
 #btn-download
     color: lightgray;
@@ -196,58 +277,3 @@ table.editor
 
     &:hover
         color: #337ab7;
-
-#canvas.web
-
-    background: white;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-
-    #canvas-title
-        color: red;
-        font-family: Roboto, Arial, Helvetica, sans-serif;
-
-    #canvas-image .image .border
-        border-color: white;
-
-#canvas.press
-    background: whitesmoke;
-    font-family: serif;
-
-    #canvas-title
-        color: #202020;
-        font-family: serif;
-
-    .perex
-        text-align: left;
-
-    #canvas-image .image .border
-        border-color: whitesmoke;
-
-    .article
-        p
-            margin: 0;
-
-            &:first-child
-                margin-top: .5em;
-
-#canvas.retro
-    background: white;
-    font-family: serif;
-    filter: sepia(80%);
-
-    #canvas-title
-        color: #202020;
-        font-family: serif;
-
-    .perex
-        text-align: left;
-
-    #canvas-image .image .border
-        border-color: white;
-
-    .article
-        p
-            margin: 0;
-
-            &:first-child
-                margin-top: .5em;

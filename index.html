@@ -32,30 +32,20 @@
             <div class="row">
                 <div class="column width-7">
                     <div id="canvas-wrapper">
-                    <div id="canvas" class="web">
-                        <h2 id="canvas-title">Falešná zpráva</h2>
-                        <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime">15.7.2022</span></div>
-                        <div class="perex"></div>
-                        <figure id="canvas-image">
-                            <div class="image">
-                                <div class="picture"></div><div class="raster"></div>
-                                <div class="border"></div>
-                            </div>
-                            <figcaption id="canvas-image-description">Popisek pod obrázkem | foto ČTK</figcaption>
-                        </figure>
-                        <div class="article">
-                            <p>
-                                <b>Praha (ČTK) &bull;</b>
-                                Sto roků v šachtě mlčel jsem. Sto roků kopal jsem uhlí. Za sto let v rameni bezmasém svaly mi v železo ztuhly.
-                            </p>
-                            <p>
-                                Podruhý mě do takový jámy už nikdo nedostane!
-                            </p>
-                        </div>
-                        <!--div class="signature" style="order: 6;">
-                            <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews</span></p>
-                        </div-->
-                    </div><!-- /#canvas -->
+                        <div id="canvas" class="web horizontal" style="clear: both;">
+                            <h2 id="canvas-title"></h2>
+                            <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime"></span></div>
+                            <div class="perex"></div>
+                            <figure id="canvas-image">
+                                <div class="image"><div class="picture"></div><div class="raster"></div><div class="border"></div></div>
+                                <figcaption id="canvas-image-description">Popisek pod obrázkem | foto ČTK</figcaption>
+                            </figure>
+                            <div class="article"></div>
+                            <!--div class="signature" style="order: 6;">
+                                <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews/</span></p>
+                            </div-->
+                            <div class="clear"></div>
+                        </div><!-- /#canvas -->
                     </div><!-- /#canvas-wraper -->
                 </div><!-- /.column -->
                 <div class="column width-5">
@@ -63,12 +53,12 @@
                         <table class="editor">
                             <thead>
                                 <tr>
-                                    <th colspan="3"><h3 data-accordeon="table-block-title">Titulek</h3></th>
+                                    <th colspan="3"><h3 data-accordeon="table-block-title">Titulek &amp; datum</h3></th>
                                 </tr>
                             </thead>
                             <tbody id="table-block-title">
                                 <tr>
-                                    <th><label for="form-title">Titulek</label></th>
+                                    <th><label for="form-title">Titulek &amp; datum</label></th>
                                     <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy"></td>
                                 </tr>
                                 <tr>
@@ -77,7 +67,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-date">Datum</label></th>
-                                    <td colspan="2"><input name="date" id="form-date" type="text" placeholder="Vložte datum"></td>
+                                    <td colspan="2"><input name="date" id="form-date" type="text" placeholder="Vložte datum (např. 15.7.2022)"></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -120,7 +110,7 @@
                                 </tr>
                                 <tr class="short">
                                     <th><label>Zarovnání</label></th>
-                                    <td><select id="form-image-align-vertical" name="image-align-vertical"><option value="left">doleva</option><option value="center">na střed</option><option value="right">doprava</option></select><select id="form-image-align-horizontal" name="image-align-horizontal"><option value="top">nahoru</option><option value="center">na střed</option><option value="bottom">dolů</option></select></td>
+                                    <td><select id="form-image-align-vertical" name="image-align-vertical" data-default-value="center"><option value="left">doleva</option><option value="center">na střed</option><option value="right">doprava</option></select><select id="form-image-align-horizontal" name="image-align-horizontal" data-default-value="center"><option value="top">nahoru</option><option value="center">na střed</option><option value="bottom">dolů</option></select></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-blur">Rozmazání</label></th>
@@ -202,6 +192,10 @@ Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženský
                                 <tr>
                                     <th><label for="form-template">Šablona</label></th>
                                     <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option></select></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-orientation">Orientace</label></th>
+                                    <td colspan="2"><select name="orientation" id="form-orientation"><option value="portrait">Portrét</option><option value="landscape">Krajina</option></select></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-filename">Název obrázku</label></th>

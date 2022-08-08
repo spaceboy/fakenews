@@ -236,39 +236,29 @@ class Elem {
         this.element.setAttribute("class", className);
         return this;
     }
+
     // Add HTML class to active element.
     addClass (className) {
-        var a = this.#getClassArray();
-        if (false === this.#inArray(className, a)) {
-            a.push(className);
-        }
-        this.element.setAttribute("class", a.join(" "));
+        this.element.classList.add(className);
         return this;
     }
 
     // Remove CSS class from active element.
     removeClass (className) {
-        var a = this.#getClassArray();
-        var i = this.#inArray(className, a);
-        if (false !== i) {
-            a.splice(i, 1);
-        }
-        this.element.setAttribute("class", a.join(" "));
-        this.clearClass();
+        this.element.classList.remove(className);
         return this;
     }
 
     // Toggle CSS class on active element.
-    toggleClass (className) {
-        var a = this.#getClassArray();
-        var i = this.#inArray(className, a);
-        if (false === i) {
-            a.push(className);
-        } else {
-            a.splice(i, 1);
+    toggleClass (className, classList) {
+        if (!classList || !classList.length) {
+            this.element.classList.toggle(className);
+            return this;
         }
-        this.element.setAttribute("class", a.join(" "));
-        this.clearClass();
+        for (var i = 0, l = classList.length; i < l; ++i) {
+            this.element.classList.remove(classList[i]);
+        }
+        this.element.classList.add(className);
         return this;
     }
 
@@ -282,7 +272,7 @@ class Elem {
 
     // Detect whether active element has given CSS class or not.
     hasClass (className) {
-        return this.#inArray(className, this.#getClassArray());
+        return (this.#inArray(className, this.element.classList) !== false);
     }
 
     // Return count of child nodes.
@@ -467,14 +457,6 @@ class Elem {
             (el.hasAttribute("data-prefix") ? el.getAttribute("data-prefix") : "")
             + el.value
             + (el.hasAttribute("data-postfix") ? el.getAttribute("data-postfix") : "")
-        );
-    }
-
-   #getClassArray () {
-        return (
-            this.element && this.element.hasAttribute("class") && this.element.getAttribute("class")
-            ? this.element.getAttribute("class").trim().replace(/\s+/, " ").split(" ")
-            : []
         );
     }
 

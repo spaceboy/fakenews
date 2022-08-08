@@ -107,7 +107,10 @@ Evnt.on("#form-main", {
                 Elem.from("#canvas .article").style("textAlign", v);
                 break;
             case "template":
-                Elem.from("#canvas").class(v);
+                Elem.from("#canvas").toggleClass(v, ["web", "press", "retro"]);
+                break;
+            case "orientation":
+                Elem.from("#canvas").toggleClass(v, ["portrait", "landscape"]);
                 break;
         }
     },

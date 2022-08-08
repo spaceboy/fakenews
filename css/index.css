@@ -1,3 +1,7 @@
+@charset "UTF-8";
+/* --------------------------------------------------- */
+/* Článek                                              */
+/* --------------------------------------------------- */
 #canvas-wrapper {
   padding: 5px;
 }
@@ -67,6 +71,7 @@
 
 #canvas #canvas-image .image {
   display: inline-block;
+  max-width: 100%;
   overflow: hidden;
   position: relative;
 }
@@ -114,14 +119,6 @@
           order: 5;
 }
 
-#canvas .article p {
-  text-indent: 1em;
-}
-
-#canvas .article p:first-child {
-  text-indent: 0;
-}
-
 #canvas .signature .generator {
   background: darkred;
   color: wheat;
@@ -139,6 +136,99 @@
   color: white;
 }
 
+/* --------------------------------------------------- */
+/* Základní šablony článku (web, press, retro press)   */
+/* --------------------------------------------------- */
+#canvas.web {
+  background: white;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#canvas.web #canvas-title {
+  color: red;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#canvas.web #canvas-image .image .border {
+  border-color: white;
+}
+
+#canvas.press {
+  background: whitesmoke;
+  font-family: serif;
+}
+
+#canvas.press #canvas-title {
+  color: #202020;
+  font-family: serif;
+}
+
+#canvas.press .perex {
+  text-align: left;
+}
+
+#canvas.press #canvas-image .image .border {
+  border-color: whitesmoke;
+}
+
+#canvas.press .article p {
+  margin: 0;
+  text-indent: 1em;
+}
+
+#canvas.press .article p:first-child {
+  margin-top: .5em;
+  text-indent: 0;
+}
+
+#canvas.retro {
+  background: white;
+  font-family: serif;
+  -webkit-filter: sepia(80%);
+          filter: sepia(80%);
+}
+
+#canvas.retro #canvas-title {
+  color: #202020;
+  font-family: serif;
+}
+
+#canvas.retro .perex {
+  text-align: left;
+}
+
+#canvas.retro #canvas-image .image .border {
+  border-color: white;
+}
+
+#canvas.retro .article p {
+  margin: 0;
+  text-indent: 1em;
+}
+
+#canvas.retro .article p:first-child {
+  margin-top: .5em;
+  text-indent: 0;
+}
+
+#canvas.landscape {
+  display: block;
+}
+
+#canvas.landscape #canvas-image {
+  float: left;
+  margin-right: 20px;
+  overflow: hidden;
+  width: 320px;
+}
+
+#canvas.landscape .clear {
+  clear: both;
+}
+
+/* --------------------------------------------------- */
+/* Editor                                              */
+/* --------------------------------------------------- */
 table.editor {
   width: 100%;
 }
@@ -241,6 +331,7 @@ table.editor button {
   }
 }
 
+/* Tlačítko pro download */
 #btn-download {
   color: lightgray;
   cursor: pointer;
@@ -252,73 +343,5 @@ table.editor button {
 
 #btn-download:hover {
   color: #337ab7;
-}
-
-#canvas.web {
-  background: white;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-}
-
-#canvas.web #canvas-title {
-  color: red;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
-}
-
-#canvas.web #canvas-image .image .border {
-  border-color: white;
-}
-
-#canvas.press {
-  background: whitesmoke;
-  font-family: serif;
-}
-
-#canvas.press #canvas-title {
-  color: #202020;
-  font-family: serif;
-}
-
-#canvas.press .perex {
-  text-align: left;
-}
-
-#canvas.press #canvas-image .image .border {
-  border-color: whitesmoke;
-}
-
-#canvas.press .article p {
-  margin: 0;
-}
-
-#canvas.press .article p:first-child {
-  margin-top: .5em;
-}
-
-#canvas.retro {
-  background: white;
-  font-family: serif;
-  -webkit-filter: sepia(80%);
-          filter: sepia(80%);
-}
-
-#canvas.retro #canvas-title {
-  color: #202020;
-  font-family: serif;
-}
-
-#canvas.retro .perex {
-  text-align: left;
-}
-
-#canvas.retro #canvas-image .image .border {
-  border-color: white;
-}
-
-#canvas.retro .article p {
-  margin: 0;
-}
-
-#canvas.retro .article p:first-child {
-  margin-top: .5em;
 }
 /*# sourceMappingURL=index.css.map */

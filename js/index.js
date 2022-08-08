@@ -59,4 +59,5 @@ Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 // Nastavit defaultní hodnoty:
 Each.all("#form-main *[data-default-value]").do((el) => {
     el.value = el.getAttribute("data-default-value");
+    Evnt.fire(el, "change");
 });
