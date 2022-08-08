@@ -1,0 +1,300 @@
+#canvas {
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 5px;
+  padding: 10px;
+  width: 640px;
+}
+
+#canvas #canvas-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 0 .5em 0;
+  -webkit-box-ordinal-group: 2;
+      -ms-flex-order: 1;
+          order: 1;
+  padding: 0;
+  text-shadow: none;
+}
+
+#canvas .datetime {
+  color: darkgray;
+  margin: 0 0 .25em 0;
+  -webkit-box-ordinal-group: 3;
+      -ms-flex-order: 2;
+          order: 2;
+}
+
+#canvas .perex {
+  font-size: 120%;
+  font-weight: bold;
+  margin: 0 0 .75em 0;
+  -webkit-box-ordinal-group: 4;
+      -ms-flex-order: 3;
+          order: 3;
+  text-align: justify;
+}
+
+#canvas #canvas-image {
+  margin: 0;
+  padding: 0;
+  -webkit-box-ordinal-group: 5;
+      -ms-flex-order: 4;
+          order: 4;
+}
+
+#canvas #canvas-image #canvas-image-description {
+  color: #606060;
+  font-size: 90%;
+}
+
+#canvas #canvas-image .image {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+#canvas #canvas-image .image .picture {
+  background-size: cover;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+#canvas #canvas-image .image .raster {
+  /* Rastr: */
+  background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);
+  background-color: transparent;
+  background-position: 0 0, 5px 5px;
+  background-size: 10px 10px;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  opacity: 0.15;
+  top: 0;
+  width: 100%;
+}
+
+#canvas #canvas-image .image .border {
+  border: 10px solid white;
+  display: none;
+  height: calc(100% - 10px);
+  -webkit-filter: blur(0);
+          filter: blur(0);
+  left: -4px;
+  position: absolute;
+  top: -4px;
+  width: calc(100% - 10px);
+  z-index: 100;
+}
+
+#canvas .article {
+  -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+          order: 5;
+}
+
+#canvas .article p {
+  text-indent: 1em;
+}
+
+#canvas .article p:first-child {
+  text-indent: 0;
+}
+
+#canvas .signature .generator {
+  background: darkred;
+  color: wheat;
+  font-size: 80%;
+  font-weight: bold;
+  margin: 0;
+  -webkit-box-ordinal-group: 7;
+      -ms-flex-order: 6;
+          order: 6;
+  padding: .5em;
+  text-align: right;
+}
+
+#canvas .signature .generator .bold {
+  color: white;
+}
+
+table.editor {
+  width: 100%;
+}
+
+table.editor tbody::after {
+  content: "";
+  display: block;
+  height: .5em;
+}
+
+table.editor h3.accordeon {
+  color: red;
+  cursor: pointer;
+  font-size: 25px;
+  margin: 0;
+}
+
+table.editor h3.accordeon i.fas {
+  color: lightgray;
+  margin-left: .5em;
+}
+
+table.editor tr {
+  vertical-align: top;
+}
+
+table.editor th {
+  padding: .3em .5em 0 0;
+  text-align: right;
+  width: 8em;
+}
+
+table.editor tr.short th {
+  width: 5em;
+}
+
+table.editor tr.short input[type="text"],
+table.editor tr.short input[type="number"],
+table.editor tr.short input[type="range"] {
+  width: 15em;
+}
+
+table.editor textarea,
+table.editor input[type="text"],
+table.editor input[type="file"] {
+  font-size: 13px;
+  padding: .25em;
+  width: 25em;
+}
+
+table.editor textarea#form-perex {
+  height: 16em;
+}
+
+table.editor textarea#form-image-description {
+  height: 4em;
+}
+
+table.editor textarea#form-article {
+  height: 24em;
+}
+
+table.editor input#form-image-height {
+  width: 8em;
+}
+
+table.editor button {
+  width: 8em;
+}
+
+.invisible {
+  -webkit-animation: animInvisible .3s 1;
+          animation: animInvisible .3s 1;
+  display: none;
+}
+
+@-webkit-keyframes animInvisible {
+  from {
+    -webkit-filter: none;
+            filter: none;
+    opacity: 1;
+  }
+  to {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    opacity: 0;
+  }
+}
+
+@keyframes animInvisible {
+  from {
+    -webkit-filter: none;
+            filter: none;
+    opacity: 1;
+  }
+  to {
+    -webkit-filter: blur(5px);
+            filter: blur(5px);
+    opacity: 0;
+  }
+}
+
+#btn-download {
+  color: lightgray;
+  cursor: pointer;
+  float: right;
+  text-shadow: none;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+#btn-download:hover {
+  color: #337ab7;
+}
+
+#canvas.web {
+  background: white;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#canvas.web #canvas-title {
+  color: red;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+
+#canvas.web #canvas-image .image .border {
+  border-color: white;
+}
+
+#canvas.press {
+  background: whitesmoke;
+  font-family: serif;
+}
+
+#canvas.press #canvas-title {
+  color: #202020;
+  font-family: serif;
+}
+
+#canvas.press .perex {
+  text-align: left;
+}
+
+#canvas.press #canvas-image .image .border {
+  border-color: whitesmoke;
+}
+
+#canvas.retro {
+  background: white;
+  font-family: serif;
+  -webkit-filter: sepia(80%);
+          filter: sepia(80%);
+}
+
+#canvas.retro #canvas-title {
+  color: #202020;
+  font-family: serif;
+}
+
+#canvas.retro .perex {
+  text-align: left;
+}
+
+#canvas.retro #canvas-image .image .border {
+  border-color: white;
+}
+/*# sourceMappingURL=index.css.map */

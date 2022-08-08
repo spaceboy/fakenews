@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fakenews</title>
+        <link href="gfx/favicon.png" rel="icon" type="image/png">
+        <link href="css/fa/styles/fontawesome.min.css" rel="stylesheet">
+        <link href="css/fa/styles/solid.min.css" rel="stylesheet">
+        <link href="css/global.css" rel="stylesheet">
+        <link href="css/index.css" rel="stylesheet">
+        <script src="js/Elem.js"></script>
+        <script src="js/Evnt.js"></script>
+        <script src="js/Each.js"></script>
+        <script src="js/UploadFile.js"></script>
+        <script src="js/StringConvert.js"></script>
+        <script src="js/Accordeon.js"></script>
+        <script src="js/dom-to-image.js"></script>
+        <!--script src="js/wiki2html.js"></script-->
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="column width-12">
+                    <h1>
+                        Fake news!
+                        <div id="btn-download"><i class="fas fa-download"></i></div>
+                    </h1>
+                </div>
+            </div>
+        </div><!-- /.container -->
+        <div class="container">
+            <div class="row">
+                <div class="column width-7">
+                    <div id="canvas" class="web">
+                        <h2 id="canvas-title">Falešná zpráva</h2>
+                        <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime">15.7.2022</span></div>
+                        <div class="perex"></div>
+                        <figure id="canvas-image">
+                            <div class="image">
+                                <div class="picture"></div><div class="raster"></div>
+                                <div class="border"></div>
+                            </div>
+                            <figcaption id="canvas-image-description">Popisek pod obrázkem | foto ČTK</figcaption>
+                        </figure>
+                        <div class="article">
+                            <p>
+                                <b>Praha (ČTK) &bull;</b>
+                                Sto roků v šachtě mlčel jsem. Sto roků kopal jsem uhlí. Za sto let v rameni bezmasém svaly mi v železo ztuhly.
+                            </p>
+                            <p>
+                                Podruhý mě do takový jámy už nikdo nedostane!
+                            </p>
+                        </div>
+                        <!--div class="signature" style="order: 6;">
+                            <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews</span></p>
+                        </div-->
+                    </div><!-- /#canvas -->
+                </div><!-- /.column -->
+                <div class="column width-5">
+                    <form id="form-main">
+                        <table class="editor">
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-title">Titulek</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-title">
+                                <tr>
+                                    <th><label for="form-title">Titulek</label></th>
+                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-date">Datum</label></th>
+                                    <td colspan="2"><input name="date" id="form-date" type="text" placeholder="Vložte datum"></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-perex">Perex</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-perex">
+                                <tr>
+                                    <th><label for="form-perex">Perex</label></th>
+                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-perex-position">Pozice perexu</label></th>
+                                    <td colspan="2"><select name="perex-position" id="form-perex-position"><option value="before">Před obrázkem</option><option value="after">Za obrázkem</option></select></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-image">Obrázek</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-image">
+                                <tr>
+                                    <th><label for="form-image">Obrázek</label></th>
+                                    <td colspan="2"><input name="image" id="form-image" type="file"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-image-url">Obrázek (URL)</label></th>
+                                    <td colspan="2"><input name="image-url" id="form-image-url" type="text"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th rowspan="12"></th>
+                                    <th><label for="form-image-height">Výška)</label></th>
+                                    <td colspan="2"><input name="image-height" id="form-image-height" type="number" min="200" max="800" data-postfix="px"><button id="form-image-height-auto" name="image-height-auto">Automaticky</button></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label>Zarovnání</label></th>
+                                    <td><select id="form-image-align-vertical" name="image-align-vertical"><option value="left">doleva</option><option value="center">na střed</option><option value="right">doprava</option></select><select id="form-image-align-horizontal" name="image-align-horizontal"><option value="top">nahoru</option><option value="center">na střed</option><option value="bottom">dolů</option></select></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-filter-blur">Rozmazání</label></th>
+                                    <td><input id="form-image-filter-blur" name="blur" type="range" min="0" max="2" step="0.1" value="0" data-postfix="px" data-group="filter"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-filter-grayscale">ČB</label></th>
+                                    <td><input id="form-image-filter-grayscale" name="grayscale" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-filter-sepia">Sépie</label></th>
+                                    <td><input id="form-image-filter-sepia" name="sepia" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-filter-contrast">Kontrast</label></th>
+                                    <td><input id="form-image-filter-contrast" name="contrast" type="range" min="0" max="200" step="25" value="100" data-postfix="%" data-group="filter"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-blured-border">Rozpitý okraj</label></th>
+                                    <td><input id="form-image-blured-border" name="blured-border" type="range" min="0" max="5" step="1" value="0" data-postfix="px"></td>
+                                </tr>
+                                <tr class="short">
+                                    <td></td>
+                                    <td><label for="form-image-raster"><input name="image-raster" id="form-image-raster" type="checkbox"> Novinový rastr</label></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-raster-size">Velikost zrna</label></th>
+                                    <td><input id="form-image-raster-size" name="raster-size" type="range" min="5" max="60" step="5" value="35" data-postfix="%" data-group="raster"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-raster-granularity">Zrnitost</label></th>
+                                    <td><input id="form-image-raster-granularity" name="raster-granularity" type="range" min="5" max="35" step="5" value="10" data-group="raster"></td>
+                                </tr>
+                                <tr class="short">
+                                    <th><label for="form-image-raster-opacity">Intenzita</label></th>
+                                    <td><input id="form-image-raster-opacity" name="raster-opacity" type="range" min=".05" max="1" step=".05" value=".15" data-group="raster"></td>
+                                </tr>
+                                <tr class="short">
+                                    <td></td>
+                                    <td><label for="form-image-raster-light"><input name="raster-light" id="form-image-raster-light" type="checkbox"> Světlý</label></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-image-description">Popisek</label></th>
+                                    <td colspan="2"><textarea name="image-description" id="form-image-description"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-image-author">Autor</label></th>
+                                    <td colspan="2"><input name="image-author" id="form-image-author" type="text" value="foto ČTK" placeholder="foto ČTK"></textarea></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-article">Článek</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-article">
+                                <tr>
+                                    <th><label for="form-agency">Agentura</label></th>
+                                    <td colspan="2"><input name="agency" id="form-agency" type="text" value="Praha (ČTK)" placeholder="Praha (ČTK)"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-article">Článek</label></th>
+                                    <td colspan="2"><textarea name="article" id="form-article">Při psaní textu můžete využít <i>HTML formátování</i> i jednoduchých značek pro *tučné písmo,* _kurzívu,_ =podtržení=, ~přešktrtnutí~...
+Můžete také použít i některé zvláštní značky pro zápis zlomků ((1/4), (1/2), (3/4)), indexů (H^^2O, e = mc^2) a jiných symbolů.
+Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženských ((+-) (++)) a dalších (^! ^? <> (<>) (<3) (-3) (=3) <= <=> =>).
+"Počítačové" uvozovky budou nahrazeny 'typografickými,' ale "zdvojené" uvozovky či apostrof zůstanou zachovány (McDonald''s, 10(^o), 20'' 30"").</textarea></td>
+                                </tr>
+                            </tbody>
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-setup">Nastavení</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-setup">
+                                <tr>
+                                    <th><label for="form-template">Vzhled</label></th>
+                                    <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option></select></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div><!-- /.column-->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+        <script src="js/indexEvents.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

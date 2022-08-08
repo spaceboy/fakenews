@@ -1,0 +1,233 @@
+$color-img-description: #606060;
+$color-bg: white;
+
+
+#canvas
+
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 5px;
+    padding: 10px;
+    width: 640px;
+
+    #canvas-title
+        font-size: 36px;
+        font-weight: bold;
+        margin: 0 0 .5em 0;
+        order: 1;
+        padding: 0;
+        text-shadow: none;
+
+    .datetime
+        color: darkgray;
+        margin: 0 0 .25em 0;
+        order: 2;
+
+    .perex
+        font-size: 120%;
+        font-weight: bold;
+        margin: 0 0 .75em 0;
+        order: 3;
+        text-align: justify;
+
+    #canvas-image
+        margin: 0;
+        padding: 0;
+        order: 4;
+
+        #canvas-image-description
+            color: $color-img-description;
+            font-size: 90%;
+
+        .image
+            display: inline-block;
+            overflow: hidden;
+            position: relative;
+
+            .picture
+                background-size: cover;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+
+            .raster
+                /* Rastr: */
+                background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);
+                background-color: transparent;
+                background-position: 0 0, 5px 5px;
+                background-size: 10px 10px;
+                display: none;
+
+                height: 100%;
+                left: 0;
+                position: absolute;
+                opacity: 0.15;
+                top: 0;
+                width: 100%;
+
+            .border
+                border: 10px solid $color-bg;
+                display: none;
+                height: calc(100% - 10px);
+                filter: blur(0);
+                left: -4px;
+                position: absolute;
+                top: -4px;
+                width: calc(100% - 10px);
+                z-index: 100;
+
+    .article
+        order: 5;
+
+        p
+            text-indent: 1em;
+
+        p:first-child
+            text-indent: 0;
+
+    .signature .generator
+        background: darkred;
+        color: wheat;
+        font-size: 80%;
+        font-weight: bold;
+        margin: 0;
+        order: 6;
+        padding: .5em;
+        text-align: right;
+
+        .bold
+            color: white;
+
+
+
+
+table.editor
+    width: 100%;
+
+    tbody::after
+        content: "";
+        display: block;
+        height: .5em;
+
+    h3.accordeon
+        color: red;
+        cursor: pointer;
+        font-size: 25px;
+        margin: 0;
+
+        i.fas
+            color: lightgray;
+            margin-left: .5em;
+
+    tr
+        vertical-align: top;
+
+    th
+        padding: .3em .5em 0 0;
+        text-align: right;
+        width: 8em;
+
+    tr.short
+
+        th
+            width: 5em;
+
+        input[type="text"],
+        input[type="number"],
+        input[type="range"]
+            width: 15em;
+
+    textarea,
+    input[type="text"],
+    input[type="file"]
+        font-size: 13px;
+        padding: .25em;
+        width: 25em;
+
+    textarea#form-perex
+        height: 16em;
+
+    textarea#form-image-description
+        height: 4em;
+
+    textarea#form-article
+        height: 24em;
+
+    input#form-image-height
+        width: 8em;
+
+    button
+        width: 8em;
+
+.invisible
+    animation: animInvisible .3s 1;
+    display: none;
+
+
+
+
+@keyframes animInvisible
+    from
+        filter: none;
+        opacity: 1;
+    to
+        filter: blur(5px);
+        opacity: 0;
+
+
+
+#btn-download
+    color: lightgray;
+    cursor: pointer;
+    float: right;
+    text-shadow: none;
+    transition: .1s;
+
+    &:hover
+        color: #337ab7;
+
+#canvas.web
+
+    background: white;
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+
+    #canvas-title
+        color: red;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+
+    #canvas-image .image .border
+        border-color: white;
+
+#canvas.press
+    background: whitesmoke;
+    font-family: serif;
+
+    #canvas-title
+        color: #202020;
+        font-family: serif;
+
+    .perex
+        text-align: left;
+
+    #canvas-image .image .border
+        border-color: whitesmoke;
+
+#canvas.retro
+    background: white;
+    font-family: serif;
+    filter: sepia(80%);
+
+    #canvas-title
+        color: #202020;
+        font-family: serif;
+
+    .perex
+        text-align: left;
+
+    #canvas-image .image .border
+        border-color: white;
