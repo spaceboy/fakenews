@@ -1,12 +1,3 @@
-//console.log("index.js");
-/*
-let image = document.querySelector('#canvas-image div[data-js="image"]');
-image.style.background = '#ccc url("gfx/test01.jpg") no-repeat scroll 0% 0%';
-image.style.backgroundSize = "cover";
-image.style.height = "418px";
-image.style.width = "640px";
-image.style.filter = "grayscale(25%) sepia(50%) blur(0.2px) contrast(0.75)";
-*/
 Elem.from("#form-date").value((function (d) {return d.getDate() + "." + (parseInt(d.getMonth()) + 1) + "." + d.getFullYear();})(new Date()));
 
 Elem
@@ -61,8 +52,11 @@ class ImageLoader {
     }
 }
 
+// Nastavit accordeony:
 new Accordeon(document.getElementById("form-main"));
+Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 
+// Nastavit defaultní hodnoty:
 Each.all("#form-main *[data-default-value]").do((el) => {
     el.value = el.getAttribute("data-default-value");
 });
