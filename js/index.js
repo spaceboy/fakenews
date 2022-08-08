@@ -3,7 +3,7 @@ Elem.from("#form-date").value((function (d) {return d.getDate() + "." + (parseIn
 Elem
     .from('#canvas-image .image .picture')
     .style({
-        "background": '#ccc url("gfx/test01.jpg") no-repeat scroll 0% 0%',
+        "background": "#ccc",
         "backgroundSize": "cover"
     });
 Elem
@@ -20,7 +20,12 @@ function imageLoad (e) {
     var height = Math.floor(e.srcElement.height * imageElem.get().offsetWidth / e.srcElement.width);
 
     imageElem.style("height", height + "px");
-    Elem.from("#canvas-image .image .picture").style("background", `url("${e.srcElement.src}") no-repeat scroll 0% 0% / cover`);
+    Elem.from("#canvas-image .image .picture")
+        .style("background", `url("${e.srcElement.src}") no-repeat scroll 0% 0% / cover`)
+        .attr({
+            "data-original-height": e.srcElement.height,
+            "data-original-width": e.srcElement.width
+        });
     Elem.from("#form-image-height")
         .value(height)
         .attr("data-auto-height", height);
@@ -59,5 +64,5 @@ Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 // Nastavit defaultní hodnoty:
 Each.all("#form-main *[data-default-value]").do((el) => {
     el.value = el.getAttribute("data-default-value");
-    Evnt.fire(el, "change");
+    Evnt.fire(el, "change", true);
 });
