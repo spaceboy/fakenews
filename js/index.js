@@ -1,64 +1,28 @@
-Elem.from("#form-date").value((function (d) {return d.getDate() + "." + (parseInt(d.getMonth()) + 1) + "." + d.getFullYear();})(new Date()));
-
-Elem
-    .from('#canvas-image .image .picture')
-    .style({
-        "background": "#ccc",
-        "backgroundSize": "cover"
-    });
-Elem
-    .from("#canvas-image .image")
-    .style({
-        "height": "418px",
-        "width": "640px"
-    });
-
-
-function imageLoad (e) {
+// Načte obrázek.
+function imageLoad (srcElement) {
     let imageElem = Elem.from("#canvas-image .image");
 
-    var height = Math.floor(e.srcElement.height * imageElem.get().offsetWidth / e.srcElement.width);
+    var height = Math.floor(srcElement.height * imageElem.get().offsetWidth / srcElement.width);
 
     imageElem.style("height", height + "px");
     Elem.from("#canvas-image .image .picture")
-        .style("background", `url("${e.srcElement.src}") no-repeat scroll 0% 0% / cover`)
+        .style({
+            "backgroundImage": `url("${srcElement.src}")`,
+            "backgroundPosition": Elem.valueById("form-image-align-horizontal") + " " + Elem.valueById("form-image-align-vertical"),
+            "backgroundSize": "cover",
+            "backgroundRepeat": "no-repeat",
+        })
         .attr({
-            "data-original-height": e.srcElement.height,
-            "data-original-width": e.srcElement.width
+            "data-original-height": srcElement.height,
+            "data-original-width": srcElement.width
         });
     Elem.from("#form-image-height")
         .value(height)
         .attr("data-auto-height", height);
 }
 
-class ImageLoader {
-    image
-
-    constructor () {
-        this.image = new Image();
-        Evnt.on(this.image, {
-            "load": imageLoad,
-            "error": (e) => {
-                console.log(e);
-            }
-        })
-    }
-
-    fromUrl (url) {
-        this.image.src = url;
-    }
-
-    fromInputElement (el) {
-        var fr = new FileReader;
-        fr.addEventListener("load", (e) => {
-            this.image.src = e.target.result;
-        });
-        fr.readAsDataURL(el.files[0]);
-    }
-}
-
 // Nastavit accordeony:
-new Accordeon(document.getElementById("form-main"));
+new Accordeon(document.getElementById("form-main"), "h3", "table-row-group");
 Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 
 // Nastavit defaultní hodnoty:
@@ -66,3 +30,12 @@ Each.all("#form-main *[data-default-value]").do((el) => {
     el.value = el.getAttribute("data-default-value");
     Evnt.fire(el, "change", true);
 });
+// Dafaultní hodnota pro datum:
+Evnt.fire(
+    Elem
+        .from("#form-date")
+        .value((function (d) {return d.getDate() + "." + (parseInt(d.getMonth()) + 1) + "." + d.getFullYear();})(new Date()))
+        .get(),
+    "change",
+    true
+);

@@ -74,6 +74,7 @@
   max-width: 100%;
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 #canvas #canvas-image .image .picture {
@@ -211,18 +212,18 @@
   text-indent: 0;
 }
 
-#canvas.landscape {
+#canvas.portrait {
   display: block;
 }
 
-#canvas.landscape #canvas-image {
+#canvas.portrait #canvas-image {
   float: left;
   margin-right: 20px;
   overflow: hidden;
   width: calc(50% - 10px);
 }
 
-#canvas.landscape .clear {
+#canvas.portrait .clear {
   clear: both;
 }
 

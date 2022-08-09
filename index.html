@@ -12,6 +12,7 @@
         <script src="js/Evnt.js"></script>
         <script src="js/Each.js"></script>
         <script src="js/UploadFile.js"></script>
+        <script src="js/LoadImage.js"></script>
         <script src="js/StringConvert.js"></script>
         <script src="js/Accordeon.js"></script>
         <script src="js/dom-to-image.js"></script>
@@ -104,13 +105,17 @@
                                     <td colspan="2"><input name="image-url" id="form-image-url" type="text" data-default-value="https://spaceboy.github.io/fakenews/gfx/test01-half-moon.jpg"></td>
                                 </tr>
                                 <tr class="short">
-                                    <th rowspan="12"></th>
+                                    <th rowspan="13"></th>
                                     <th><label for="form-image-height">Výška)</label></th>
                                     <td colspan="2"><input name="image-height" id="form-image-height" type="number" min="200" max="800" data-postfix="px"><button id="form-image-height-auto" name="image-height-auto">Automaticky</button></td>
                                 </tr>
+                                <tr>
+                                    <th><label for="form-image-orientation">Orientace</label></th>
+                                    <td colspan="2"><select name="image-orientation" id="form-image-orientation" data-default-value="landscape"><option value="landscape">Krajina</option><option value="portrait">Portrét</option></select></td>
+                                </tr>
                                 <tr class="short">
                                     <th><label>Zarovnání</label></th>
-                                    <td><select id="form-image-align-vertical" name="image-align-vertical" data-default-value="center"><option value="left">doleva</option><option value="center">na střed</option><option value="right">doprava</option></select><select id="form-image-align-horizontal" name="image-align-horizontal" data-default-value="center"><option value="top">nahoru</option><option value="center">na střed</option><option value="bottom">dolů</option></select></td>
+                                    <td><select id="form-image-align-horizontal" name="image-align-horizontal" data-default-value="center"><option value="left">doleva</option><option value="center">na střed</option><option value="right">doprava</option></select><select id="form-image-align-vertical" name="image-align-vertical" data-default-value="center"><option value="top">nahoru</option><option value="center">na střed</option><option value="bottom">dolů</option></select></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-blur">Rozmazání</label></th>
@@ -192,10 +197,6 @@ Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženský
                                 <tr>
                                     <th><label for="form-template">Šablona</label></th>
                                     <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option></select></td>
-                                </tr>
-                                <tr>
-                                    <th><label for="form-orientation">Orientace</label></th>
-                                    <td colspan="2"><select name="orientation" id="form-orientation"><option value="portrait">Portrét</option><option value="landscape">Krajina</option></select></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-filename">Název obrázku</label></th>

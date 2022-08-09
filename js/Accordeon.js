@@ -1,7 +1,10 @@
 class Accordeon {
-    constructor (parent, openerQuerySelector) {
+    constructor (parent, openerQuerySelector, displayShow) {
         if (!openerQuerySelector) {
             openerQuerySelector = "h3";
+        }
+        if (!displayShow) {
+            displayShow = "block";
         }
         for (var title of parent.querySelectorAll(openerQuerySelector)) {
             var id = title.getAttribute("data-accordeon");
@@ -17,7 +20,7 @@ class Accordeon {
                 "click",
                 function (e) {
                     var body = document.getElementById(e.currentTarget.getAttribute("data-accordeon"));
-                    var display = (body.style.display === "none" ? "block" : "none");
+                    var display = (body.style.display === "none" ? displayShow : "none");
                     for (var el of parent.querySelectorAll(openerQuerySelector)) {
                         var elem = document.getElementById(el.getAttribute("data-accordeon"));
                         if (elem) {

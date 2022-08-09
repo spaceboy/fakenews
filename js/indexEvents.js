@@ -1,3 +1,4 @@
+// Handle events on #form-main.
 Evnt.on("#form-main", {
     "change": (e) => {
         e.preventDefault();
@@ -38,13 +39,18 @@ Evnt.on("#form-main", {
                 }
                 break;
             case "image-url":
-                (new ImageLoader()).fromUrl(v);
+                LoadImage.fromUrl(v, imageLoad);
+                Elem.from("#form-image").value("");
                 break;
             case "image":
-                (new ImageLoader()).fromInputElement(t);
+                LoadImage.fromInputElement(t, imageLoad);
+                Elem.from("#form-image-url").value("");
                 break;
             case "image-height":
                 Elem.from("#canvas-image .image").style("height", v);
+                break;
+            case "image-orientation":
+                Elem.from("#canvas").toggleClass(v, ["portrait", "landscape"]);
                 break;
             case "image-align-vertical":
             case "image-align-horizontal":
@@ -88,7 +94,7 @@ Evnt.on("#form-main", {
                 break;
             case "image-description":
             case "image-author":
-                let text = Elem.valueById("form-image-description").trim();
+                let text = StringConvert.specialChars(Elem.valueById("form-image-description").trim());
                 var author = Elem.valueById("form-image-author").trim();
                 if (text && author) {
                     author = ` &bull; ${author}`;
@@ -109,9 +115,6 @@ Evnt.on("#form-main", {
             case "template":
                 Elem.from("#canvas").toggleClass(v, ["web", "press", "retro"]);
                 break;
-            case "orientation":
-                Elem.from("#canvas").toggleClass(v, ["portrait", "landscape"]);
-                break;
         }
     },
     "click": (e) => {
@@ -130,6 +133,7 @@ Evnt.on("#form-main", {
     }
 });
 
+// Download image.
 function downloadImage (dataUrl) {
     var link = document.createElement("a");
     var filename = Elem.valueById("form-filename");
@@ -144,6 +148,7 @@ function showError (error) {
     alert("ERROR\n" + error);
 }
 
+// Generate and then download image.
 Evnt.on("#btn-download", "click", (e) => {
     e.preventDefault();
     switch (Elem.valueById("form-fileformat")) {
