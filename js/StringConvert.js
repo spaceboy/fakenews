@@ -20,8 +20,8 @@ class StringConvert {
         "\\(SS\\)": "&sect;",
         "\\(<>\\)": "&diams;",
         "\\(<3\\)": "&hearts;",
-        "\\(-3\\)": "&spades;",
-        "\\(\\=3\\)": "&clubs;",
+        "\\(\\->\\)": "&spades;",
+        "\\(\\-3\\)": "&clubs;",
         "\\(_\\)": "&nbsp;", // pevná mezera
         "\\(\\-\\)": "&shy;", // možné dělení slova
         "\\(v\\-\\)": "&radic;", // (v-) odmocnina
@@ -38,7 +38,6 @@ class StringConvert {
         "__": "&#95;",
         "\\^\\?": "&iquest;",
         "\\^\\!": "&iexcl;",
-
         "\\(E\\)": "&euro;",
         "\\(L\\)": "&pound;",
         "\\(Y\\)": "&yen;",
@@ -46,7 +45,6 @@ class StringConvert {
         "\\(r\\)": "&reg;",
         "\\(c\\)": "&copy;",
         "\\(tm\\)": "&trade;",
-
     };
 
     static specialChars (str) {
@@ -55,21 +53,16 @@ class StringConvert {
     }
 
     static line (str) {
-        str = StringConvert.specialChars(str);
-        str = str.replace(/\*([^\s]+)?\b([^\*]+)\b([^\s]+)?\*/gi, '<b>$1$2$3</b>');
-        str = str.replace(/\_([^(\_|\s)]+)\_/gi, '<i>$1</i>');
-        str = str.replace(/\=([^\s]+)?\b([^\=]+)\b([^\s]+)?\=/gi, '<u>$1$2$3</u>');
-        str = str.replace(/\~([^\s]+)?\b([^\~]+)\b([^\s]+)?\~/gi, '<s>$1$2$3</s>');
-
-        str = str.replace(/\"([^\s]+)?\b([^\"]+)\b([^\s]+)?\"/gi, '„$1$2$3“');
-
-
-        str = str.replace(/\'([^\s]+)?\b([^\']+)\b([^\s]+)?\'/gi, '‚$1$2$3‘');
-
-
-        str = str.replace(/(\^\^)(.)/g, "<sub>$2</sub>");
-        str = str.replace(/(\^)(.)/g, "<sup>$2</sup>");
-        return str.trim();
+        return StringConvert.specialChars(str)
+            .replace(/\*([^\s]+)?\b([^\*]+)\b([^\s]+)?\*/gi, '<b>$1$2$3</b>')
+            .replace(/\_([^(\_|\s)]+)\_/gi, '<i>$1</i>')
+            .replace(/\=([^\s]+)?\b([^\=]+)\b([^\s]+)?\=/gi, '<u>$1$2$3</u>')
+            .replace(/\~([^\s]+)?\b([^\~]+)\b([^\s]+)?\~/gi, '<s>$1$2$3</s>')
+            .replace(/\"([^\s]+)?\b([^\"]+)\b([^\s]+)?\"/gi, '„$1$2$3“')
+            .replace(/\'([^\s]+)?\b([^\']+)\b([^\s]+)?\'/gi, '‚$1$2$3‘')
+            .replace(/(\^\^)(.)/g, "<sub>$2</sub>")
+            .replace(/(\^)(.)/g, "<sup>$2</sup>")
+            .trim();
     }
 
     static multiline (str) {
