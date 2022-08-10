@@ -39,8 +39,11 @@ Evnt.on("#form-main", {
                 }
                 break;
             case "image-url":
-                LoadImage.fromUrl(v, CanvasImage.imageLoad);
-                Elem.from("#form-image").value("");
+                Elem.from(t).removeClass("error");
+                if (v) {
+                    LoadImage.fromUrl(v, CanvasImage.imageLoad, (err) => Elem.from(t).addClass("error"));
+                    Elem.from("#form-image").value("");
+                }
                 break;
             case "image":
                 LoadImage.fromInputElement(t, CanvasImage.imageLoad);
@@ -126,19 +129,22 @@ Evnt.on("#form-main", {
                 Elem.from("#canvas").toggleClass(v, ["web", "press", "retro", "vintage", "vintage2", "historic"]);
                 break;
         }
-    },
-    "click": (e) => {
-        let t = e.target;
-        switch (t.getAttribute("name")) {
-            case "image-height-auto":
-                e.preventDefault();
-                CanvasImage.imageResize();
-                break;
-        }
     }
 });
 
-// Download image.
+// Automatický výpočet výšky obrázku:
+Evnt.on("#form-image-height-auto", "click", (e) => {
+    e.preventDefault();
+    CanvasImage.imageResize();
+});
+
+// Označení celého textu v image URL inputu:
+Evnt.on("#form-image-url", "focus", (e) => {
+    e.currentTarget.selectionStart = 0;
+    e.currentTarget.selectionEnd = e.currentTarget.value.length;
+});
+
+// Download image:
 function downloadImage (dataUrl) {
     var link = document.createElement("a");
     var filename = Elem.valueById("form-filename");

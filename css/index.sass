@@ -290,6 +290,9 @@ table.editor
     button
         width: 8em;
 
+    input.error
+        color: red;
+        transition: .1s;
 
 
 
@@ -357,13 +360,21 @@ table.entities-list
     border: 1em solid white;
     border-collapse: collapse;
     font-size: 125%;
+    tr:nth-child(even)
+        background: #eee4;
     th
         font-family: monospace;
         font-weight: normal;
-        padding: .25em .25em .25em .5em;
+        padding: .25em .25em .25em 1em;
         text-align: right;
+        &:nth-child(1),
+        &:nth-child(5)
+            background: #eee4;
     td
         font-size: 125%;
         font-weight: bold;
-        padding: .25em .5em .25em .25em;
+        padding: .25em 1em .25em .25em;
         text-align: left;
+        &:nth-child(2),
+        &:nth-child(6)
+            background: #eee4;

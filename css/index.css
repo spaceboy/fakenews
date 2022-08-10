@@ -373,6 +373,12 @@ table.editor button {
   width: 8em;
 }
 
+table.editor input.error {
+  color: red;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
 .invisible {
   -webkit-animation: animInvisible .3s 1;
           animation: animInvisible .3s 1;
@@ -466,17 +472,29 @@ table.entities-list {
   font-size: 125%;
 }
 
+table.entities-list tr:nth-child(even) {
+  background: #eee4;
+}
+
 table.entities-list th {
   font-family: monospace;
   font-weight: normal;
-  padding: .25em .25em .25em .5em;
+  padding: .25em .25em .25em 1em;
   text-align: right;
+}
+
+table.entities-list th:nth-child(1), table.entities-list th:nth-child(5) {
+  background: #eee4;
 }
 
 table.entities-list td {
   font-size: 125%;
   font-weight: bold;
-  padding: .25em .5em .25em .25em;
+  padding: .25em 1em .25em .25em;
   text-align: left;
+}
+
+table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
+  background: #eee4;
 }
 /*# sourceMappingURL=index.css.map */
