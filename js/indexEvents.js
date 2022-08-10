@@ -193,7 +193,7 @@ Evnt.on("#btn-share", "click", (e) => {
             });
             var data = new FormData();
             data.append('image[data_uri]', dataUrl);
-            request.open("POST", "http://data-uri-to-img-url.herokuapp.com/images.json");
+            request.open("POST", "https://data-uri-to-img-url.herokuapp.com/images.json");
             request.send(data);
         })
         .catch(showError);
