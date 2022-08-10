@@ -420,7 +420,8 @@ table.editor input.error {
 }
 
 /* Tlačítko pro download */
-#btn-download {
+#btn-download,
+#btn-share {
   color: lightgray;
   cursor: pointer;
   float: right;
@@ -431,7 +432,8 @@ table.editor input.error {
   transition: .1s;
 }
 
-#btn-download:hover {
+#btn-download:hover,
+#btn-share:hover {
   color: #337ab7;
 }
 

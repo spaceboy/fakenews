@@ -177,3 +177,24 @@ Evnt.on("#btn-download", "click", (e) => {
                 .catch(showError);
     }
 });
+
+// Generate and then share image.
+Evnt.on("#btn-share", "click", (e) => {
+    e.preventDefault();
+    domtoimage
+        .toPng(document.getElementById("canvas"))
+        .then((dataUrl) => {
+            var request = new XMLHttpRequest();
+            request.addEventListener("load", (r) => {
+                console.log("load", r);
+            });
+            request.addEventListener("error", (e) => {
+                console.log("error", e);
+            });
+            var data = new FormData();
+            data.append('image[data_uri]', dataUrl);
+            request.open("POST", "http://data-uri-to-img-url.herokuapp.com/images.json");
+            request.send(data);
+        })
+        .catch(showError);
+});
