@@ -39,18 +39,28 @@ Evnt.on("#form-main", {
                 }
                 break;
             case "image-url":
-                LoadImage.fromUrl(v, imageLoad);
+                LoadImage.fromUrl(v, CanvasImage.imageLoad);
                 Elem.from("#form-image").value("");
                 break;
             case "image":
-                LoadImage.fromInputElement(t, imageLoad);
+                LoadImage.fromInputElement(t, CanvasImage.imageLoad);
                 Elem.from("#form-image-url").value("");
                 break;
             case "image-height":
                 Elem.from("#canvas-image .image").style("height", v);
                 break;
-            case "image-orientation":
-                Elem.from("#canvas").toggleClass(v, ["portrait", "landscape"]);
+            case "image-width":
+                Elem.from("#canvas").toggleClass(v, ["fullwidth", "halfwidth"]);
+                CanvasImage.imageResize();
+                switch (v) {
+                    case "halfwidth":
+                        Elem.from("#form-perex-position").val("before").attr("disabled", "true");
+                        break;
+                    case "fullwidth":
+                    default:
+                        Elem.from("#form-perex-position").attrRemove("disabled");
+                        break;
+                };
                 break;
             case "image-align-vertical":
             case "image-align-horizontal":
@@ -122,12 +132,7 @@ Evnt.on("#form-main", {
         switch (t.getAttribute("name")) {
             case "image-height-auto":
                 e.preventDefault();
-                var i = Elem.from("#form-image-height");
-                var h = i.attr("data-auto-height");
-                if (h) {
-                    i.value(h);
-                    Elem.from("#canvas-image .image").style("height", h + "px");
-                }
+                CanvasImage.imageResize();
                 break;
         }
     }

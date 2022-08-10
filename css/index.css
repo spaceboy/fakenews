@@ -87,7 +87,7 @@
 }
 
 #canvas #canvas-image {
-  margin: 0;
+  margin: 0 0 .5em 0;
   padding: 0;
   -webkit-box-ordinal-group: 5;
       -ms-flex-order: 4;
@@ -285,18 +285,18 @@
   line-height: 150%;
 }
 
-#canvas.portrait {
+#canvas.halfwidth {
   display: block;
 }
 
-#canvas.portrait #canvas-image {
+#canvas.halfwidth #canvas-image {
   float: left;
   margin-right: 20px;
   overflow: hidden;
   width: calc(50% - 10px);
 }
 
-#canvas.portrait .clear {
+#canvas.halfwidth .clear {
   clear: both;
 }
 

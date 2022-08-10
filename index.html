@@ -95,7 +95,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-perex-position">Pozice perexu</label></th>
-                                    <td colspan="2"><select name="perex-position" id="form-perex-position"><option value="before">Před obrázkem</option><option value="after">Za obrázkem</option></select></td>
+                                    <td colspan="2"><select name="perex-position" id="form-perex-position" title="Změna pozice je možná pouze pokud je obrázek zobrazen v plné šířce."><option value="before">Před obrázkem</option><option value="after">Za obrázkem</option></select></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -115,11 +115,11 @@
                                 <tr class="short">
                                     <th rowspan="13"></th>
                                     <th><label for="form-image-height">Výška)</label></th>
-                                    <td colspan="2"><input name="image-height" id="form-image-height" type="number" min="200" max="800" data-postfix="px"><button id="form-image-height-auto" name="image-height-auto">Automaticky</button></td>
+                                    <td colspan="2"><input name="image-height" id="form-image-height" type="number" min="100" max="1000" data-postfix="px"><button id="form-image-height-auto" name="image-height-auto">Automaticky</button></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="form-image-orientation">Orientace</label></th>
-                                    <td colspan="2"><select name="image-orientation" id="form-image-orientation" data-default-value="landscape"><option value="landscape">Krajina</option><option value="portrait">Portrét</option></select></td>
+                                    <th><label for="form-image-width">Šířka</label></th>
+                                    <td colspan="2"><select name="image-width" id="form-image-width" data-default-value="fullwidth"><option value="fullwidth">Plná šířka</option><option value="halfwidth">Poloviční šířka</option></select></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label>Zarovnání</label></th>

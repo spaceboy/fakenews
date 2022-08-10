@@ -1,24 +1,33 @@
-// Načte obrázek.
-function imageLoad (srcElement) {
-    let imageElem = Elem.from("#canvas-image .image");
 
-    var height = Math.floor(srcElement.height * imageElem.get().offsetWidth / srcElement.width);
-
-    imageElem.style("height", height + "px");
-    Elem.from("#canvas-image .image .picture")
-        .style({
-            "backgroundImage": `url("${srcElement.src}")`,
-            "backgroundPosition": Elem.valueById("form-image-align-horizontal") + " " + Elem.valueById("form-image-align-vertical"),
-            "backgroundSize": "cover",
-            "backgroundRepeat": "no-repeat",
-        })
-        .attr({
-            "data-original-height": srcElement.height,
-            "data-original-width": srcElement.width
+class CanvasImage {
+    // Načte obrázek.
+    static imageLoad (srcElement) {
+        Elem.from("#canvas-image .image .picture")
+            .attr({
+                "data-original-height": srcElement.height,
+                "data-original-width": srcElement.width
+            });
+        Elem.from("#canvas-image .image .picture").style({
+            "backgroundImage": `url("${srcElement.src}")`
         });
-    Elem.from("#form-image-height")
-        .value(height)
-        .attr("data-auto-height", height);
+        CanvasImage.imageResize();
+    }
+
+    static imageResize () {
+        let imageElem = Elem.from("#canvas-image .image");
+        let pictureElem = Elem.from("#canvas-image .image .picture");
+
+        var height = Math.floor(parseInt(pictureElem.attr("data-original-height")) * imageElem.get().offsetWidth / parseInt(pictureElem.attr("data-original-width")));
+
+        imageElem.style("height", height + "px");
+        pictureElem
+            .style({
+                "backgroundPosition": Elem.valueById("form-image-align-horizontal") + " " + Elem.valueById("form-image-align-vertical"),
+                "backgroundSize": "cover",
+                "backgroundRepeat": "no-repeat",
+            })
+        Elem.from("#form-image-height").value(height);
+    }
 }
 
 // Nastavit accordeony:
