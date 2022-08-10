@@ -56,7 +56,7 @@
 #canvas #canvas-title {
   font-size: 36px;
   font-weight: bold;
-  margin: 0 0 .5em 0;
+  margin: 0 0 .25em 0;
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
@@ -178,6 +178,7 @@
 #canvas.web #canvas-title {
   color: red;
   font-family: Roboto, Arial, Helvetica, sans-serif;
+  line-height: 1.1em;
 }
 
 #canvas.web #canvas-image .image .border {
@@ -275,14 +276,21 @@
 
 #canvas.historic {
   font-family: "Fraktur";
-  /*font-size: 150%;*/
   -webkit-filter: sepia(90%);
           filter: sepia(90%);
 }
 
 #canvas.historic #canvas-title {
   font-family: "Fraktur";
-  line-height: 150%;
+  line-height: 1.5em;
+}
+
+#canvas.historic .perex {
+  line-height: 1.5em;
+}
+
+#canvas.historic .article {
+  line-height: 1.4em;
 }
 
 #canvas.halfwidth {

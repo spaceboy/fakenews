@@ -50,7 +50,7 @@ $color-bg: white;
     #canvas-title
         font-size: 36px;
         font-weight: bold;
-        margin: 0 0 .5em 0;
+        margin: 0 0 .25em 0;
         order: 1;
         padding: 0;
         text-shadow: none;
@@ -143,14 +143,12 @@ $color-bg: white;
 /* --------------------------------------------------- */
 
 #canvas.web
-
     background: white;
     font-family: Roboto, Arial, Helvetica, sans-serif;
-
     #canvas-title
         color: red;
         font-family: Roboto, Arial, Helvetica, sans-serif;
-
+        line-height: 1.1em;
     #canvas-image .image .border
         border-color: white;
 
@@ -207,11 +205,14 @@ $color-bg: white;
 
 #canvas.historic
     font-family: "Fraktur";
-    /*font-size: 150%;*/
     filter: sepia(90%);
     #canvas-title
         font-family: "Fraktur";
-        line-height: 150%;
+        line-height: 1.5em;
+    .perex
+        line-height: 1.5em;
+    .article
+        line-height: 1.4em;
 
 
 
