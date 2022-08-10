@@ -18,16 +18,14 @@ class StringConvert {
         "\\(\\+\\-\\)": "&dagger;",
         "\\(\\+\\+\\)": "&Dagger;",
         "\\(SS\\)": "&sect;",
-
         "\\(<>\\)": "&diams;",
         "\\(<3\\)": "&hearts;",
         "\\(-3\\)": "&spades;",
         "\\(\\=3\\)": "&clubs;",
-
-        // "\\(v\\)": "&diams;", // fajfka
+        "\\(_\\)": "&nbsp;", // pevná mezera
+        "\\(\\-\\)": "&shy;", // možné dělení slova
         "\\(v\\-\\)": "&radic;", // (v-) odmocnina
         "\\(f\\)": "&fnof;", // (f) italské ef
-
         "\\(<=>\\)": "&harr;",
         "\\(<=\\)": "&larr;",
         "\\(=>\\)": "&rarr;",
