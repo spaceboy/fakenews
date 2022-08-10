@@ -15,21 +15,29 @@
         <script src="js/LoadImage.js"></script>
         <script src="js/StringConvert.js"></script>
         <script src="js/Accordeon.js"></script>
+        <script src="js/Menu.js"></script>
         <script src="js/dom-to-image.js"></script>
         <!--script src="js/wiki2html.js"></script-->
     </head>
     <body>
         <div class="container">
             <div class="row">
-                <div class="column width-12">
-                    <h1>
-                        Fake news!
-                        <div id="btn-download"><i class="fas fa-download"></i></div>
-                    </h1>
+                <div class="column width-7">
+                    <h1>Fake news!</h1>
+                </div>
+                <div class="column width-4 align-right">
+                    <ul id="menu-main" data-menu-name="menu-main" data-menu-default="#panel-editor">
+                        <li>Menu:</li>
+                        <li data-menu-target="#panel-editor">Editor</li>
+                        <li data-menu-target="#panel-help">Nápověda &amp; kredity</li>
+                    </ul>
+                </div>
+                <div class="column-width-1">
+                    <div id="btn-download"><i class="fas fa-download"></i></div>
                 </div>
             </div>
         </div><!-- /.container -->
-        <div class="container">
+        <div class="container menu-panel" id="panel-editor" data-menu-name="menu-main">
             <div class="row">
                 <div class="column width-7">
                     <div id="canvas-wrapper">
@@ -178,10 +186,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-article">Článek</label></th>
-                                    <td colspan="2"><textarea name="article" id="form-article">Při psaní textu můžete využít <i>HTML formátování</i> i jednoduchých značek pro *tučné písmo,* _kurzívu,_ =podtržení=, ~přešktrtnutí~...
-Můžete také použít i některé zvláštní značky pro zápis zlomků ((1/4), (1/2), (3/4)), indexů (H^^2O, e = mc^2) a jiných symbolů.
-Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženských ((+-) (++)) a dalších (^! ^? <> (<>) (<3) (-3) (=3) <= <=> =>).
-"Počítačové" uvozovky budou nahrazeny 'typografickými,' ale "zdvojené" uvozovky či apostrof zůstanou zachovány (McDonald''s, 10(^o), 20'' 30"").</textarea></td>
+                                    <td colspan="2"><textarea name="article" id="form-article"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-article-align">Zarovnání</label></th>
@@ -196,7 +201,7 @@ Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženský
                             <tbody id="table-block-setup">
                                 <tr>
                                     <th><label for="form-template">Šablona</label></th>
-                                    <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option></select></td>
+                                    <td colspan="2"><select name="template" id="form-template"><option value="web">Webový článek</option><option value="press">Tiskový článek</option><option value="retro">Starý tiskový článek</option><option value="vintage">Velmi starý článek</option><option value="vintage2">Velmi starý článek (2)</option><option value="historic">Historický spis</option></select></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-filename">Název obrázku</label></th>
@@ -211,6 +216,35 @@ Matematických ((*) (/) (%%) (PI) (,u) (~=) (!=) (>=) (<=) (+/-)), náboženský
                     </form>
                 </div><!-- /.column-->
             </div><!-- /.row -->
+        </div><!-- /.container -->
+        <div class="container menu-panel" id="panel-help" data-menu-name="menu-main">
+            <div class="row">
+                <div class="column width-8">
+                    <h2>Jak používat editor</h2>
+                    <pre>
+Při psaní textu můžete využít &lt;i&gt;HTML formátování&lt;/i&gt; i jednoduchých značek
+pro <b>*tučné písmo,*</b> <i>_kurzívu,_</i> <u>=podtržení=</u>, <s>~přešktrtnutí~</s>...
+Tři tečky <b>...</b> budou nahrazeny trojtečkou“ (&hellip;).
+Nový řádek vytvoří nový odstavec.
+Můžete také použít i některé zvláštní značky pro zápis zlomků (1/4), (1/2), (3/4),
+indexů <b>H^^2O</b>, <b>e = mc^2</b> a jiných symbolů.
+Matematických (např. <b>(*) &times; (/) &div; (%%) &permil; (PI) &pi; (,u) (~=) (!=) (>=) (<=) (+/-)</b>),
+náboženských (<b>(+-) (++)</b>)
+a dalších (<b>^! ^? <> (<>) (<3) (-3) (=3) <= <=> =></b>).
+„Počítačové“ uvozovky (") budou nahrazeny ‚typografickými,‘ ale „zdvojené“
+uvozovky či apostrof (') zůstanou zachovány (např. <b>10(^o), 20'' 30""</b> se
+zobrazí jako <b>10°, 20' 30"</b>).
+                    </pre>
+                </div>
+                <div class="column width-4">
+                    <h2>Kredity a uznání</h2>
+                    <p>
+                        Písma <span class="font-prager-headlines">Prager Headlines</span> a <span class="font-volkszeitung-21">Volkszeitung 21</span>
+                        vytvořil Lukáš Krákora. Jeho další fonty můžete nalézt na adresách <a href="https://www.typewriterfonts.net">www.typewriterfonts.net</a>
+                        a <a href="https://www.dafont.com/lukas-krakora.d1281">www.dafont.com/lukas-krakora.d1281</a>, FB stránku na <a href="https://facebook.com/typewriterfonts">facebook.com/typewriterfonts</a>.
+                    </p>
+                </div>
+            </div>
         </div><!-- /.container -->
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>

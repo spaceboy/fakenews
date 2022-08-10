@@ -1,4 +1,34 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "Volkszeitung 21";
+  src: url("fonts/Volkszeitung 21.ttf") format("truetype");
+}
+
+.font-volkszeitung-21 {
+  font-family: "Volkszeitung 21";
+  font-size: 125%;
+}
+
+@font-face {
+  font-family: "Prager Headlines";
+  src: url("fonts/Prager Headlines.ttf") format("truetype");
+}
+
+.font-prager-headlines {
+  font-family: "Prager Headlines";
+  font-size: 125%;
+}
+
+@font-face {
+  font-family: "Fraktur";
+  src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
+}
+
+.font-prager-headlines {
+  font-family: "Prager Headlines";
+  font-size: 125%;
+}
+
 /* --------------------------------------------------- */
 /* Článek                                              */
 /* --------------------------------------------------- */
@@ -154,62 +184,105 @@
   border-color: white;
 }
 
-#canvas.press {
-  background: whitesmoke;
+#canvas.press,
+#canvas.retro,
+#canvas.vintage,
+#canvas.vintage2,
+#canvas.historic {
+  background: white;
   font-family: serif;
 }
 
-#canvas.press #canvas-title {
+#canvas.press #canvas-title,
+#canvas.retro #canvas-title,
+#canvas.vintage #canvas-title,
+#canvas.vintage2 #canvas-title,
+#canvas.historic #canvas-title {
   color: #202020;
   font-family: serif;
 }
 
-#canvas.press .perex {
+#canvas.press .perex,
+#canvas.retro .perex,
+#canvas.vintage .perex,
+#canvas.vintage2 .perex,
+#canvas.historic .perex {
   text-align: left;
+}
+
+#canvas.press #canvas-image .image .border,
+#canvas.retro #canvas-image .image .border,
+#canvas.vintage #canvas-image .image .border,
+#canvas.vintage2 #canvas-image .image .border,
+#canvas.historic #canvas-image .image .border {
+  border-color: white;
+}
+
+#canvas.press .article p,
+#canvas.retro .article p,
+#canvas.vintage .article p,
+#canvas.vintage2 .article p,
+#canvas.historic .article p {
+  margin: 0;
+  text-indent: 1em;
+}
+
+#canvas.press .article p:first-child,
+#canvas.retro .article p:first-child,
+#canvas.vintage .article p:first-child,
+#canvas.vintage2 .article p:first-child,
+#canvas.historic .article p:first-child {
+  margin-top: .5em;
+  text-indent: 0;
+}
+
+#canvas.press {
+  background: whitesmoke;
 }
 
 #canvas.press #canvas-image .image .border {
   border-color: whitesmoke;
 }
 
-#canvas.press .article p {
-  margin: 0;
-  text-indent: 1em;
-}
-
-#canvas.press .article p:first-child {
-  margin-top: .5em;
-  text-indent: 0;
-}
-
 #canvas.retro {
-  background: white;
-  font-family: serif;
+  -webkit-filter: sepia(65%);
+          filter: sepia(65%);
+}
+
+#canvas.vintage {
+  font-family: "Prager Headlines";
+  font-size: 150%;
   -webkit-filter: sepia(80%);
           filter: sepia(80%);
 }
 
-#canvas.retro #canvas-title {
-  color: #202020;
-  font-family: serif;
+#canvas.vintage #canvas-title {
+  font-family: "Prager Headlines";
+  font-size: 150%;
 }
 
-#canvas.retro .perex {
-  text-align: left;
+#canvas.vintage2 {
+  font-family: "Volkszeitung 21";
+  font-size: 150%;
+  -webkit-filter: sepia(80%);
+          filter: sepia(80%);
 }
 
-#canvas.retro #canvas-image .image .border {
-  border-color: white;
+#canvas.vintage2 #canvas-title {
+  font-family: "Volkszeitung 21";
+  font-size: 150%;
 }
 
-#canvas.retro .article p {
-  margin: 0;
-  text-indent: 1em;
+#canvas.historic {
+  font-family: "Fraktur";
+  /*font-size: 150%;*/
+  -webkit-filter: sepia(90%);
+          filter: sepia(90%);
 }
 
-#canvas.retro .article p:first-child {
-  margin-top: .5em;
-  text-indent: 0;
+#canvas.historic #canvas-title {
+  font-family: "Fraktur";
+  line-height: 150%;
 }
 
 #canvas.portrait {
@@ -337,6 +410,8 @@ table.editor button {
   color: lightgray;
   cursor: pointer;
   float: right;
+  font-size: 50px;
+  line-height: 50px;
   text-shadow: none;
   -webkit-transition: .1s;
   transition: .1s;
@@ -344,5 +419,42 @@ table.editor button {
 
 #btn-download:hover {
   color: #337ab7;
+}
+
+/* Menu & panely: */
+ul#menu-main {
+  color: #666;
+  display: table-cell;
+  font-size: 120%;
+  font-weight: bold;
+  height: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 10px;
+  -webkit-transition: .1s;
+  transition: .1s;
+  vertical-align: bottom;
+}
+
+ul#menu-main li {
+  display: inline;
+  margin-right: 1em;
+}
+
+ul#menu-main li.menu-active {
+  color: red;
+}
+
+ul#menu-main li:hover[data-menu-target] {
+  color: red;
+  cursor: pointer;
+}
+
+.menu-panel {
+  display: none;
+}
+
+.menu-panel.menu-active {
+  display: block;
 }
 /*# sourceMappingURL=index.css.map */

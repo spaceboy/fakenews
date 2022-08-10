@@ -113,7 +113,7 @@ Evnt.on("#form-main", {
                 Elem.from("#canvas .article").style("textAlign", v);
                 break;
             case "template":
-                Elem.from("#canvas").toggleClass(v, ["web", "press", "retro"]);
+                Elem.from("#canvas").toggleClass(v, ["web", "press", "retro", "vintage", "vintage2", "historic"]);
                 break;
         }
     },

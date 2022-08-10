@@ -39,3 +39,6 @@ Evnt.fire(
     "change",
     true
 );
+
+// Inicializace menu:
+Menu.init("#menu-main");

@@ -1,6 +1,33 @@
 $color-img-description: #606060;
 $color-bg: white;
 
+@font-face
+    font-family: "Volkszeitung 21";
+    src: url("fonts/Volkszeitung 21.ttf") format("truetype");
+
+.font-volkszeitung-21
+    font-family: "Volkszeitung 21";
+    font-size: 125%;
+
+@font-face
+    font-family: "Prager Headlines";
+    src: url("fonts/Prager Headlines.ttf") format("truetype");
+
+.font-prager-headlines
+
+    font-family: "Prager Headlines";
+    font-size: 125%;
+
+@font-face
+    font-family: "Fraktur";
+    src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
+
+.font-prager-headlines
+
+    font-family: "Prager Headlines";
+    font-size: 125%;
+
+
 
 /* --------------------------------------------------- */
 /* Článek                                              */
@@ -127,33 +154,13 @@ $color-bg: white;
     #canvas-image .image .border
         border-color: white;
 
-#canvas.press
-    background: whitesmoke;
-    font-family: serif;
-
-    #canvas-title
-        color: #202020;
-        font-family: serif;
-
-    .perex
-        text-align: left;
-
-    #canvas-image .image .border
-        border-color: whitesmoke;
-
-    .article
-        p
-            margin: 0;
-            text-indent: 1em;
-
-            &:first-child
-                margin-top: .5em;
-                text-indent: 0;
-
-#canvas.retro
+#canvas.press,
+#canvas.retro,
+#canvas.vintage,
+#canvas.vintage2,
+#canvas.historic
     background: white;
     font-family: serif;
-    filter: sepia(80%);
 
     #canvas-title
         color: #202020;
@@ -173,6 +180,38 @@ $color-bg: white;
             &:first-child
                 margin-top: .5em;
                 text-indent: 0;
+
+#canvas.press
+    background: whitesmoke;
+    #canvas-image .image .border
+        border-color: whitesmoke;
+
+#canvas.retro
+    filter: sepia(65%);
+
+#canvas.vintage
+    font-family: "Prager Headlines";
+    font-size: 150%;
+    filter: sepia(80%);
+    #canvas-title
+        font-family: "Prager Headlines";
+        font-size: 150%;
+
+#canvas.vintage2
+    font-family: "Volkszeitung 21";
+    font-size: 150%;
+    filter: sepia(80%);
+    #canvas-title
+        font-family: "Volkszeitung 21";
+        font-size: 150%;
+
+#canvas.historic
+    font-family: "Fraktur";
+    /*font-size: 150%;*/
+    filter: sepia(90%);
+    #canvas-title
+        font-family: "Fraktur";
+        line-height: 150%;
 
 
 
@@ -273,8 +312,37 @@ table.editor
     color: lightgray;
     cursor: pointer;
     float: right;
+    font-size: 50px;
+    line-height: 50px;
     text-shadow: none;
     transition: .1s;
 
     &:hover
         color: #337ab7;
+
+
+/* Menu & panely: */
+ul#menu-main
+    color: #666;
+    display: table-cell;
+    font-size: 120%;
+    font-weight: bold;
+    height: 50px;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+    transition: .1s;
+    vertical-align: bottom;
+    li
+        display: inline;
+        margin-right: 1em;
+        &.menu-active
+            color: red;
+        &:hover[data-menu-target]
+            color: red;
+            cursor: pointer;
+
+.menu-panel
+    display: none;
+    &.menu-active
+        display: block;
