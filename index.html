@@ -356,6 +356,9 @@
                js.src = "https://connect.facebook.net/en_US/sdk.js";
                fjs.parentNode.insertBefore(js, fjs);
              }(document, 'script', 'facebook-jssdk'));
-          </script>
+        </script>
+        <script>
+            FB.getLoginStatus((response) => console.log(response));
+        </script>
     </body>
 </html>
