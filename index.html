@@ -385,11 +385,57 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
             </div>
         </div><!-- /.container -->
 
-        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-        <div id="status"></div>
+        <!--fb:login-button scope="public_profile,publish_actions" onlogin="checkLoginState();"></fb:login-button>
+        <div id="status"></div-->
 
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>
+
+        <script>
+
+const dataURItoBlob = (dataURI) => {
+    let byteString = atob(dataURI.split(',')[1]);
+    let ab = new ArrayBuffer(byteString.length);
+    let ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {
+        type: 'image/jpeg'
+    });
+}
+const shareOnFb = async (dataUrl, response) => {
+    let formData = new FormData();
+    formData.append('access_token', response.authResponse.accessToken);
+    formData.append('source', dataURItoBlob(dataURL));
+
+    let responseFB = await fetch(
+        "https://graph.facebook.com/me/photos",
+        {
+            body: formData,
+            method: 'post'
+        }
+    );
+    responseFB = await responseFB.json();
+    console.log(responseFB);
+};
+
+function shareImage () {
+    domtoimage
+        .toJpeg(document.getElementById("canvas"))
+        .then((dataUrl) => {
+            console.log("shareImage then");
+            FB.login((response) => {
+                console.log("FB.login response", response);
+                //TODO check if user is logged in and authorized publish_actions
+                shareOnFb(dataUrl, response);
+            }, {scope: 'publish_actions'})
+        })
+        .catch((error) => console.log("shareImage", error));
+}
+
+
+        </script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
 </html>
