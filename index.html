@@ -419,7 +419,7 @@ const shareOnFb = async (dataUrl, response) => {
                 console.log("domtoimage OK");
                 var fd = new FormData();
                 fd.append("access_token", response.authResponse.authToken);
-                fd.append("source", dataUrlToBlob(dataUrl));
+                fd.append("source", dataURItoBlob(dataUrl));
                 fd.append("message", "Photo Text");
 
                 var ajax = new XMLHttpRequest();
