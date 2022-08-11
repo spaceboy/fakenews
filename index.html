@@ -386,8 +386,8 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
             </div>
         </div><!-- /.container -->
 
-        <!--fb:login-button scope="public_profile,publish_actions" onlogin="checkLoginState();"></fb:login-button>
-        <div id="status"></div-->
+        <fb:login-button scope="public_profile,publish_actions" onlogin="checkLoginState();"></fb:login-button>
+        <div id="status"></div>
 
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>
@@ -430,7 +430,11 @@ function shareImage () {
             FB.login((response) => {
                 console.log("FB.login response", response);
                 //TODO check if user is logged in and authorized publish_actions
-                shareOnFb(dataUrl, response);
+                if (response.hasOwnProperty("authResponse") && response.authResponse) {
+                    shareOnFb(dataUrl, response);
+                } else {
+                    console.log("quit");
+                }
             }, {scope: 'publish_actions'})
         })
         .catch((error) => console.log("shareImage", error));
