@@ -19,6 +19,12 @@
         <script src="js/Menu.js"></script>
         <script src="js/dom-to-image.js"></script>
         <!--script src="js/wiki2html.js"></script-->
+        <meta property="og:url" content="http://fakenews.loc/">
+        <meta property="og:title" content="FakeNews!">
+        <meta property="og:description" content="Stránka pro vytváření falešných náhledů článků">
+        <!--meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"-->
+        <meta property="og:app_id" content="2046451405476029">
+        <meta property="og:locale" content="cs_CZ">
     </head>
     <body>
         <div class="container">
@@ -333,5 +339,23 @@
         </div><!-- /.container -->
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>
+        <script>
+            window.fbAsyncInit = function() {
+              FB.init({
+                appId      : '2046451405476029',
+                xfbml      : true,
+                version    : 'v14.0'
+              });
+              FB.AppEvents.logPageView();
+            };
+
+            (function(d, s, id){
+               var js, fjs = d.getElementsByTagName(s)[0];
+               if (d.getElementById(id)) {return;}
+               js = d.createElement(s); js.id = id;
+               js.src = "https://connect.facebook.net/en_US/sdk.js";
+               fjs.parentNode.insertBefore(js, fjs);
+             }(document, 'script', 'facebook-jssdk'));
+          </script>
     </body>
 </html>
