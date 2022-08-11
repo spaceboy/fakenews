@@ -406,6 +406,12 @@ const dataURItoBlob = (dataURI) => {
     });
 }
 const shareOnFb = async (dataUrl, response) => {
+    console.log("shareOnFb");
+    FB.ui({
+        method: 'share',
+        href: dataUrl,
+    });
+    /*
     let formData = new FormData();
     formData.append('access_token', response.authResponse.accessToken);
     formData.append('source', dataURItoBlob(dataUrl));
@@ -420,6 +426,7 @@ const shareOnFb = async (dataUrl, response) => {
     );
     responseFB = await responseFB.json();
     console.log(responseFB);
+    */
 };
 
 function shareImage () {
@@ -427,15 +434,24 @@ function shareImage () {
         .toJpeg(document.getElementById("canvas"))
         .then((dataUrl) => {
             console.log("shareImage then");
+            console.log("FB.login");
             FB.login((response) => {
                 console.log("FB.login response", response);
                 //TODO check if user is logged in and authorized publish_actions
-                if (response.hasOwnProperty("authResponse") && response.authResponse) {
-                    shareOnFb(dataUrl, response);
-                } else {
-                    console.log("quit");
+                switch (response.status) {
+                    case "connected":
+                        // the person is logged into Facebook, and has logged into your app.
+                        shareOnFb(dataUrl, response);
+                        break;
+                    case "not_authorized":
+                        // the person is logged into Facebook, but has not logged into your app.
+                        break;
+                    case "unknown":
+                    default:
+                        // the person is not logged into Facebook
+                        break;
                 }
-            }, {scope: 'public_profile,email,publish_actions'})
+            }, {scope: 'public_profile'})
         })
         .catch((error) => console.log("shareImage", error));
 }
