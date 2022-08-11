@@ -386,7 +386,7 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
             </div>
         </div><!-- /.container -->
 
-        <fb:login-button scope="public_profile,email,publish_actions" onlogin="checkLoginState();"></fb:login-button>
+        <fb:login-button scope="public_profile" onlogin="checkLoginState();"></fb:login-button>
         <div id="status"></div>
 
         <script src="js/indexEvents.js"></script>
@@ -407,26 +407,32 @@ const dataURItoBlob = (dataURI) => {
 }
 const shareOnFb = async (dataUrl, response) => {
     console.log("shareOnFb");
-    FB.ui({
-        method: 'share',
-        href: dataUrl,
-    });
-    /*
-    let formData = new FormData();
-    formData.append('access_token', response.authResponse.accessToken);
-    formData.append('source', dataURItoBlob(dataUrl));
-    console.log("Habemas blobus");
-
-    let responseFB = await fetch(
-        "https://graph.facebook.com/me/photos",
-        {
-            body: formData,
-            method: 'post'
+    FB.getLoginStatus((response) => {
+        console.log(response);
+        if (response.status !== "connected") {
+            console.log("Not connected", response.status)
+            return;
         }
-    );
-    responseFB = await responseFB.json();
-    console.log(responseFB);
-    */
+        domtoimage
+            .toJpeg(document.getElementById("canvas"))
+            .then((dataUrl) => {
+                console.log("domtoimage OK");
+                var fd = new FormData();
+                fd.append("access_token", response.authResponse.authToken);
+                fd.append("source", dataUrlToBlob(dataUrl));
+                fd.append("message", "Photo Text");
+
+                var ajax = new XMLHttpRequest();
+                ajax.addEventListener("load", (response) => console.log("load", response));
+                ajax.addEventListener("error", (response) => console.log("error", response));
+                ajax.open(
+                    "POST",
+                    "https://graph.facebook.com/me/photos?access_token=" + response.authResponse.authToken
+                );
+                ajax.send(fd);
+            })
+            .catch((err) => console.log("domtoimage error", err));
+    });
 };
 
 function shareImage () {
@@ -435,6 +441,32 @@ function shareImage () {
         .then((dataUrl) => {
             console.log("shareImage then");
             console.log("FB.login");
+            FB.getLoginStatus((response) => {
+                console.log("FB.getLoginStatus");
+                console.log(response);
+                if (response.status !== "connected") {
+                    console.log("disconnected");
+                    return;
+                }
+
+
+                let formData = new FormData();
+                formData.append('access_token', response.authResponse.accessToken);
+                formData.append('source', dataURItoBlob(dataUrl));
+
+                let responseFB = await fetch(
+                    "https://graph.facebook.com/me/photos",
+                    {
+                        body: formData,
+                        method: 'post'
+                    }
+                );
+                responseFB = await responseFB.json();
+                console.log(responseFB);
+
+
+            });
+            /*
             FB.login((response) => {
                 console.log("FB.login response", response);
                 //TODO check if user is logged in and authorized publish_actions
@@ -452,6 +484,7 @@ function shareImage () {
                         break;
                 }
             }, {scope: 'public_profile'})
+            */
         })
         .catch((error) => console.log("shareImage", error));
 }
