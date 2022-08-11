@@ -348,6 +348,7 @@
               });
               FB.AppEvents.logPageView();
             };
+            FB.getLoginStatus((response) => console.log(response));
 
             (function(d, s, id){
                var js, fjs = d.getElementsByTagName(s)[0];
@@ -356,9 +357,6 @@
                js.src = "https://connect.facebook.net/en_US/sdk.js";
                fjs.parentNode.insertBefore(js, fjs);
              }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script>
-            FB.getLoginStatus((response) => console.log(response));
         </script>
     </body>
 </html>
