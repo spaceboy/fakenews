@@ -418,7 +418,7 @@ function shareOnFb () {
             .then((dataUrl) => {
                 console.log("domtoimage OK");
                 var fd = new FormData();
-                fd.append("access_token", response.authResponse.authToken);
+                fd.append("access_token", response.authResponse.accessToken);
                 fd.append("source", dataURItoBlob(dataUrl));
                 fd.append("message", "Photo Text");
 
@@ -427,7 +427,7 @@ function shareOnFb () {
                 ajax.addEventListener("error", (response) => console.log("error", response));
                 ajax.open(
                     "POST",
-                    "https://graph.facebook.com/me/photos?access_token=" + response.authResponse.authToken
+                    "https://graph.facebook.com/me/photos?access_token=" + response.authResponse.accessToken
                 );
                 ajax.send(fd);
             })
