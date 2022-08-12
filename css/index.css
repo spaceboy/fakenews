@@ -1,4 +1,7 @@
 @charset "UTF-8";
+/* ------------------------------------------------------ */
+/* Načtení fontů                                          */
+/* ------------------------------------------------------ */
 @font-face {
   font-family: "Volkszeitung 21";
   src: url("fonts/Volkszeitung 21.ttf") format("truetype");
@@ -29,9 +32,17 @@
   font-size: 125%;
 }
 
-/* --------------------------------------------------- */
-/* Článek                                              */
-/* --------------------------------------------------- */
+/* ------------------------------------------------------ */
+/* Přepsání stylů z "global" šablony                      */
+/* ------------------------------------------------------ */
+h3 {
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  text-shadow: none;
+}
+
+/* ------------------------------------------------------ */
+/* Článek                                                 */
+/* ------------------------------------------------------ */
 #canvas-wrapper {
   padding: 5px;
 }
@@ -94,12 +105,12 @@
           order: 4;
 }
 
-#canvas #canvas-image #canvas-image-description {
+#canvas #canvas-image-description {
   color: #606060;
   font-size: 90%;
 }
 
-#canvas #canvas-image .image {
+#canvas .image {
   display: inline-block;
   max-width: 100%;
   overflow: hidden;
@@ -107,7 +118,7 @@
   width: 100%;
 }
 
-#canvas #canvas-image .image .picture {
+#canvas .image .picture {
   background-size: cover;
   height: 100%;
   left: 0;
@@ -116,7 +127,7 @@
   width: 100%;
 }
 
-#canvas #canvas-image .image .raster {
+#canvas .image .raster {
   /* Rastr: */
   background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);
   background-color: transparent;
@@ -131,7 +142,7 @@
   width: 100%;
 }
 
-#canvas #canvas-image .image .border {
+#canvas .image .border {
   border: 10px solid white;
   display: none;
   height: calc(100% - 10px);
@@ -167,9 +178,9 @@
   color: white;
 }
 
-/* --------------------------------------------------- */
-/* Základní šablony článku (web, press, retro press)   */
-/* --------------------------------------------------- */
+/* ------------------------------------------------------ */
+/* Základní šablony článku (web, press, retro press)      */
+/* ------------------------------------------------------ */
 #canvas.web {
   background: white;
   font-family: Roboto, Arial, Helvetica, sans-serif;
@@ -293,6 +304,9 @@
   line-height: 1.4em;
 }
 
+/* ------------------------------------------------------ */
+/* Šablony podle šířky obrázku (plná, poloviční)          */
+/* ------------------------------------------------------ */
 #canvas.halfwidth {
   display: block;
 }
@@ -308,9 +322,9 @@
   clear: both;
 }
 
-/* --------------------------------------------------- */
-/* Editor                                              */
-/* --------------------------------------------------- */
+/* ------------------------------------------------------ */
+/* Editor                                                 */
+/* ------------------------------------------------------ */
 table.editor {
   width: 100%;
 }
@@ -387,39 +401,9 @@ table.editor input.error {
   transition: .1s;
 }
 
-.invisible {
-  -webkit-animation: animInvisible .3s 1;
-          animation: animInvisible .3s 1;
-  display: none;
-}
-
-@-webkit-keyframes animInvisible {
-  from {
-    -webkit-filter: none;
-            filter: none;
-    opacity: 1;
-  }
-  to {
-    -webkit-filter: blur(5px);
-            filter: blur(5px);
-    opacity: 0;
-  }
-}
-
-@keyframes animInvisible {
-  from {
-    -webkit-filter: none;
-            filter: none;
-    opacity: 1;
-  }
-  to {
-    -webkit-filter: blur(5px);
-            filter: blur(5px);
-    opacity: 0;
-  }
-}
-
-/* Tlačítko pro download */
+/* ------------------------------------------------------ */
+/* Tlačítko pro download                                  */
+/* ------------------------------------------------------ */
 #btn-download,
 #btn-share {
   color: lightgray;
@@ -437,7 +421,9 @@ table.editor input.error {
   color: #337ab7;
 }
 
-/* Menu & panely: */
+/* ------------------------------------------------------ */
+/* Menu & zobrazované/skryté panely                       */
+/* ------------------------------------------------------ */
 ul#menu-main {
   color: #666;
   display: table-cell;
@@ -474,7 +460,9 @@ ul#menu-main li:hover[data-menu-target] {
   display: block;
 }
 
-/* Tabulka entit: */
+/* ------------------------------------------------------ */
+/* Tabulka entit                                          */
+/* ------------------------------------------------------ */
 table.entities-list {
   background: white;
   border: 1em solid white;
