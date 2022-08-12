@@ -27,54 +27,6 @@
         <meta property="og:locale" content="cs_CZ">
     </head>
     <body>
-        <script>
-
-console.log("FB script start");
-
-function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      console.log("Please log into this webpage.");
-    }
-  }
-
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    console.log("checkLoginState");
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-    console.log("fbAsyncInit");
-    FB.init({
-      appId      : '2046451405476029',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : 'v14.0'                   // Use this Graph API version for this call.
-    });
-
-
-    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Returns the login status.
-    });
-  };
-
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log("testAPI");
-    console.log("Welcome! Fetching your information...");
-    FB.api('/me', function(response) {
-      console.log(response);
-      console.log('Successful login for: ' + response.name);
-    });
-  }
-
-        </script>
         <div class="container">
             <div class="row">
                 <div class="column width-7">
@@ -385,57 +337,7 @@ function statusChangeCallback(response) {  // Called with the results from FB.ge
                 </div>
             </div>
         </div><!-- /.container -->
-
-        <fb:login-button scope="public_profile" onlogin="checkLoginState();"></fb:login-button>
-        <div id="status"></div>
-
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>
-
-        <script>
-
-const dataURItoBlob = (dataURI) => {
-    let byteString = atob(dataURI.split(',')[1]);
-    let ab = new ArrayBuffer(byteString.length);
-    let ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-        ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ia], {
-        type: 'image/jpeg'
-    });
-}
-function shareOnFb () {
-    console.log("shareOnFb");
-    FB.getLoginStatus((response) => {
-        console.log(response);
-        if (response.status !== "connected") {
-            console.log("Not connected", response.status)
-            return;
-        }
-        domtoimage
-            .toJpeg(document.getElementById("canvas"))
-            .then((dataUrl) => {
-                console.log("domtoimage OK");
-                var fd = new FormData();
-                fd.append("access_token", response.authResponse.accessToken);
-                fd.append("source", dataURItoBlob(dataUrl));
-                fd.append("message", "Photo Text");
-
-                var ajax = new XMLHttpRequest();
-                ajax.addEventListener("load", (response) => console.log("load", response));
-                ajax.addEventListener("error", (response) => console.log("error", response));
-                ajax.open(
-                    "POST",
-                    "https://graph.facebook.com/me/photos?access_token=" + response.authResponse.accessToken
-                );
-                ajax.send(fd);
-            })
-            .catch((err) => console.log("domtoimage error", err));
-    });
-};
-
-        </script>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
 </html>
