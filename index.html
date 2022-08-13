@@ -55,7 +55,7 @@
                             <div class="perex"></div>
                             <figure id="canvas-image">
                                 <div class="image"><div class="picture"></div><div class="raster"></div><div class="border"></div></div>
-                                <figcaption id="canvas-image-description">Popisek pod obrázkem | foto ČTK</figcaption>
+                                <figcaption id="canvas-image-description"></figcaption>
                             </figure>
                             <div class="article"></div>
                             <!--div class="signature" style="order: 6;">
@@ -76,7 +76,7 @@
                             <tbody id="table-block-title">
                                 <tr>
                                     <th><label for="form-title">Titulek</label></th>
-                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy" data-default-value="Měsíc trvá už mnoho měsíců, zjistili brněnští vědci"></td>
+                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-title-align">Zarovnání</label></th>
@@ -95,7 +95,7 @@
                             <tbody id="table-block-perex">
                                 <tr>
                                     <th><label for="form-perex">Perex</label></th>
-                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku" data-default-value="Po mnohaměsíčním úsilí brněnští vědci zjistili, že Měsíc je starší, než jsme čekali. Podle jejich měření trvá už nejméně třiatřicet měsíců."></textarea></td>
+                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-perex-align">Zarovnání</label></th>
@@ -118,7 +118,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-url">Obrázek (URL)</label></th>
-                                    <td colspan="2"><input name="image-url" id="form-image-url" type="text" data-default-value="https://spaceboy.github.io/fakenews/gfx/test01-half-moon.jpg"></td>
+                                    <td colspan="2"><input name="image-url" id="form-image-url" type="text"></td>
                                 </tr>
                                 <tr class="short">
                                     <th rowspan="13"></th>
@@ -175,11 +175,11 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-description">Popisek</label></th>
-                                    <td colspan="2"><textarea name="image-description" id="form-image-description" data-default-value="Měsíc je starší, než brněnští vědci pamatují"></textarea></td>
+                                    <td colspan="2"><textarea name="image-description" id="form-image-description"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-author">Autor</label></th>
-                                    <td colspan="2"><input name="image-author" id="form-image-author" type="text" value="foto ČTK" placeholder="foto ČTK" data-default-value="foto JPP"></textarea></td>
+                                    <td colspan="2"><input name="image-author" id="form-image-author" type="text" value="foto ČTK" placeholder="foto ČTK"></textarea></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -190,7 +190,7 @@
                             <tbody id="table-block-article">
                                 <tr>
                                     <th><label for="form-agency">Agentura</label></th>
-                                    <td colspan="2"><input name="agency" id="form-agency" type="text" value="Praha (ČTK)" placeholder="Praha (ČTK)"></td>
+                                    <td colspan="2"><input name="agency" id="form-agency" type="text" placeholder="Praha (ČTK)"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-article">Článek</label></th>
@@ -290,6 +290,12 @@
                                 <th>(&lt;=)</th><td>&larr;</td>
                                 <th>(=&gt;)</th><td>&rarr;</td>
                                 <th>(&lt;&lt;&gt;&gt;)</th><td>&loz;</td>
+                            </tr>
+                            <tr>
+                                <th>(>>)</th><td>&raquo;</td>
+                                <th>(<<>>)</th><td>&laquo;</td>
+                                <th>(>)</th><td>&rsaquo;</td>
+                                <th>(<)</th><td>&lsaquo;</td>
                             </tr>
                             <tr>
                                 <th>(E)</th><td>&euro;</td>

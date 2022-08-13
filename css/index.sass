@@ -5,7 +5,6 @@
 @font-face
     font-family: "Volkszeitung 21";
     src: url("fonts/Volkszeitung 21.ttf") format("truetype");
-
 .font-volkszeitung-21
     font-family: "Volkszeitung 21";
     font-size: 125%;
@@ -13,21 +12,30 @@
 @font-face
     font-family: "Prager Headlines";
     src: url("fonts/Prager Headlines.ttf") format("truetype");
-
 .font-prager-headlines
-
     font-family: "Prager Headlines";
     font-size: 125%;
 
 @font-face
     font-family: "Fraktur";
     src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
+.font-fraktur
+    font-family: "Fraktur";
 
-.font-prager-headlines
-
-    font-family: "Prager Headlines";
+@font-face
+    font-family: "Cardo Regular";
+    src: url("fonts/Cardo-Regular.ttf") format("truetype");
+.font-cardo-regular
+    font-family: "Cardo Regular";
     font-size: 125%;
 
+@font-face
+    font-family: "Cardo Bold";
+    src: url("fonts/Cardo-Bold.ttf") format("truetype");
+.font-cardo-bold,
+.font-cardo-regular b
+    font-family: "Cardo Bold";
+    font-size: 125%;
 
 
 
@@ -194,17 +202,28 @@ h3
 
 #canvas.press
     background: whitesmoke;
+    font-family: "Cardo Bold", serif;
+
+    #canvas-title
+        font-family: "Cardo Bold", serif;
+        line-height: 1.25em;
 
     #canvas-image .image .border
         border-color: whitesmoke;
 
 #canvas.retro
     filter: sepia(65%);
+    font-family: "Cardo Bold", serif;
+
+    #canvas-title
+        font-family: "Cardo Bold", serif;
+
 
 #canvas.vintage
     font-family: "Prager Headlines";
     font-size: 150%;
     filter: sepia(80%);
+
     #canvas-title
         font-family: "Prager Headlines";
         font-size: 150%;
@@ -213,6 +232,7 @@ h3
     font-family: "Volkszeitung 21";
     font-size: 150%;
     filter: sepia(80%);
+
     #canvas-title
         font-family: "Volkszeitung 21";
         font-size: 150%;
@@ -220,11 +240,14 @@ h3
 #canvas.historic
     font-family: "Fraktur";
     filter: sepia(90%);
+
     #canvas-title
         font-family: "Fraktur";
         line-height: 1.5em;
+
     .perex
         line-height: 1.5em;
+
     .article
         line-height: 1.4em;
 

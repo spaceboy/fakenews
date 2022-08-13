@@ -107,7 +107,7 @@ Evnt.on("#form-main", {
                 break;
             case "image-description":
             case "image-author":
-                let text = StringConvert.specialChars(Elem.valueById("form-image-description").trim());
+                let text = StringConvert.line(Elem.valueById("form-image-description").trim());
                 var author = Elem.valueById("form-image-author").trim();
                 if (text && author) {
                     author = ` &bull; ${author}`;

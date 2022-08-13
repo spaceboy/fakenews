@@ -27,8 +27,28 @@
   src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
 }
 
-.font-prager-headlines {
-  font-family: "Prager Headlines";
+.font-fraktur {
+  font-family: "Fraktur";
+}
+
+@font-face {
+  font-family: "Cardo Regular";
+  src: url("fonts/Cardo-Regular.ttf") format("truetype");
+}
+
+.font-cardo-regular {
+  font-family: "Cardo Regular";
+  font-size: 125%;
+}
+
+@font-face {
+  font-family: "Cardo Bold";
+  src: url("fonts/Cardo-Bold.ttf") format("truetype");
+}
+
+.font-cardo-bold,
+.font-cardo-regular b {
+  font-family: "Cardo Bold";
   font-size: 125%;
 }
 
@@ -250,6 +270,12 @@ h3 {
 
 #canvas.press {
   background: whitesmoke;
+  font-family: "Cardo Bold", serif;
+}
+
+#canvas.press #canvas-title {
+  font-family: "Cardo Bold", serif;
+  line-height: 1.25em;
 }
 
 #canvas.press #canvas-image .image .border {
@@ -259,6 +285,11 @@ h3 {
 #canvas.retro {
   -webkit-filter: sepia(65%);
           filter: sepia(65%);
+  font-family: "Cardo Bold", serif;
+}
+
+#canvas.retro #canvas-title {
+  font-family: "Cardo Bold", serif;
 }
 
 #canvas.vintage {
