@@ -298,7 +298,18 @@ class Elem {
     // when value is set, set value to ective element and return this.
     val (value) {
         if (value === undefined) {
+            if (this.element.type === "checkbox") {
+                return this.element.checked;
+            }
             return Elem.getValue(this.element);
+        }
+        if (this.element.tagName === "TEXTAREA") {
+            this.element.innerText = value;
+            return this;
+        }
+        if (this.element.type === "checkbox") {
+            this.element.checked = value;
+            return this;
         }
         this.element.value = value;
         return this;

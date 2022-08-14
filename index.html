@@ -17,6 +17,7 @@
         <script src="js/StringConvert.js"></script>
         <script src="js/Accordeon.js"></script>
         <script src="js/Menu.js"></script>
+        <script src="js/examples.js"></script>
         <script src="js/dom-to-image.js"></script>
         <!--script src="js/wiki2html.js"></script-->
         <meta property="og:url" content="http://fakenews.loc/">
@@ -139,39 +140,39 @@
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-grayscale">ČB</label></th>
-                                    <td><input id="form-image-filter-grayscale" name="grayscale" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter"></td>
+                                    <td><input id="form-image-filter-grayscale" name="grayscale" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter" data-default-value="0"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-sepia">Sépie</label></th>
-                                    <td><input id="form-image-filter-sepia" name="sepia" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter"></td>
+                                    <td><input id="form-image-filter-sepia" name="sepia" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter" data-default-value="0"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-contrast">Kontrast</label></th>
-                                    <td><input id="form-image-filter-contrast" name="contrast" type="range" min="0" max="200" step="25" value="100" data-postfix="%" data-group="filter"></td>
+                                    <td><input id="form-image-filter-contrast" name="contrast" type="range" min="0" max="200" step="25" value="100" data-postfix="%" data-group="filter" data-default-value="100"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-blured-border">Rozpitý okraj</label></th>
-                                    <td><input id="form-image-blured-border" name="blured-border" type="range" min="0" max="5" step="1" value="0" data-postfix="px"></td>
+                                    <td><input id="form-image-blured-border" name="blured-border" type="range" min="0" max="5" step="1" value="0" data-postfix="px" data-default-value="0"></td>
                                 </tr>
                                 <tr class="short">
                                     <td></td>
-                                    <td><label for="form-image-raster"><input name="image-raster" id="form-image-raster" type="checkbox"> Novinový rastr</label></td>
+                                    <td><label for="form-image-raster"><input name="image-raster" id="form-image-raster" type="checkbox" data-default-value=""> Novinový rastr</label></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-size">Velikost zrna</label></th>
-                                    <td><input id="form-image-raster-size" name="raster-size" type="range" min="5" max="60" step="5" value="35" data-postfix="%" data-group="raster"></td>
+                                    <td><input id="form-image-raster-size" name="raster-size" type="range" min="5" max="60" step="5" value="35" data-postfix="%" data-group="raster" data-default-value="35"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-granularity">Zrnitost</label></th>
-                                    <td><input id="form-image-raster-granularity" name="raster-granularity" type="range" min="5" max="35" step="5" value="10" data-group="raster"></td>
+                                    <td><input id="form-image-raster-granularity" name="raster-granularity" type="range" min="5" max="35" step="5" value="10" data-group="raster" data-default-value="10"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-opacity">Intenzita</label></th>
-                                    <td><input id="form-image-raster-opacity" name="raster-opacity" type="range" min=".05" max="1" step=".05" value=".15" data-group="raster"></td>
+                                    <td><input id="form-image-raster-opacity" name="raster-opacity" type="range" min=".05" max="1" step=".05" value=".15" data-group="raster" data-default-value=".15"></td>
                                 </tr>
                                 <tr class="short">
                                     <td></td>
-                                    <td><label for="form-image-raster-light"><input name="raster-light" id="form-image-raster-light" type="checkbox"> Světlý</label></td>
+                                    <td><label for="form-image-raster-light"><input name="raster-light" id="form-image-raster-light" type="checkbox" data-default-value=""> Světlý</label></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-description">Popisek</label></th>
@@ -292,10 +293,10 @@
                                 <th>(&lt;&lt;&gt;&gt;)</th><td>&loz;</td>
                             </tr>
                             <tr>
-                                <th>(>>)</th><td>&raquo;</td>
-                                <th>(<<>>)</th><td>&laquo;</td>
+                                <th>(&gt;&gt;)</th><td>&raquo;</td>
+                                <th>(&lt;&lt;)</th><td>&laquo;</td>
                                 <th>(>)</th><td>&rsaquo;</td>
-                                <th>(<)</th><td>&lsaquo;</td>
+                                <th>(&lt;)</th><td>&lsaquo;</td>
                             </tr>
                             <tr>
                                 <th>(E)</th><td>&euro;</td>
@@ -352,6 +353,10 @@
                         Písma <span class="font-prager-headlines">Prager Headlines</span> a <span class="font-volkszeitung-21">Volkszeitung 21</span>
                         vytvořil Lukáš Krákora. Jeho další fonty můžete nalézt na adresách <a href="https://www.typewriterfonts.net">www.typewriterfonts.net</a>
                         a <a href="https://www.dafont.com/lukas-krakora.d1281">www.dafont.com/lukas-krakora.d1281</a>, FB stránku na <a href="https://facebook.com/typewriterfonts">facebook.com/typewriterfonts</a>.
+                    </p>
+                    <h2>Příklady použití</h2>
+                    <p>
+                        <b onclick="Examples.show('brno');">Brno</b>
                     </p>
                 </div>
             </div>

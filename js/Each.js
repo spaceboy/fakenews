@@ -21,8 +21,11 @@ class Each {
     }
 
     // Set list for looping over (for (var el of a)...).
-    static of (list) {
-        Each.source = list;
+    static of (context, list) {
+        if (list) {
+            return Each.querySelectorAll(context, list);
+        }
+        Each.source = context;
         Each.method = "of";
         return Each;
     }
@@ -37,7 +40,7 @@ class Each {
     static querySelectorAll (context, query) {
         Each.source = (
             query
-            ? context.querySelectorAll(query)
+            ? ((typeof context === "string" || context instanceof String) ? document.querySelector(context) : context).querySelectorAll(query)
             : document.querySelectorAll(context)
         );
         Each.method = "of";
