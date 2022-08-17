@@ -6,7 +6,6 @@
   font-family: "Volkszeitung 21";
   src: url("fonts/Volkszeitung 21.ttf") format("truetype");
 }
-
 .font-volkszeitung-21 {
   font-family: "Volkszeitung 21";
   font-size: 125%;
@@ -16,7 +15,6 @@
   font-family: "Prager Headlines";
   src: url("fonts/Prager Headlines.ttf") format("truetype");
 }
-
 .font-prager-headlines {
   font-family: "Prager Headlines";
   font-size: 125%;
@@ -26,7 +24,6 @@
   font-family: "Fraktur";
   src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
 }
-
 .font-fraktur {
   font-family: "Fraktur";
 }
@@ -35,7 +32,6 @@
   font-family: "Cardo Regular";
   src: url("fonts/Cardo-Regular.ttf") format("truetype");
 }
-
 .font-cardo-regular {
   font-family: "Cardo Regular";
   font-size: 125%;
@@ -45,7 +41,6 @@
   font-family: "Cardo Bold";
   src: url("fonts/Cardo-Bold.ttf") format("truetype");
 }
-
 .font-cardo-bold,
 .font-cardo-regular b {
   font-family: "Cardo Bold";
@@ -68,68 +63,48 @@ h3 {
 }
 
 #canvas {
-  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  display: -webkit-box;
-  display: -ms-flexbox;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   font-size: 16px;
   margin: 0;
   padding: 10px;
+  position: relative;
   width: 640px;
 }
-
 #canvas #canvas-title {
   font-size: 36px;
   font-weight: bold;
-  margin: 0 0 .25em 0;
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
+  margin: 0 0 0.25em 0;
+  order: 1;
   padding: 0;
   text-shadow: none;
 }
-
 #canvas .datetime {
   color: darkgray;
-  margin: 0 0 .25em 0;
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
+  margin: 0 0 0.25em 0;
+  order: 2;
 }
-
 #canvas .perex {
   font-size: 120%;
   font-weight: bold;
-  margin: 0 0 .75em 0;
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
+  margin: 0 0 0.75em 0;
+  order: 3;
   text-align: justify;
 }
-
 #canvas .perex p {
   margin: 0;
 }
-
 #canvas #canvas-image {
-  margin: 0 0 .5em 0;
+  margin: 0 0 0.5em 0;
   padding: 0;
-  -webkit-box-ordinal-group: 5;
-      -ms-flex-order: 4;
-          order: 4;
+  order: 4;
 }
-
 #canvas #canvas-image-description {
   color: #606060;
   font-size: 90%;
 }
-
 #canvas .image {
   display: inline-block;
   max-width: 100%;
@@ -137,7 +112,6 @@ h3 {
   position: relative;
   width: 100%;
 }
-
 #canvas .image .picture {
   background-size: cover;
   height: 100%;
@@ -146,7 +120,6 @@ h3 {
   top: 0;
   width: 100%;
 }
-
 #canvas .image .raster {
   /* Rastr: */
   background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);
@@ -161,41 +134,41 @@ h3 {
   top: 0;
   width: 100%;
 }
-
 #canvas .image .border {
   border: 10px solid white;
   display: none;
   height: calc(100% - 10px);
-  -webkit-filter: blur(0);
-          filter: blur(0);
+  filter: blur(0);
   left: -4px;
   position: absolute;
   top: -4px;
   width: calc(100% - 10px);
   z-index: 100;
 }
-
 #canvas .article {
-  -webkit-box-ordinal-group: 6;
-      -ms-flex-order: 5;
-          order: 5;
+  order: 5;
 }
-
 #canvas .signature .generator {
   background: darkred;
   color: wheat;
   font-size: 80%;
   font-weight: bold;
   margin: 0;
-  -webkit-box-ordinal-group: 7;
-      -ms-flex-order: 6;
-          order: 6;
-  padding: .5em;
+  order: 6;
+  padding: 0.5em;
   text-align: right;
 }
-
 #canvas .signature .generator .bold {
   color: white;
+}
+#canvas .filter {
+  background: transparent;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 }
 
 /* ------------------------------------------------------ */
@@ -205,13 +178,11 @@ h3 {
   background: white;
   font-family: Roboto, Arial, Helvetica, sans-serif;
 }
-
 #canvas.web #canvas-title {
   color: red;
   font-family: Roboto, Arial, Helvetica, sans-serif;
   line-height: 1.1em;
 }
-
 #canvas.web #canvas-image .image .border {
   border-color: white;
 }
@@ -224,7 +195,6 @@ h3 {
   background: white;
   font-family: serif;
 }
-
 #canvas.press #canvas-title,
 #canvas.retro #canvas-title,
 #canvas.vintage #canvas-title,
@@ -233,7 +203,6 @@ h3 {
   color: #202020;
   font-family: serif;
 }
-
 #canvas.press .perex,
 #canvas.retro .perex,
 #canvas.vintage .perex,
@@ -241,7 +210,6 @@ h3 {
 #canvas.historic .perex {
   text-align: left;
 }
-
 #canvas.press #canvas-image .image .border,
 #canvas.retro #canvas-image .image .border,
 #canvas.vintage #canvas-image .image .border,
@@ -249,7 +217,6 @@ h3 {
 #canvas.historic #canvas-image .image .border {
   border-color: white;
 }
-
 #canvas.press .article p,
 #canvas.retro .article p,
 #canvas.vintage .article p,
@@ -258,36 +225,30 @@ h3 {
   margin: 0;
   text-indent: 1em;
 }
-
 #canvas.press .article p:first-child,
 #canvas.retro .article p:first-child,
 #canvas.vintage .article p:first-child,
 #canvas.vintage2 .article p:first-child,
 #canvas.historic .article p:first-child {
-  margin-top: .5em;
+  margin-top: 0.5em;
   text-indent: 0;
 }
 
 #canvas.press {
-  background: whitesmoke;
   font-family: "Cardo Bold", serif;
 }
-
 #canvas.press #canvas-title {
   font-family: "Cardo Bold", serif;
   line-height: 1.25em;
 }
-
-#canvas.press #canvas-image .image .border {
-  border-color: whitesmoke;
+#canvas.press .filter {
+  background: rgba(0, 0, 0, 0.031372549);
 }
 
 #canvas.retro {
-  -webkit-filter: sepia(65%);
-          filter: sepia(65%);
+  filter: sepia(65%);
   font-family: "Cardo Bold", serif;
 }
-
 #canvas.retro #canvas-title {
   font-family: "Cardo Bold", serif;
 }
@@ -295,10 +256,8 @@ h3 {
 #canvas.vintage {
   font-family: "Prager Headlines";
   font-size: 150%;
-  -webkit-filter: sepia(80%);
-          filter: sepia(80%);
+  filter: sepia(80%);
 }
-
 #canvas.vintage #canvas-title {
   font-family: "Prager Headlines";
   font-size: 150%;
@@ -307,10 +266,8 @@ h3 {
 #canvas.vintage2 {
   font-family: "Volkszeitung 21";
   font-size: 150%;
-  -webkit-filter: sepia(80%);
-          filter: sepia(80%);
+  filter: sepia(80%);
 }
-
 #canvas.vintage2 #canvas-title {
   font-family: "Volkszeitung 21";
   font-size: 150%;
@@ -318,19 +275,15 @@ h3 {
 
 #canvas.historic {
   font-family: "Fraktur";
-  -webkit-filter: sepia(90%);
-          filter: sepia(90%);
+  filter: sepia(90%);
 }
-
 #canvas.historic #canvas-title {
   font-family: "Fraktur";
   line-height: 1.5em;
 }
-
 #canvas.historic .perex {
   line-height: 1.5em;
 }
-
 #canvas.historic .article {
   line-height: 1.4em;
 }
@@ -341,14 +294,12 @@ h3 {
 #canvas.halfwidth {
   display: block;
 }
-
 #canvas.halfwidth #canvas-image {
   float: left;
   margin-right: 20px;
   overflow: hidden;
   width: calc(50% - 10px);
 }
-
 #canvas.halfwidth .clear {
   clear: both;
 }
@@ -359,77 +310,62 @@ h3 {
 table.editor {
   width: 100%;
 }
-
 table.editor tbody::after {
   content: "";
   display: block;
-  height: .5em;
+  height: 0.5em;
 }
-
 table.editor h3.accordeon {
   color: red;
   cursor: pointer;
   font-size: 25px;
   margin: 0;
 }
-
 table.editor h3.accordeon i.fas {
   color: lightgray;
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
-
 table.editor tr {
   vertical-align: top;
 }
-
 table.editor th {
-  padding: .3em .5em 0 0;
+  padding: 0.3em 0.5em 0 0;
   text-align: right;
   width: 8em;
 }
-
 table.editor tr.short th {
   width: 5em;
 }
-
-table.editor tr.short input[type="text"],
-table.editor tr.short input[type="number"],
-table.editor tr.short input[type="range"] {
+table.editor tr.short input[type=text],
+table.editor tr.short input[type=number],
+table.editor tr.short input[type=range] {
   width: 15em;
 }
-
 table.editor textarea,
-table.editor input[type="text"],
-table.editor input[type="file"] {
+table.editor input[type=text],
+table.editor input[type=file] {
   font-size: 13px;
-  padding: .25em;
+  padding: 0.25em;
   width: 25em;
 }
-
 table.editor textarea#form-perex {
   height: 16em;
 }
-
 table.editor textarea#form-image-description {
   height: 4em;
 }
-
 table.editor textarea#form-article {
   height: 24em;
 }
-
 table.editor input#form-image-height {
   width: 8em;
 }
-
 table.editor button {
   width: 8em;
 }
-
 table.editor input.error {
   color: red;
-  -webkit-transition: .1s;
-  transition: .1s;
+  transition: 0.1s;
 }
 
 /* ------------------------------------------------------ */
@@ -443,10 +379,8 @@ table.editor input.error {
   font-size: 50px;
   line-height: 50px;
   text-shadow: none;
-  -webkit-transition: .1s;
-  transition: .1s;
+  transition: 0.1s;
 }
-
 #btn-download:hover,
 #btn-share:hover {
   color: #337ab7;
@@ -464,20 +398,16 @@ ul#menu-main {
   list-style: none;
   margin: 0;
   padding: 0 0 0 10px;
-  -webkit-transition: .1s;
-  transition: .1s;
+  transition: 0.1s;
   vertical-align: bottom;
 }
-
 ul#menu-main li {
   display: inline;
   margin-right: 1em;
 }
-
 ul#menu-main li.menu-active {
   color: red;
 }
-
 ul#menu-main li:hover[data-menu-target] {
   color: red;
   cursor: pointer;
@@ -486,7 +416,6 @@ ul#menu-main li:hover[data-menu-target] {
 .menu-panel {
   display: none;
 }
-
 .menu-panel.menu-active {
   display: block;
 }
@@ -500,30 +429,24 @@ table.entities-list {
   border-collapse: collapse;
   font-size: 125%;
 }
-
 table.entities-list tr:nth-child(even) {
-  background: #eee4;
+  background: rgba(238, 238, 238, 0.2666666667);
 }
-
 table.entities-list th {
   font-family: monospace;
   font-weight: normal;
-  padding: .25em .25em .25em 1em;
+  padding: 0.25em 0.25em 0.25em 1em;
   text-align: right;
 }
-
 table.entities-list th:nth-child(1), table.entities-list th:nth-child(5) {
-  background: #eee4;
+  background: rgba(238, 238, 238, 0.2666666667);
 }
-
 table.entities-list td {
   font-size: 125%;
   font-weight: bold;
-  padding: .25em 1em .25em .25em;
+  padding: 0.25em 1em 0.25em 0.25em;
   text-align: left;
 }
-
 table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
-  background: #eee4;
-}
-/*# sourceMappingURL=index.css.map */
+  background: rgba(238, 238, 238, 0.2666666667);
+}/*# sourceMappingURL=index.css.map */

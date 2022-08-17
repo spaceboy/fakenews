@@ -3,39 +3,39 @@
 /* ------------------------------------------------------ */
 
 @font-face
-    font-family: "Volkszeitung 21";
-    src: url("fonts/Volkszeitung 21.ttf") format("truetype");
+    font-family: "Volkszeitung 21"
+    src: url("fonts/Volkszeitung 21.ttf") format("truetype")
 .font-volkszeitung-21
-    font-family: "Volkszeitung 21";
-    font-size: 125%;
+    font-family: "Volkszeitung 21"
+    font-size: 125%
 
 @font-face
-    font-family: "Prager Headlines";
-    src: url("fonts/Prager Headlines.ttf") format("truetype");
+    font-family: "Prager Headlines"
+    src: url("fonts/Prager Headlines.ttf") format("truetype")
 .font-prager-headlines
-    font-family: "Prager Headlines";
-    font-size: 125%;
+    font-family: "Prager Headlines"
+    font-size: 125%
 
 @font-face
-    font-family: "Fraktur";
-    src: url("fonts/FR_KMS_01cs.ttf") format("truetype");
+    font-family: "Fraktur"
+    src: url("fonts/FR_KMS_01cs.ttf") format("truetype")
 .font-fraktur
-    font-family: "Fraktur";
+    font-family: "Fraktur"
 
 @font-face
-    font-family: "Cardo Regular";
-    src: url("fonts/Cardo-Regular.ttf") format("truetype");
+    font-family: "Cardo Regular"
+    src: url("fonts/Cardo-Regular.ttf") format("truetype")
 .font-cardo-regular
-    font-family: "Cardo Regular";
-    font-size: 125%;
+    font-family: "Cardo Regular"
+    font-size: 125%
 
 @font-face
-    font-family: "Cardo Bold";
-    src: url("fonts/Cardo-Bold.ttf") format("truetype");
+    font-family: "Cardo Bold"
+    src: url("fonts/Cardo-Bold.ttf") format("truetype")
 .font-cardo-bold,
 .font-cardo-regular b
-    font-family: "Cardo Bold";
-    font-size: 125%;
+    font-family: "Cardo Bold"
+    font-size: 125%
 
 
 
@@ -44,8 +44,8 @@
 /* ------------------------------------------------------ */
 
 h3
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-    text-shadow: none;
+    font-family: Roboto, Arial, Helvetica, sans-serif
+    text-shadow: none
 
 
 
@@ -55,105 +55,116 @@ h3
 /* ------------------------------------------------------ */
 
 #canvas-wrapper
-    padding: 5px;
+    padding: 5px
 
 #canvas
-    box-shadow: 0 0 5px rgba(0, 0, 0, .5);
-    display: flex;
-    flex-direction: column;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    margin: 0;
-    padding: 10px;
-    width: 640px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .5)
+    display: flex
+    flex-direction: column
+    font-family: Roboto, Arial, Helvetica, sans-serif
+    font-size: 16px
+    margin: 0
+    padding: 10px
+    position: relative
+    width: 640px
 
     #canvas-title
-        font-size: 36px;
-        font-weight: bold;
-        margin: 0 0 .25em 0;
-        order: 1;
-        padding: 0;
-        text-shadow: none;
+        font-size: 36px
+        font-weight: bold
+        margin: 0 0 .25em 0
+        order: 1
+        padding: 0
+        text-shadow: none
 
     .datetime
-        color: darkgray;
-        margin: 0 0 .25em 0;
-        order: 2;
+        color: darkgray
+        margin: 0 0 .25em 0
+        order: 2
 
     .perex
-        font-size: 120%;
-        font-weight: bold;
-        margin: 0 0 .75em 0;
-        order: 3;
-        text-align: justify;
+        font-size: 120%
+        font-weight: bold
+        margin: 0 0 .75em 0
+        order: 3
+        text-align: justify
 
         & p
-            margin: 0;
+            margin: 0
 
     #canvas-image
-        margin: 0 0 .5em 0;
-        padding: 0;
-        order: 4;
+        margin: 0 0 .5em 0
+        padding: 0
+        order: 4
 
     #canvas-image-description
-        color: #606060;
-        font-size: 90%;
+        color: #606060
+        font-size: 90%
 
     .image
-        display: inline-block;
-        max-width: 100%;
-        overflow: hidden;
-        position: relative;
-        width: 100%;
+        display: inline-block
+        max-width: 100%
+        overflow: hidden
+        position: relative
+        width: 100%
 
         .picture
-            background-size: cover;
-            height: 100%;
-            left: 0;
-            position: absolute;
-            top: 0;
-            width: 100%;
+            background-size: cover
+            height: 100%
+            left: 0
+            position: absolute
+            top: 0
+            width: 100%
 
         .raster
             /* Rastr: */
-            background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);
-            background-color: transparent;
-            background-position: 0 0, 5px 5px;
-            background-size: 10px 10px;
-            display: none;
-            height: 100%;
-            left: 0;
-            position: absolute;
-            opacity: 0.15;
-            top: 0;
-            width: 100%;
+            background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%)
+            background-color: transparent
+            background-position: 0 0, 5px 5px
+            background-size: 10px 10px
+            display: none
+            height: 100%
+            left: 0
+            position: absolute
+            opacity: 0.15
+            top: 0
+            width: 100%
 
         .border
-            border: 10px solid white;
-            display: none;
-            height: calc(100% - 10px);
-            filter: blur(0);
-            left: -4px;
-            position: absolute;
-            top: -4px;
-            width: calc(100% - 10px);
-            z-index: 100;
+            border: 10px solid white
+            display: none
+            height: calc(100% - 10px)
+            filter: blur(0)
+            left: -4px
+            position: absolute
+            top: -4px
+            width: calc(100% - 10px)
+            z-index: 100
 
     .article
-        order: 5;
+        order: 5
 
     .signature .generator
-        background: darkred;
-        color: wheat;
-        font-size: 80%;
-        font-weight: bold;
-        margin: 0;
-        order: 6;
-        padding: .5em;
-        text-align: right;
+        background: darkred
+        color: wheat
+        font-size: 80%
+        font-weight: bold
+        margin: 0
+        order: 6
+        padding: .5em
+        text-align: right
 
         .bold
-            color: white;
+            color: white
+
+    .filter
+        background: transparent
+        height: 100%
+        left: 0
+        position: absolute
+        top: 0
+        width: 100%
+        z-index: 100
+
 
 
 
@@ -162,110 +173,111 @@ h3
 /* ------------------------------------------------------ */
 
 #canvas.web
-    background: white;
-    font-family: Roboto, Arial, Helvetica, sans-serif;
+    background: white
+    font-family: Roboto, Arial, Helvetica, sans-serif
 
     #canvas-title
-        color: red;
-        font-family: Roboto, Arial, Helvetica, sans-serif;
-        line-height: 1.1em;
+        color: red
+        font-family: Roboto, Arial, Helvetica, sans-serif
+        line-height: 1.1em
 
     #canvas-image .image .border
-        border-color: white;
+        border-color: white
 
 #canvas.press,
 #canvas.retro,
 #canvas.vintage,
 #canvas.vintage2,
 #canvas.historic
-    background: white;
-    font-family: serif;
+    background: white
+    font-family: serif
 
     #canvas-title
-        color: #202020;
-        font-family: serif;
+        color: #202020
+        font-family: serif
 
     .perex
-        text-align: left;
+        text-align: left
 
     #canvas-image .image .border
-        border-color: white;
+        border-color: white
 
     .article
         p
-            margin: 0;
-            text-indent: 1em;
+            margin: 0
+            text-indent: 1em
 
             &:first-child
-                margin-top: .5em;
-                text-indent: 0;
+                margin-top: .5em
+                text-indent: 0
 
 #canvas.press
-    background: whitesmoke;
-    font-family: "Cardo Bold", serif;
+    font-family: "Cardo Bold", serif
 
     #canvas-title
-        font-family: "Cardo Bold", serif;
-        line-height: 1.25em;
+        font-family: "Cardo Bold", serif
+        line-height: 1.25em
 
     #canvas-image .image .border
-        border-color: whitesmoke;
+
+    .filter
+        background: #00000008
 
 #canvas.retro
-    filter: sepia(65%);
-    font-family: "Cardo Bold", serif;
+    filter: sepia(65%)
+    font-family: "Cardo Bold", serif
 
     #canvas-title
-        font-family: "Cardo Bold", serif;
+        font-family: "Cardo Bold", serif
 
 
 #canvas.vintage
-    font-family: "Prager Headlines";
-    font-size: 150%;
-    filter: sepia(80%);
+    font-family: "Prager Headlines"
+    font-size: 150%
+    filter: sepia(80%)
 
     #canvas-title
-        font-family: "Prager Headlines";
-        font-size: 150%;
+        font-family: "Prager Headlines"
+        font-size: 150%
 
 #canvas.vintage2
-    font-family: "Volkszeitung 21";
-    font-size: 150%;
-    filter: sepia(80%);
+    font-family: "Volkszeitung 21"
+    font-size: 150%
+    filter: sepia(80%)
 
     #canvas-title
-        font-family: "Volkszeitung 21";
-        font-size: 150%;
+        font-family: "Volkszeitung 21"
+        font-size: 150%
 
 #canvas.historic
-    font-family: "Fraktur";
-    filter: sepia(90%);
+    font-family: "Fraktur"
+    filter: sepia(90%)
 
     #canvas-title
-        font-family: "Fraktur";
-        line-height: 1.5em;
+        font-family: "Fraktur"
+        line-height: 1.5em
 
     .perex
-        line-height: 1.5em;
+        line-height: 1.5em
 
     .article
-        line-height: 1.4em;
+        line-height: 1.4em
 
 /* ------------------------------------------------------ */
 /* Šablony podle šířky obrázku (plná, poloviční)          */
 /* ------------------------------------------------------ */
 
 #canvas.halfwidth
-    display: block;
+    display: block
 
     #canvas-image
-        float: left;
-        margin-right: 20px;
-        overflow: hidden;
-        width: calc(50% - 10px);
+        float: left
+        margin-right: 20px
+        overflow: hidden
+        width: calc(50% - 10px)
 
     .clear
-        clear: both;
+        clear: both
 
 
 
@@ -275,66 +287,66 @@ h3
 /* ------------------------------------------------------ */
 
 table.editor
-    width: 100%;
+    width: 100%
 
     tbody::after
-        content: "";
-        display: block;
-        height: .5em;
+        content: ""
+        display: block
+        height: .5em
 
     h3.accordeon
-        color: red;
-        cursor: pointer;
-        font-size: 25px;
-        margin: 0;
+        color: red
+        cursor: pointer
+        font-size: 25px
+        margin: 0
 
         i.fas
-            color: lightgray;
-            margin-left: .5em;
+            color: lightgray
+            margin-left: .5em
 
     tr
-        vertical-align: top;
+        vertical-align: top
 
     th
-        padding: .3em .5em 0 0;
-        text-align: right;
-        width: 8em;
+        padding: .3em .5em 0 0
+        text-align: right
+        width: 8em
 
     tr.short
 
         th
-            width: 5em;
+            width: 5em
 
         input[type="text"],
         input[type="number"],
         input[type="range"]
-            width: 15em;
+            width: 15em
 
     textarea,
     input[type="text"],
     input[type="file"]
-        font-size: 13px;
-        padding: .25em;
-        width: 25em;
+        font-size: 13px
+        padding: .25em
+        width: 25em
 
     textarea#form-perex
-        height: 16em;
+        height: 16em
 
     textarea#form-image-description
-        height: 4em;
+        height: 4em
 
     textarea#form-article
-        height: 24em;
+        height: 24em
 
     input#form-image-height
-        width: 8em;
+        width: 8em
 
     button
-        width: 8em;
+        width: 8em
 
     input.error
-        color: red;
-        transition: .1s;
+        color: red
+        transition: .1s
 
 
 
@@ -345,16 +357,16 @@ table.editor
 
 #btn-download,
 #btn-share
-    color: lightgray;
-    cursor: pointer;
-    float: right;
-    font-size: 50px;
-    line-height: 50px;
-    text-shadow: none;
-    transition: .1s;
+    color: lightgray
+    cursor: pointer
+    float: right
+    font-size: 50px
+    line-height: 50px
+    text-shadow: none
+    transition: .1s
 
     &:hover
-        color: #337ab7;
+        color: #337ab7
 
 
 
@@ -364,29 +376,29 @@ table.editor
 /* ------------------------------------------------------ */
 
 ul#menu-main
-    color: #666;
-    display: table-cell;
-    font-size: 120%;
-    font-weight: bold;
-    height: 50px;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 10px;
-    transition: .1s;
-    vertical-align: bottom;
+    color: #666
+    display: table-cell
+    font-size: 120%
+    font-weight: bold
+    height: 50px
+    list-style: none
+    margin: 0
+    padding: 0 0 0 10px
+    transition: .1s
+    vertical-align: bottom
     li
-        display: inline;
-        margin-right: 1em;
+        display: inline
+        margin-right: 1em
         &.menu-active
-            color: red;
+            color: red
         &:hover[data-menu-target]
-            color: red;
-            cursor: pointer;
+            color: red
+            cursor: pointer
 
 .menu-panel
-    display: none;
+    display: none
     &.menu-active
-        display: block;
+        display: block
 
 
 
@@ -396,25 +408,25 @@ ul#menu-main
 /* ------------------------------------------------------ */
 
 table.entities-list
-    background: white;
-    border: 1em solid white;
-    border-collapse: collapse;
-    font-size: 125%;
+    background: white
+    border: 1em solid white
+    border-collapse: collapse
+    font-size: 125%
     tr:nth-child(even)
-        background: #eee4;
+        background: #eee4
     th
-        font-family: monospace;
-        font-weight: normal;
-        padding: .25em .25em .25em 1em;
-        text-align: right;
+        font-family: monospace
+        font-weight: normal
+        padding: .25em .25em .25em 1em
+        text-align: right
         &:nth-child(1),
         &:nth-child(5)
-            background: #eee4;
+            background: #eee4
     td
-        font-size: 125%;
-        font-weight: bold;
-        padding: .25em 1em .25em .25em;
-        text-align: left;
+        font-size: 125%
+        font-weight: bold
+        padding: .25em 1em .25em .25em
+        text-align: left
         &:nth-child(2),
         &:nth-child(6)
-            background: #eee4;
+            background: #eee4
