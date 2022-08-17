@@ -218,8 +218,6 @@ h3
         font-family: "Cardo Bold", serif
         line-height: 1.25em
 
-    #canvas-image .image .border
-
     .filter
         background: #00000008
 
@@ -356,18 +354,19 @@ table.editor
 /* ------------------------------------------------------ */
 
 #btn-download,
-#btn-share
+#btn-image
     color: lightgray
     cursor: pointer
     float: right
-    font-size: 50px
+    font-size: 40px
     line-height: 50px
     text-shadow: none
     transition: .1s
-
     &:hover
         color: #337ab7
 
+#btn-image
+    margin-right: .25em
 
 
 
@@ -430,3 +429,74 @@ table.entities-list
         &:nth-child(2),
         &:nth-child(6)
             background: #eee4
+
+
+
+
+/* ------------------------------------------------------ */
+/* Splash screen & image preview                          */
+/* ------------------------------------------------------ */
+#splash-screen,
+#popup-background
+    align-items: center
+    display: none
+    height: 100%
+    left: 0
+    position: fixed
+    text-align: center
+    top: 0
+    width: 100%
+
+    & > div
+        flex: 1
+        text-align: center
+        font-size: 1000%
+        line-height: 100%
+        text-shadow: 0 0 .1em black
+
+        & > i
+            animation: splash-screen 3s infinite
+            border-radius: 50%
+            border: .25em solid darkgray
+            display: inline-block
+            height: 2em
+            width: 2em
+            line-height: 2em
+
+#splash-screen
+    background: #888e
+    color: whitesmoke
+    cursor: wait
+    z-index: 10000
+
+@keyframes splash-screen
+    0%
+        transform: rotate(0)
+    85%
+        transform: rotate(0)
+    100%
+        transform: rotate(180deg)
+
+#popup-background
+    background: #ffffffe0
+    cursor: not-allowed
+    z-index: 10001
+
+    & img
+        box-shadow: 0 0 10px #0008
+        cursor: zoom-in
+        height: auto
+        width: auto
+
+    & > div.zoom
+        height: 100%
+
+        & img
+            background-image: linear-gradient(#f8f8f8 40%, #ffffff 40%)
+            background-size: 5px 5px
+            background-position: center center
+            box-shadow: none
+            cursor: zoom-out
+            height: 100%
+            object-fit: contain
+            width: 100%

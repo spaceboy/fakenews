@@ -372,18 +372,22 @@ table.editor input.error {
 /* Tlačítko pro download                                  */
 /* ------------------------------------------------------ */
 #btn-download,
-#btn-share {
+#btn-image {
   color: lightgray;
   cursor: pointer;
   float: right;
-  font-size: 50px;
+  font-size: 40px;
   line-height: 50px;
   text-shadow: none;
   transition: 0.1s;
 }
 #btn-download:hover,
-#btn-share:hover {
+#btn-image:hover {
   color: #337ab7;
+}
+
+#btn-image {
+  margin-right: 0.25em;
 }
 
 /* ------------------------------------------------------ */
@@ -449,4 +453,94 @@ table.entities-list td {
 }
 table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
   background: rgba(238, 238, 238, 0.2666666667);
+}
+
+/* ------------------------------------------------------ */
+/* Splash screen & image preview                          */
+/* ------------------------------------------------------ */
+#splash-screen,
+#popup-background {
+  align-items: center;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+#splash-screen > div,
+#popup-background > div {
+  flex: 1;
+  text-align: center;
+  font-size: 1000%;
+  line-height: 100%;
+  text-shadow: 0 0 0.1em black;
+}
+#splash-screen > div > i,
+#popup-background > div > i {
+  -webkit-animation: splash-screen 3s infinite;
+          animation: splash-screen 3s infinite;
+  border-radius: 50%;
+  border: 0.25em solid darkgray;
+  display: inline-block;
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+}
+
+#splash-screen {
+  background: rgba(136, 136, 136, 0.9333333333);
+  color: whitesmoke;
+  cursor: wait;
+  z-index: 10000;
+}
+
+@-webkit-keyframes splash-screen {
+  0% {
+    transform: rotate(0);
+  }
+  85% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes splash-screen {
+  0% {
+    transform: rotate(0);
+  }
+  85% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+#popup-background {
+  background: rgba(255, 255, 255, 0.8784313725);
+  cursor: not-allowed;
+  z-index: 10001;
+}
+#popup-background img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5333333333);
+  cursor: zoom-in;
+  height: auto;
+  width: auto;
+}
+#popup-background > div.zoom {
+  height: 100%;
+}
+#popup-background > div.zoom img {
+  background-image: linear-gradient(#f8f8f8 40%, #ffffff 40%);
+  background-size: 5px 5px;
+  background-position: center center;
+  box-shadow: none;
+  cursor: zoom-out;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 100%;
 }/*# sourceMappingURL=index.css.map */

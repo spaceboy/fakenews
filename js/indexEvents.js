@@ -154,14 +154,17 @@ function downloadImage (dataUrl) {
     link.download = filename + "." + Elem.valueById("form-fileformat");
     link.href = dataUrl;
     link.click();
+    Splash.hide();
 }
 function showError (error) {
+    Splash.hide();
     alert("ERROR\n" + error);
 }
 
 // Generate and then download image.
 Evnt.on("#btn-download", "click", (e) => {
     e.preventDefault();
+    Splash.show();
     switch (Elem.valueById("form-fileformat")) {
         case "png":
             domtoimage
@@ -176,6 +179,28 @@ Evnt.on("#btn-download", "click", (e) => {
                 .then(downloadImage)
                 .catch(showError);
     }
+});
+
+// Image preview:
+Evnt.on("#btn-image", "click", (e) => {
+    e.preventDefault();
+    Splash.show();
+    domtoimage
+        .toPng(document.getElementById("canvas"))
+        .then((dataUrl) => {
+            Splash.hide();
+            document.getElementById("popup-background").style.display = "flex";
+            document.getElementById("popup-image").src = dataUrl;
+        })
+        .catch(showError);
+});
+Evnt.on("#popup-background", "click", (e) => {
+    e.stopPropagation();
+    document.getElementById("popup-background").style.display = "none";
+});
+Evnt.on("#popup-image", "click", (e) => {
+    e.stopPropagation();
+    Elem.from(e.currentTarget.closest("div")).toggleClass("zoom");
 });
 
 // Vložit obrázek ze schránky (jen v inputu Obrázek z URL).
