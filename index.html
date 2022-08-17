@@ -17,7 +17,7 @@
         <script src="js/StringConvert.js"></script>
         <script src="js/Accordeon.js"></script>
         <script src="js/Menu.js"></script>
-        <script src="js/examples.js"></script>
+        <script src="js/Examples.js"></script>
         <script src="js/dom-to-image.js"></script>
         <!--script src="js/wiki2html.js"></script-->
         <meta property="og:url" content="http://fakenews.loc/">
@@ -62,6 +62,7 @@
                             <!--div class="signature" style="order: 6;">
                                 <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews/</span></p>
                             </div-->
+                            <div class="filter"></div>
                             <div class="clear"></div>
                         </div><!-- /#canvas -->
                     </div><!-- /#canvas-wraper -->
@@ -123,7 +124,7 @@
                                 </tr>
                                 <tr class="short">
                                     <th rowspan="13"></th>
-                                    <th><label for="form-image-height">Výška)</label></th>
+                                    <th><label for="form-image-height">Výška</label></th>
                                     <td colspan="2"><input name="image-height" id="form-image-height" type="number" min="100" max="1000" data-postfix="px"><button id="form-image-height-auto" name="image-height-auto">Automaticky</button></td>
                                 </tr>
                                 <tr>
@@ -136,23 +137,23 @@
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-blur">Rozmazání</label></th>
-                                    <td><input id="form-image-filter-blur" name="blur" type="range" min="0" max="2" step="0.1" value="0" data-postfix="px" data-group="filter"></td>
+                                    <td><input id="form-image-filter-blur" name="blur" type="range" min="0" max="2" step="0.1" value="0" data-default-value="0" data-postfix="px" data-group="filter"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-grayscale">ČB</label></th>
-                                    <td><input id="form-image-filter-grayscale" name="grayscale" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter" data-default-value="0"></td>
+                                    <td><input id="form-image-filter-grayscale" name="grayscale" type="range" min="0" max="100" step="25" value="0" data-default-value="0" data-postfix="%" data-group="filter"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-sepia">Sépie</label></th>
-                                    <td><input id="form-image-filter-sepia" name="sepia" type="range" min="0" max="100" step="25" value="0" data-postfix="%" data-group="filter" data-default-value="0"></td>
+                                    <td><input id="form-image-filter-sepia" name="sepia" type="range" min="0" max="100" step="25" value="0" data-default-value="0" data-postfix="%" data-group="filter"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-filter-contrast">Kontrast</label></th>
-                                    <td><input id="form-image-filter-contrast" name="contrast" type="range" min="0" max="200" step="25" value="100" data-postfix="%" data-group="filter" data-default-value="100"></td>
+                                    <td><input id="form-image-filter-contrast" name="contrast" type="range" min="0" max="200" step="25" value="100" data-default-value="100" data-postfix="%" data-group="filter"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-blured-border">Rozpitý okraj</label></th>
-                                    <td><input id="form-image-blured-border" name="blured-border" type="range" min="0" max="5" step="1" value="0" data-postfix="px" data-default-value="0"></td>
+                                    <td><input id="form-image-blured-border" name="blured-border" type="range" min="0" max="5" step="1" value="0" data-default-value="0" data-postfix="px"></td>
                                 </tr>
                                 <tr class="short">
                                     <td></td>
@@ -160,15 +161,15 @@
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-size">Velikost zrna</label></th>
-                                    <td><input id="form-image-raster-size" name="raster-size" type="range" min="5" max="60" step="5" value="35" data-postfix="%" data-group="raster" data-default-value="35"></td>
+                                    <td><input id="form-image-raster-size" name="raster-size" type="range" min="5" max="60" step="5" value="35" data-default-value="35" data-postfix="%" data-group="raster"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-granularity">Zrnitost</label></th>
-                                    <td><input id="form-image-raster-granularity" name="raster-granularity" type="range" min="5" max="35" step="5" value="10" data-group="raster" data-default-value="10"></td>
+                                    <td><input id="form-image-raster-granularity" name="raster-granularity" type="range" min="5" max="35" step="5" value="10" data-default-value="10" data-group="raster"></td>
                                 </tr>
                                 <tr class="short">
                                     <th><label for="form-image-raster-opacity">Intenzita</label></th>
-                                    <td><input id="form-image-raster-opacity" name="raster-opacity" type="range" min=".05" max="1" step=".05" value=".15" data-group="raster" data-default-value=".15"></td>
+                                    <td><input id="form-image-raster-opacity" name="raster-opacity" type="range" min=".05" max="1" step=".05" value=".15" data-default-value=".15" data-group="raster"></td>
                                 </tr>
                                 <tr class="short">
                                     <td></td>
@@ -329,20 +330,50 @@
                         Ty slouží pro formátování textu. První je nahrazená HTML entitou <b>&amp;nbsp;</b>, tedy pevnou mezerou.
                         Druhá vkládá HTML entitu <b>&amp;shy;</b>, která označuje místo, kde se může (ale nemusí) rozdělit dlouhé slovo.
                     </p>
-                </div>
-                <div class="column width-4">
-                    <h2>Všeobecné instrukce</h2>
+                    <h2>Několik jazykových tipů</h2>
                     <p>
-                        Vždy si uvědomte, jaký typ zobrazení je vhodný k textu a obrázku, který chcete prezentovat.
+                        Všímejte si, prosím, stylu, jakým své texty píšete. Mnoho lidí například nazná pravidla pro psaní teček
+                        v&nbsp;nadpisech a&nbsp;popiscích. Takže si pro jistotu připomeňme, že pokud stojí na samostatném řádku nebo jsou‑li
+                        grafickou úpravou dostatečně odlišeny od ostatního textu, tečku na konec jednovětého titulku či popisku nepíšeme.
+                        Pokud má popisek či titulek více vět, tečky za nimi píšeme. Za poslední větu u&nbsp;popisku tečku vložit můžeme,
+                        ale v&nbsp;nadpisu se vynechává.
                     </p>
                     <p>
                         Uvědomte si i kontext zobrazení &ndash; v tištěných článcích obvykle nebývalo zobrazeno datum publikace
-                        (to bylo zobrazeno na titulní straně novin) atd.
+                        (to bylo zobrazeno na titulní straně novin). Na webových článcích ovšem datum uvedeno bývá.
+                    </p>
+                </div>
+                <div class="column width-4">
+                    <h2>Příklady použití</h2>
+                    <p>
+                        <b>Brno</b>
                     </p>
                     <p>
-                        Pamatujte i na to nejdůležitější:<br>
-                        <em>Tato aplikace je určena k zábavě.</em><br>
-                        <em>Snažte se vytvářet obrázky tak, abyste jimi nikomu neublížili.</em>
+                        Příklad moderního (webového) článku s&nbsp;obrázkem na plnou šířku.
+                        <br>
+                        <button data-example="brno" class="example">Vyzkoušet</button>
+                    </p>
+                    <p>
+                        <b>Vršovice</b>
+                    </p>
+                    <p>
+                        Příklad starého tiskového článku. Obrázek je orientován na výšku, proto je zobrazen jen na poloviční šířku.
+                        Aby bylo představované stáří textu zdůrazněno, je na fotografii aplikováno rozmazání okrajů a&nbsp;efekt tiskového štočku.
+                        <br>
+                        <button data-example="vrsovice" class="example">Vyzkoušet</button>
+                    </p>
+                    <p>
+                        <b>Mars</b>
+                    </p>
+                    <p>
+                        Článek s použitím zažloutlé historické fotografie. Výška obrázku byla omezena na 440 bodů a&nbsp;svislé zarovnání
+                        nastaveno na spodní okraj. Aby bylo kompenzováno přirozené zažloutnutí snímku, byl převeden do černobílé podoby
+                        a&nbsp;zároveň byl i&nbsp;zvýšen jeho kontrast.
+                        <br>
+                        Protože by větší množství textu rozmělnilo na první pohled absurdní sdělení, je text článku ponechán prázdný
+                        a&nbsp;perex umístěn už před obrázek.
+                        <br>
+                        <button data-example="mars" class="example">Vyzkoušet</button>
                     </p>
                     <h2>Kredity a uznání</h2>
                     <p>
@@ -354,6 +385,18 @@
                         vytvořil Lukáš Krákora. Jeho další fonty můžete nalézt na adresách <a href="https://www.typewriterfonts.net">www.typewriterfonts.net</a>
                         a <a href="https://www.dafont.com/lukas-krakora.d1281">www.dafont.com/lukas-krakora.d1281</a>, FB stránku na <a href="https://facebook.com/typewriterfonts">facebook.com/typewriterfonts</a>.
                     </p>
+                    <h2>To nejdůležitější</h2>
+                    <p>
+                        Vždy, prosím, pamatujte na to nejdůležitější:<br>
+                        <em>Tato aplikace je určena k zábavě.</em><br>
+                        <em>Snažte se vytvářet obrázky tak, abyste jimi nikomu neublížili.</em><br>
+                        Dokonce ani když máte pocit, že by si to někdo zasloužil.
+                    </p>
+                </div>
+            </div><!-- /.row -->
+            <div class="row">
+                <div class="column width-6">
+
                 </div>
             </div>
         </div><!-- /.container -->

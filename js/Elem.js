@@ -303,10 +303,6 @@ class Elem {
             }
             return Elem.getValue(this.element);
         }
-        if (this.element.tagName === "TEXTAREA") {
-            this.element.innerText = value;
-            return this;
-        }
         if (this.element.type === "checkbox") {
             this.element.checked = value;
             return this;
@@ -352,6 +348,31 @@ class Elem {
             ? event
             : new Event(event, params)
         );
+    }
+
+    // Posts event on active element.
+    // When event is instance of Event, posts event,
+    // otherwise creates new Event on event name (event) and parameters (params).
+    post (event, params) {
+        var that = this;
+        window.setTimeout(that.trigger(event, params), 1);
+    }
+
+    // When current element IS NOT an SELECT element, returns null.
+    // Otherwise returns NodeList of child OPTION elements;
+    // when NUMBER is given, returns OPTION with given index (null when option[number] doesn't exist).
+    options (number) {
+        if (this.element.tagName !== "SELECT") {
+            return null;
+        }
+        var o = this.element.querySelectorAll("option");
+        if (number === undefined) {
+            return o;
+        }
+        if (o.length <= number) {
+            return null;
+        }
+        return o[number];
     }
 
     // TOOL: Detect whether given object is a DOM object.
