@@ -1,7 +1,7 @@
 
 class CanvasImage {
     // Načte obrázek.
-    static imageLoad (srcElement) {
+    static imageLoad (srcElement, callback) {
         Elem.from("#canvas-image .image .picture")
             .attr({
                 "data-original-height": srcElement.height,
@@ -11,6 +11,9 @@ class CanvasImage {
             "backgroundImage": `url("${srcElement.src}")`
         });
         CanvasImage.imageResize();
+        if (callback) {
+            callback(srcElement);
+        }
     }
 
     static imageResize () {
