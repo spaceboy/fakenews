@@ -17,6 +17,7 @@
         <script src="js/StringConvert.js"></script>
         <script src="js/Accordeon.js"></script>
         <script src="js/Menu.js"></script>
+        <script src="js/Splash.js"></script>
         <script src="js/Examples.js"></script>
         <script src="js/dom-to-image.js"></script>
         <!--script src="js/wiki2html.js"></script-->
@@ -41,8 +42,8 @@
                     </ul>
                 </div>
                 <div class="column-width-1">
-                    <div id="btn-download"><i class="fas fa-download"></i></div>
-                    <!--div id="btn-share"><i class="fab fa-facebook"></i></div-->
+                    <div id="btn-download"><i class="fas fa-download" title="Uložit obrázek"></i></div>
+                    <div id="btn-image"><i class="fas fa-portrait" title="Náhled obrázku"></i></div>
                 </div>
             </div>
         </div><!-- /.container -->
@@ -400,6 +401,8 @@
                 </div>
             </div>
         </div><!-- /.container -->
+        <div id="splash-screen"><div><i class="fas fa-hourglass"></div></i></div>
+        <div id="popup-background"><div><img id="popup-image" alt="image" title="Náhled obrázku"></div></div>
         <script src="js/indexEvents.js"></script>
         <script src="js/index.js"></script>
     </body>
