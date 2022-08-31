@@ -1,21 +1,9 @@
 class Examples {
     static #example = {
-        "brno": {
-            "form-title": "Měsíc trvá už mnoho měsíců, zjistili brněnští vědci",
-            "form-date": (function (d) {return d.getDate() + "." + (parseInt(d.getMonth()) + 1) + "." + d.getFullYear();})(new Date()),
-            "form-perex": "Po mnohaměsíčním úsilí brněnští vědci zjistili, že Měsíc je starší, než jsme čekali. Podle jejich měření trvá už nejméně třiatřicet měsíců.",
-            "form-image-url": "gfx/half-moon.jpg",
-            "form-image-width": "fullwidth",
-            "form-image-description": "Měsíc je starší, než brněnští vědci pamatují",
-            "form-image-author": "foto JPP",
-            "form-agency": "Brno (JPP)",
-            "form-article": "",
-            "form-template": "web"
-        },
         "vrsovice": {
             "form-title": "Kdo nebyl v sobotu v Ďolíčku, žije zbytečně, shodují se učenci",
             "form-perex": "Nejuznávanější znalci z mezinárodní společnosti životního stylu a(_)vol(-)ného času promluvili jasnou řečí. To nejlepší, co člověk může v(_)Pra(-)ze přes neděli udělat, je návštěva vršovického Ďolíčku.",
-            "form-image-url": "gfx/demo02.jpg",
+            "form-image-url": "gfx/praha-1905.jpg",
             "form-image-description": "Plny očekávání kráčejí přední pražské dámy do proslulého Ďolíčku",
             "form-image-author": "foto archiv autora",
             "form-image-width": "halfwidth",
@@ -30,7 +18,7 @@ class Examples {
             "form-title": "Zdražují nejen aerolinky. Cestování na Mars podražilo o(_)miliony procent",
             "form-perex": "Náročnější cestovatelé, kteří vyhledávají méně obvyklé turistické des(-)ti(-)na(-)ce, musejí letos do peněženky sáhnout poněkud hlouběji. Alespoň pokud zatouží podívat se s(_)Elonem Muskem na Mars.",
             "form-perex-position": "before",
-            "form-image-url": "gfx/demo03.jpg",
+            "form-image-url": "gfx/trip-to-mars.jpg",
             "form-image-width": "fullwidth",
             "form-image-height": "440",
             "form-image-align-vertical": "bottom",
