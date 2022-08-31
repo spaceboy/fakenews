@@ -128,6 +128,7 @@ h3
             opacity: 0.15
             top: 0
             width: 100%
+            z-index: 100
 
         .border
             border: 10px solid white
@@ -138,7 +139,7 @@ h3
             position: absolute
             top: -4px
             width: calc(100% - 10px)
-            z-index: 100
+            z-index: 101
 
     .article
         order: 5
@@ -163,7 +164,7 @@ h3
         position: absolute
         top: 0
         width: 100%
-        z-index: 100
+        z-index: 200
 
 
 
@@ -500,3 +501,11 @@ table.entities-list
             height: 100%
             object-fit: contain
             width: 100%
+
+@keyframes flashing
+    0%
+        opacity: 1
+    50%
+        opacity: .5
+    100%
+        opacity: 1

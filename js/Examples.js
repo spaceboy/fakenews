@@ -40,6 +40,7 @@ class Examples {
             "form-image-raster-light": true,
             "form-image-description": "V roce 1911 se výlet na Mars dal pořídit za deset amerických centů. Nyní vyjde na statisíce dolarů",
             "form-image-author": "",
+            "form-article": "",
             "form-template": "press",
         }
     };

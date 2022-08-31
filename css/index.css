@@ -133,6 +133,7 @@ h3 {
   opacity: 0.15;
   top: 0;
   width: 100%;
+  z-index: 100;
 }
 #canvas .image .border {
   border: 10px solid white;
@@ -143,7 +144,7 @@ h3 {
   position: absolute;
   top: -4px;
   width: calc(100% - 10px);
-  z-index: 100;
+  z-index: 101;
 }
 #canvas .article {
   order: 5;
@@ -168,7 +169,7 @@ h3 {
   position: absolute;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 200;
 }
 
 /* ------------------------------------------------------ */
@@ -543,4 +544,28 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
   -o-object-fit: contain;
      object-fit: contain;
   width: 100%;
+}
+
+@-webkit-keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes flashing {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=index.css.map */

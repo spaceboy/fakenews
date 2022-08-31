@@ -79,7 +79,7 @@
                             <tbody id="table-block-title">
                                 <tr>
                                     <th><label for="form-title">Titulek</label></th>
-                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy"></td>
+                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-title-align">Zarovnání</label></th>
@@ -98,7 +98,7 @@
                             <tbody id="table-block-perex">
                                 <tr>
                                     <th><label for="form-perex">Perex</label></th>
-                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku"></textarea></td>
+                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est."></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-perex-align">Zarovnání</label></th>
@@ -120,8 +120,8 @@
                                     <td colspan="2"><input name="image" id="form-image" type="file"></td>
                                 </tr>
                                 <tr>
-                                    <th><label for="form-image-url">Obrázek (URL)</label></th>
-                                    <td colspan="2"><input name="image-url" id="form-image-url" type="text"></td>
+                                    <th><label for="form-image-url" title="Vložte adresu obrázku">Obrázek (URL)</label></th>
+                                    <td colspan="2"><input name="image-url" id="form-image-url" type="text" data-default-value="gfx/opening-image.jpg" title="Vložte adresu (URL) obrázku, nebo vložte (Ctrl+V) obrázek ze schránky."></td>
                                 </tr>
                                 <tr class="short">
                                     <th rowspan="13"></th>
@@ -178,7 +178,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-description">Popisek</label></th>
-                                    <td colspan="2"><textarea name="image-description" id="form-image-description"></textarea></td>
+                                    <td colspan="2"><textarea name="image-description" id="form-image-description" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-author">Autor</label></th>
@@ -197,7 +197,9 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-article">Článek</label></th>
-                                    <td colspan="2"><textarea name="article" id="form-article"></textarea></td>
+                                    <td colspan="2"><textarea name="article" id="form-article" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam eget nisl. Vivamus luctus egestas leo. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Maecenas lorem. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Nullam faucibus mi quis velit. Nulla quis diam. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Pellentesque sapien. Nulla quis diam.
+Nunc dapibus tortor vel mi dapibus sollicitudin. Nulla est. Nulla non lectus sed nisl molestie malesuada. Curabitur bibendum justo non orci. Fusce aliquam vestibulum ipsum. Mauris elementum mauris vitae tortor. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. In convallis. Sed convallis magna eu sem. Maecenas lorem. Etiam neque. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam bibendum elit eget erat. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci.
+Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean fermentum risus id tortor. Suspendisse nisl. Nunc auctor."></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-article-align">Zarovnání</label></th>
@@ -345,15 +347,20 @@
                     </p>
                 </div>
                 <div class="column width-4">
+                    <h2>Jak vkládat obrázky</h2>
+                    <p>
+                        V&nbsp;pravém sloupci záložky <b>Editor</b> otevřete sekci <b>Obrázek</b>.<br>
+                        Pokud chcete použít obrázek z&nbsp;disku, klikněte na tlačítko <b>Procházet&hellip;</b> a&nbsp;vyberte
+                        obrázek v&nbsp;dialogu.<br>
+                        Jestliže chcete použít obrázek z&nbsp;internetu, stačí zkopírovat jeho adresu (URL) a&nbsp;tu vložit
+                        do pole <b>Obrázek (URL)</b>. Po krátké chyvilce by se obrázek měl načíst a&nbsp;zobrazit. Pakliže se
+                        tak nestane a&nbsp;text v poli zčervená, obrázek se nepodařilo načíst (můžete se pokusit získat ho jiným způsobem,
+                        například si ho stáhnout na disk, nebo zkopírovat do schránky.)<br>
+                        Při vkládání obrázku ze schránky nejprve klikněte do pole <b>Obrázek (URL)</b> a&nbsp;pak vložte obvyklým
+                        způsobem (klávesovou kombinací Ctrl+V nebo přes pravé tlačítko a&nbsp;volbu <b>Vložit</b>) obrázek z&nbsp;clipboardu.
+                        Pokud vše proběhlo správně, měl by se obrázek objevit takřka okamžitě.
+                    </p>
                     <h2>Příklady použití</h2>
-                    <p>
-                        <b>Brno</b>
-                    </p>
-                    <p>
-                        Příklad moderního (webového) článku s&nbsp;obrázkem na plnou šířku.
-                        <br>
-                        <button data-example="brno" class="example">Vyzkoušet</button>
-                    </p>
                     <p>
                         <b>Vršovice</b>
                     </p>
@@ -385,6 +392,10 @@
                         Písma <span class="font-prager-headlines">Prager Headlines</span> a <span class="font-volkszeitung-21">Volkszeitung 21</span>
                         vytvořil Lukáš Krákora. Jeho další fonty můžete nalézt na adresách <a href="https://www.typewriterfonts.net">www.typewriterfonts.net</a>
                         a <a href="https://www.dafont.com/lukas-krakora.d1281">www.dafont.com/lukas-krakora.d1281</a>, FB stránku na <a href="https://facebook.com/typewriterfonts">facebook.com/typewriterfonts</a>.
+                    </p>
+                    <p>
+                        Otvírací obrázek:
+                        <a href="https://www.freepik.com/vectors/logo-illustration">Logo illustration vector created by rawpixel.com - www.freepik.com</a>
                     </p>
                     <h2>To nejdůležitější</h2>
                     <p>
