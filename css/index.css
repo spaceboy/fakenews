@@ -47,6 +47,23 @@
   font-size: 125%;
 }
 
+@font-face {
+  font-family: "Roboto Bold";
+  src: url("fonts/Roboto-Bold.ttf") format("truetype");
+}
+.font-roboto-bold {
+  font-family: "Roboto Bold";
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.ttf") format("truetype");
+}
+.font-roboto-regular,
+.font-cardo-regular b {
+  font-family: "Roboto Bold";
+}
+
 /* ------------------------------------------------------ */
 /* Přepsání stylů z "global" šablony                      */
 /* ------------------------------------------------------ */
@@ -181,7 +198,7 @@ h3 {
 }
 #canvas.web #canvas-title {
   color: red;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-family: "Roboto Bold", Arial, Helvetica, sans-serif;
   line-height: 1.1em;
 }
 #canvas.web #canvas-image .image .border {
