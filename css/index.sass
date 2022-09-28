@@ -51,16 +51,33 @@
     font-family: "Roboto Bold"
 
 
+/* @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Aladin&family=Amatic+SC:wght@700&family=Aref+Ruqaa+Ink&family=Bangers&family=Berkshire+Swash&family=BioRhyme&family=Bubblegum+Sans&family=Bungee+Inline&family=Calistoga&family=Courgette&family=Eagle+Lake&family=Fondamento&family=Grenze+Gotisch&family=Jockey+One&family=Kreon&family=Lilita+One&family=Lobster&family=Norican&family=Oleo+Script&family=Oleo+Script+Swash+Caps&family=Pacifico&family=Pirata+One&family=Playfair+Display+SC&family=Pridi&family=Rammetto+One&family=Rubik+Burned&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Marker+Hatch&family=Rubik+Moonrocks&family=Rye&family=Sedgwick+Ave+Display&family=Shrikhand&family=Spectral+SC&family=Suez+One&family=Tiro+Devanagari+Hindi&display=swap'); */
+
 /* ------------------------------------------------------ */
 /* Přepsání stylů z "global" šablony                      */
 /* ------------------------------------------------------ */
 
 h3
-    font-family: Roboto, Arial, Helvetica, sans-serif
+    font-family: "Roboto Bold", Arial, Helvetica, sans-serif
+    font-weight: normal
     text-shadow: none
 
 
 
+/* ------------------------------------------------------ */
+/* Drobnější elementy                                     */
+/* ------------------------------------------------------ */
+
+span.ball-inverse
+    background: #337ab7
+    border-radius: 50%
+    color: white
+    display: inline-block
+    font-weight: bold
+    height: 1.4em
+    line-height: 1.4em
+    text-align: center
+    width: 1.4em
 
 /* ------------------------------------------------------ */
 /* Článek                                                 */
@@ -76,9 +93,51 @@ h3
     font-family: Roboto, Arial, Helvetica, sans-serif
     font-size: 16px
     margin: 0
+    overflow: hidden
     padding: 10px
     position: relative
     width: 640px
+
+    #header
+        #headline
+            display: block
+            font-size: 25px
+            position: relative
+            z-index: 10
+
+        #subheadline
+            display: block
+            line-height: 1em
+            &.hands
+                &::before
+                    color: #666
+                    content:"\f0a4"
+                    float: left
+                    font-family: "Font Awesome 5 Free"
+                    margin-left: 0
+                    margin-right: .5em
+                &::after
+                    color: #666
+                    content:"\f0a5"
+                    float: right
+                    font-family: "Font Awesome 5 Free"
+                    margin-left: .5em
+                    margin-right: 0
+            &.inverse
+                background: #666
+                color: white
+                font-weight: bold
+                padding: .25em .5em
+                width: calc(100% - 1em)
+                &.hands
+                    &::before
+                        color: white
+                    &::after
+                        color: white
+
+    #article
+        &.thin
+            padding: 0 .5em
 
     #canvas-title
         font-size: 36px
@@ -187,12 +246,17 @@ h3
 
 #canvas.web
     background: white
-    font-family: Roboto, Arial, Helvetica, sans-serif
+    font-family: Roboto
 
     #canvas-title
         color: red
-        font-family: "Roboto Bold", Arial, Helvetica, sans-serif
+        font-family: "Roboto Bold"
         line-height: 1.1em
+        font-weight: normal
+
+    .perex
+        font-family: "Roboto Bold"
+        font-weight: normal
 
     #canvas-image .image .border
         border-color: white
@@ -231,6 +295,10 @@ h3
         font-family: "Cardo Bold", serif
         line-height: 1.25em
 
+    .perex
+        font-family: "Cardo Bold"
+        font-weight: normal
+
     .filter
         background: #00000008
 
@@ -251,6 +319,10 @@ h3
         font-family: "Prager Headlines"
         font-size: 150%
 
+    .perex
+        font-family: inherit
+        font-weight: bold
+
 #canvas.vintage2
     font-family: "Volkszeitung 21"
     font-size: 150%
@@ -259,6 +331,10 @@ h3
     #canvas-title
         font-family: "Volkszeitung 21"
         font-size: 150%
+
+    .perex
+        font-family: inherit
+        font-weight: bold
 
 #canvas.historic
     font-family: "Fraktur"
@@ -269,6 +345,8 @@ h3
         line-height: 1.5em
 
     .perex
+        font-family: inherit
+        font-weight: bold
         line-height: 1.5em
 
     .article
@@ -349,8 +427,17 @@ table.editor
     textarea#form-article
         height: 24em
 
-    input#form-image-height
+    input#form-image-height,
+    input#form-header-font-size,
+    input#form-header-subheadline-font-size,
+    input#form-header-subheadline-margin-bottom
         width: 8em
+
+    input#form-header-margin-top,
+    input#form-header-margin-bottom,
+    input#form-header-margin-left,
+    input#form-header-margin-right
+        width: 4em
 
     button
         width: 8em
@@ -521,3 +608,32 @@ table.entities-list
         opacity: .5
     100%
         opacity: 1
+
+.eye-button
+    background: #ccc
+    border-radius: 1em
+    cursor: pointer
+    display: inline-block
+    height: 2em
+    line-height: 2em
+    margin: .25em 0
+    padding: 0 1.5em 0 0
+    & .eye
+        background: white
+        border-radius: 50%
+        box-shadow: 0 0 5px #0008
+        display: inline-block
+        height: 2em
+        line-height: 2em
+        margin: 0
+        padding: 0
+        text-align: center
+        width: 2em
+    &:hover
+        background: #666
+        box-shadow: 0 0 5px #0008
+        color: #fff
+        transition: .3s
+        & .eye
+            background: #222
+            box-shadow: 0 0 7px #0004

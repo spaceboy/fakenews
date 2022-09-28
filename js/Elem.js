@@ -249,6 +249,13 @@ class Elem {
         return this;
     }
 
+    switchClass (className, set) {
+        if (set) {
+            return this.addClass(className);
+        }
+        return this.removeClass(className);
+    }
+
     // Toggle CSS class on active element.
     toggleClass (className, classList) {
         if (!classList || !classList.length) {
@@ -304,10 +311,14 @@ class Elem {
             return Elem.getValue(this.element);
         }
         if (this.element.type === "checkbox") {
-            this.element.checked = value;
+            this.element.checked = (
+                value === true
+                || ((typeof value === "number" || value instanceof Number) && (value != 0))
+                || ((typeof value === "string" || value instanceof String) && value.match(/^(1|true|yes|on)$/i))
+            );
             return this;
         }
-        this.element.value = value;
+        this.element.value = Elem.clearValue(this.element, value);
         return this;
     }
 
@@ -483,13 +494,46 @@ class Elem {
         );
     }
 
-     // Return value of given element w/ prefix and postfix from elements "data-prefix", "data-postfix" resp.
-     static getValue (el) {
+    // Returns value of given element w/ prefix and postfix from elements "data-prefix", "data-postfix" resp.
+    static getValue (el) {
         return (
             (el.hasAttribute("data-prefix") ? el.getAttribute("data-prefix") : "")
             + el.value
             + (el.hasAttribute("data-postfix") ? el.getAttribute("data-postfix") : "")
         );
+    }
+
+    // Returns reconstructed "original" value of given INPUT element (w/o possible prefix and postfix).
+    // Type of value must be string and element must be INPUT; otherwise returns original value.
+    // Examples:
+    // On el = INPUT element with data-postfix="px" & value = "10px" returns "10"
+    // On el = INPUT element with data-prefix="deg" & value = "deg30" returns "30"
+    static clearValue (el, value) {
+        if (el.tagName !== "INPUT") {
+            return value;
+        }
+        if (typeof value !== "string") {
+            return value;
+        }
+        if (el.hasAttribute("data-prefix")) {
+            var attr = el.getAttribute("data-prefix");
+            value = value.replace((new RegExp(`${attr}$`)), "")
+        }
+        if (el.hasAttribute("data-postfix")) {
+            var attr = el.getAttribute("data-postfix");
+            value = value.replace((new RegExp(`^${attr}`)), "")
+        }
+        if (!el.hasAttribute("type")) {
+            return value;
+        }
+        switch (el.type) {
+            case "number":
+            case "range":
+                return parseFloat(value);
+                break;
+            default:
+                return value;
+        }
     }
 
     #inArray (needle, haystack) {

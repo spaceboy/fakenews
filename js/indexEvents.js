@@ -5,13 +5,112 @@ Evnt.on("#form-main", {
         let t = e.target;
         let v = Elem.from(t).value();
         switch (t.getAttribute("name")) {
+            // Hlavička:
+            /*
+            case "header-image-url":
+                Elem.from(t).removeClass("error");
+                if (v) {
+                    LoadImage.fromUrl(
+                        v,
+                        CanvasImage.imageLoad,
+                        (err) => Elem.from(t).addClass("error"),
+                        null,
+                        {
+                            "imageElem": Elem.from("#canvas-image .image"),
+                            "pictureElem": Elem.from("#canvas-image .image .picture"),
+                            "formElem": Elem.from("#form-header-image-height"),
+                            "event": e
+                        }
+                    );
+                    Elem.from("#form-header-image").value("");
+                }
+                break;
+            case "header-image":
+                LoadImage.fromInputElement(
+                    t,
+                    CanvasImage.imageLoad,
+                    null,
+                    null,
+                    {
+                        "imageElem": Elem.from("#canvas-image .image"),
+                        "pictureElem": Elem.from("#canvas-image .image .picture"),
+                        "formElem": Elem.from("#form-header-image")
+                    }
+                );
+                Elem.from("#form-header-image-url").value("");
+                break;
+            */
+            case "header-text":
+                var headline = StringConvert.line(v);
+                Elem.from("#headline").html(headline);
+                if (headline) {
+                    document.title = `${headline} [Fakenews]`
+                    .replace(/\&[^;]*;/g, "")
+                    .replace(/\<[^\>]*\>/g, "")
+                    .trim();
+                }
+                Elem.from("#form-header-show").checked(headline).trigger("change", {"bubbles": true});
+                break;
+            case "header-font-family":
+                Elem.from("#headline").style("font-family", v);
+                if (Elem.from("#form-header-subheadline-headlinefont").get().checked) {
+                    Elem.from("#subheadline").style("font-family", v);
+                }
+                break;
+            case "header-font-size":
+                Elem.from("#headline").style("font-size", v);
+                break;
+            case "header-margin-top":
+                Elem.from("#headline").style("margin-top", v);
+                break;
+            case "header-margin-bottom":
+                Elem.from("#headline").style("margin-bottom", v);
+                break;
+            case "header-margin-left":
+                Elem.from("#headline").style("margin-left", v);
+                break;
+            case "header-margin-right":
+                Elem.from("#headline").style("margin-right", v);
+                break;
+            case "header-text-align":
+                Elem.from("#headline").style("text-align", v);
+                break;
+            case "header-shadow":
+                Elem.from("#headline").style("textShadow", v);
+                break;
+            case "header-subheadline-text":
+                Elem.from("#subheadline").html(StringConvert.line(v));
+                break;
+            case "header-subheadline-align":
+                Elem.from("#subheadline").style("text-align", v);
+                break;
+            case "header-subheadline-margin-bottom":
+                Elem.from("#subheadline").style("margin-bottom", v);
+                break;
+            case "header-subheadline-headlinefont":
+                Elem.from("#subheadline").style("font-family", (t.checked ? Elem.from("#headline").style("font-family") : "inherit"));
+                break;
+            case "header-subheadline-font-size":
+                Elem.from("#subheadline").style("font-size", v);
+                break;
+            case "header-subheadline-inverse":
+                Elem.from("#subheadline").switchClass("inverse", t.checked);
+                break;
+            case "header-subheadline-hands":
+                Elem.from("#subheadline").switchClass("hands", t.checked);
+                break;
+            case "header-show":
+                Elem.from("#header").style("display", (t.checked ? "block" : "none"));
+                Elem.from("#form-article-thin").checked(t.checked).trigger("change", {"bubbles": true});
+                break;
+            // Titulek & datum:
             case "title":
                 Elem.from("#canvas-title").html(StringConvert.line(v));
                 break;
             case "title-align":
                 Elem.from("#canvas-title").style("textAlign", v);
                 break;
-            case "date":
+                case "date":
                 v = v.trim();
                 if (v) {
                     Elem.from("#canvas-datetime").html(v);
@@ -20,6 +119,7 @@ Evnt.on("#form-main", {
                     Elem.from("#canvas .datetime").style("display", "none");
                 }
                 break;
+            // Perex:
             case "perex":
                 Elem.from("#canvas .perex").html(StringConvert.multiline(v));
                 break;
@@ -38,15 +138,37 @@ Evnt.on("#form-main", {
                         Elem.from("#canvas #canvas-image").style("order", 5);
                 }
                 break;
+            // Obrázek:
             case "image-url":
                 Elem.from(t).removeClass("error");
                 if (v) {
-                    LoadImage.fromUrl(v, CanvasImage.imageLoad, (err) => Elem.from(t).addClass("error"));
+                    LoadImage.fromUrl(
+                        v,
+                        CanvasImage.imageLoad,
+                        (err) => Elem.from(t).addClass("error"),
+                        null,
+                        {
+                            "imageElem": Elem.from("#canvas-image .image"),
+                            "pictureElem": Elem.from("#canvas-image .image .picture"),
+                            "formElem": Elem.from("#form-image-height"),
+                            "event": e
+                        }
+                    );
                     Elem.from("#form-image").value("");
                 }
                 break;
             case "image":
-                LoadImage.fromInputElement(t, CanvasImage.imageLoad);
+                LoadImage.fromInputElement(
+                    t,
+                    CanvasImage.imageLoad,
+                    null,
+                    null,
+                    {
+                        "imageElem": Elem.from("#canvas-image .image"),
+                        "pictureElem": Elem.from("#canvas-image .image .picture"),
+                        "formElem": Elem.from("#form-image-height")
+                    }
+                );
                 Elem.from("#form-image-url").value("");
                 break;
             case "image-height":
@@ -54,7 +176,11 @@ Evnt.on("#form-main", {
                 break;
             case "image-width":
                 Elem.from("#canvas").toggleClass(v, ["fullwidth", "halfwidth"]);
-                CanvasImage.imageResize();
+                CanvasImage.imageResize(
+                    Elem.from("#canvas-image .image"),
+                    Elem.from("#canvas-image .image .picture"),
+                    Elem.from("#form-image-height")
+                );
                 switch (v) {
                     case "halfwidth":
                         Elem.from("#form-perex-position").val("before").attr("disabled", "true");
@@ -115,6 +241,7 @@ Evnt.on("#form-main", {
                 Elem.from("#canvas-image-description").html(text + author);
                 break;
             case "agency":
+            // Článek:
             case "article":
                 Elem.from("#canvas .article").html((function () {
                     var agency = Elem.valueById("form-agency").trim();
@@ -125,6 +252,15 @@ Evnt.on("#form-main", {
             case "article-align":
                 Elem.from("#canvas .article").style("textAlign", v);
                 break;
+            case "article-thin":
+                Elem.from("#article").switchClass("thin", t.checked);
+                CanvasImage.imageResize(
+                    Elem.from("#canvas-image .image"),
+                    Elem.from("#canvas-image .image .picture"),
+                    Elem.from("#form-image-height")
+                );
+                break;
+            // Šablona:
             case "template":
                 Elem.from("#canvas").toggleClass(v, ["web", "press", "retro", "vintage", "vintage2", "historic"]);
                 break;
@@ -135,7 +271,11 @@ Evnt.on("#form-main", {
 // Automatický výpočet výšky obrázku:
 Evnt.on("#form-image-height-auto", "click", (e) => {
     e.preventDefault();
-    CanvasImage.imageResize();
+    CanvasImage.imageResize(
+        Elem.from("#canvas-image .image"),
+        Elem.from("#canvas-image .image .picture"),
+        Elem.from("#form-image-height")
+    );
 });
 
 // Označení celého textu v image URL inputu:
@@ -212,11 +352,39 @@ Evnt.on("#form-image-url", "paste", (e) => {
             var blob = item.getAsFile();
             var reader = new FileReader();
             reader.onload = function(e) {
-                LoadImage.fromUrl(e.target.result, CanvasImage.imageLoad);
+                LoadImage.fromUrl(
+                    e.target.result,
+                    CanvasImage.imageLoad,
+                    null,
+                    function (params) {
+                        Elem.from("#form-image-url").value("[Obrázek ze schránky]");
+                    },
+                    {
+                        "imageElem": Elem.from("#canvas-image .image"),
+                        "pictureElem": Elem.from("#canvas-image .image .picture"),
+                        "formElem": Elem.from("#form-image-height"),
+                        "event": e
+                    }
+                );
             };
             reader.readAsDataURL(blob);
         }
     }
+});
+
+// Source code download.
+Evnt.on("#source-download", "click", (e) => {
+    FileDownload.downloadJson(
+        Elem.from("#form-filename").val() + ".json",
+        (new SourceCodeFakeNews()).get()
+    );
+});
+
+// Source code upload.
+Evnt.on("#source-upload", "click", (e) => {
+    (new FileUploadText(""))
+        .onLoad(SourceCodeFakeNews.applySource)
+        .upload();
 });
 
 // Načíst a zobrazit příklady.

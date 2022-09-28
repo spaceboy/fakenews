@@ -69,6 +69,7 @@ class Each {
                 }
                 break;
         }
+        return Each;
     }
 
     static #execute (callback, el, index, source) {

@@ -1,8 +1,8 @@
 
 class CanvasImage {
     // Načte obrázek.
-    static imageLoad (srcElement, callback) {
-        Elem.from("#canvas-image .image .picture")
+    static imageLoad (srcElement, params, callback) {
+        params['pictureElem']
             .attr({
                 "data-original-height": srcElement.height,
                 "data-original-width": srcElement.width
@@ -10,16 +10,13 @@ class CanvasImage {
         Elem.from("#canvas-image .image .picture").style({
             "backgroundImage": `url("${srcElement.src}")`
         });
-        CanvasImage.imageResize();
+        CanvasImage.imageResize(params['imageElem'], params['pictureElem'], params['formElem']);
         if (callback) {
-            callback(srcElement);
+            callback(params);
         }
     }
 
-    static imageResize () {
-        let imageElem = Elem.from("#canvas-image .image");
-        let pictureElem = Elem.from("#canvas-image .image .picture");
-
+    static imageResize (imageElem, pictureElem, formElem) {
         var height = Math.floor(parseInt(pictureElem.attr("data-original-height")) * imageElem.get().offsetWidth / parseInt(pictureElem.attr("data-original-width")));
 
         imageElem.style("height", height + "px");
@@ -29,7 +26,7 @@ class CanvasImage {
                 "backgroundSize": "cover",
                 "backgroundRepeat": "no-repeat",
             })
-        Elem.from("#form-image-height").value(height);
+            formElem.value(height);
     }
 }
 
@@ -39,7 +36,7 @@ Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 
 // Nastavit defaultní hodnoty:
 Each.all("#form-main *[data-default-value]").do((el) => {
-    el.value = el.getAttribute("data-default-value");
+    Elem.from(el).val(el.getAttribute("data-default-value"));
     Evnt.fire(el, "change", true);
 });
 // Dafaultní hodnota pro datum:

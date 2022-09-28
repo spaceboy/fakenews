@@ -18,8 +18,12 @@
         <script src="js/Accordeon.js"></script>
         <script src="js/Menu.js"></script>
         <script src="js/Splash.js"></script>
+        <script src="js/FileDownload.js"></script>
+        <script src="js/FileUpload.js"></script>
         <script src="js/Examples.js"></script>
         <script src="js/dom-to-image.js"></script>
+        <script src="js/SourceCode.js"></script>
+        <script src="js/FontLoad.js" data-select-fill-options="#form-header-font-family" data-url-googlefonts="https://fonts.googleapis.com/css2?family=Aboreto&family=Aladin&family=Amatic+SC:wght@700&family=Aref+Ruqaa+Ink&family=Ballet&family=Bangers&family=Berkshire+Swash&family=BioRhyme&family=Bubblegum+Sans&family=Bungee+Inline&family=Calistoga&family=Courgette&family=Eagle+Lake&family=Fondamento&family=Grenze+Gotisch&family=Jockey+One&family=Kreon&family=Lilita+One&family=Lobster&family=Norican&family=Oleo+Script&family=Oleo+Script+Swash+Caps&family=Pacifico&family=Pirata+One&family=Playfair+Display+SC&family=Pridi&family=Rammetto+One&family=Rubik+Burned&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Marker+Hatch&family=Rubik+Moonrocks&family=Rye&family=Sedgwick+Ave+Display&family=Shrikhand&family=Spectral+SC&family=Suez+One&family=Tiro+Devanagari+Hindi&display=swap"></script>
         <!--script src="js/wiki2html.js"></script-->
         <meta property="og:url" content="http://fakenews.loc/">
         <meta property="og:title" content="FakeNews!">
@@ -27,6 +31,8 @@
         <!--meta property="og:image" content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg"-->
         <meta property="og:app_id" content="2046451405476029">
         <meta property="og:locale" content="cs_CZ">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     </head>
     <body>
         <div class="container">
@@ -52,17 +58,23 @@
                 <div class="column width-7">
                     <div id="canvas-wrapper">
                         <div id="canvas" class="web horizontal" style="clear: both;">
-                            <h2 id="canvas-title"></h2>
-                            <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime"></span></div>
-                            <div class="perex"></div>
-                            <figure id="canvas-image">
-                                <div class="image"><div class="picture"></div><div class="raster"></div><div class="border"></div></div>
-                                <figcaption id="canvas-image-description"></figcaption>
-                            </figure>
-                            <div class="article"></div>
-                            <!--div class="signature" style="order: 6;">
-                                <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews/</span></p>
-                            </div-->
+                            <div id="header">
+                                <span id="headline"></span>
+                                <span id="subheadline"></span>
+                            </div>
+                            <div id="article">
+                                <h2 id="canvas-title"></h2>
+                                <div class="datetime"><i class="fas fa-calendar-alt"></i> <span id="canvas-datetime"></span></div>
+                                <div class="perex"></div>
+                                <figure id="canvas-image">
+                                    <div class="image"><div class="picture"></div><div class="raster"></div><div class="border"></div></div>
+                                    <figcaption id="canvas-image-description"></figcaption>
+                                </figure>
+                                <div class="article"></div>
+                                <!--div class="signature" style="order: 6;">
+                                    <p class="generator">Vygenerováno pomocí <span class="bold">https://spaceboy.github.io/fakenews/</span></p>
+                                </div-->
+                            </div><!-- /#article -->
                             <div class="filter"></div>
                             <div class="clear"></div>
                         </div><!-- /#canvas -->
@@ -71,6 +83,97 @@
                 <div class="column width-5">
                     <form id="form-main">
                         <table class="editor">
+                            <thead>
+                                <tr>
+                                    <th colspan="3"><h3 data-accordeon="table-block-header">Hlavička novin</h3></th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-block-header">
+                                <!--
+                                <tr>
+                                    <th><label for="form-header-image">Obrázek</label></th>
+                                    <td colspan="2"><input name="header-image" id="form-header-image" type="file"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-image-url">Obrázek (URL)</label></th>
+                                    <td colspan="2"><input name="header-image-url" id="form-header-image-url" type="text" placeholder="Vložte adresu obrázku nebo obrázek"></td>
+                                </tr>
+                                -->
+                                <tr>
+                                    <th><label for="form-header-text">Titul</label></th>
+                                    <td colspan="2"><input name="header-text" id="form-header-text" type="text" placeholder="Sem vepište název novin"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-font-family">Písmo</label></th>
+                                    <td>
+                                        <select name="header-font-family" id="form-header-font-family">
+                                            <option value="Roboto">Roboto</option>
+                                            <option value="Roboto Bold">Roboto (tučné)</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input name="header-font-size" id="form-header-font-size" type="number" title="Velikost písma" placeholder="Velikost v pixelech" min="10" max="150" data-default-value="75" data-postfix="px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-text-align">Zarov.</label> / <label for="form-header-shadow">Stín.</label></th>
+                                    <td>
+                                        <select name="header-text-align" id="form-header-text-align" title="Zarovnání hlavičky" data-default-value="left">
+                                            <option value="left">Doleva</option>
+                                            <option value="center">Na střed</option>
+                                            <option value="right">Doprava</option>
+                                            <option value="justify">Do bloku</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="header-shadow" id="form-header-shadow" title="Stínování hlavičky" data-default-value="none">
+                                            <option value="none">Žádné</option>
+                                            <option value="3px 3px 3px #0004">Lehké</option>
+                                            <option value="3px 3px 3px #0006">Střední</option>
+                                            <option value="3px 3px 0 #fff, 5px 5px 2px #0008">Odsazené lehké</option>
+                                            <option value="3px 3px 0 #fff, 5px 5px 2px #000">Odsazené plné</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2"><label for="form-header-margin-top">Odsazení</label></th>
+                                    <td><input name="header-margin-top" id="form-header-margin-top" type="number" data-postfix="px" data-default-value="0" title="Odsazení nahoře"> <span class="ball-inverse">&uarr;</span></td>
+                                    <td><input name="header-margin-bottom" id="form-header-margin-bottom" type="number" data-postfix="px" data-default-value="0" title="Odsazení dole"> <span class="ball-inverse">&darr;</span></td>
+                                </tr>
+                                <tr>
+                                    <td><input name="header-margin-left" id="form-header-margin-left" type="number" data-postfix="px" data-default-value="0" title="Odsazení vlevo"> <span class="ball-inverse">&larr;</span></td>
+                                    <td><input name="header-margin-right" id="form-header-margin-right" type="number" data-postfix="px" data-default-value="0" title="Odsazení vpravo"> <span class="ball-inverse">&rarr;</span></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-subheadline-text">Podtitulek</label></th>
+                                    <td colspan="2"><input name="header-subheadline-text" id="form-header-subheadline-text" type="text" placeholder="Text podnadpisu"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-subheadline-align">Zarov.</label> / <label for="form-header-subheadline-margin-bottom">odsaz.</label></th>
+                                    <td>
+                                        <select name="header-subheadline-align" id="form-header-subheadline-align" title="Zarovnání podhlavičky">
+                                            <option value="left">Doleva</option>
+                                            <option value="center">Na střed</option>
+                                            <option value="right">Doprava</option>
+                                            <option value="justify">Do bloku</option>
+                                        </select>
+                                    </td>
+                                    <td><input name="header-subheadline-margin-bottom" id="form-header-subheadline-margin-bottom" type="number" data-postfix="px" data-default-value="0" title="Odsazení dole"></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-subheadline-headlinefont">Písmo</label></th>
+                                    <td><label for="form-header-subheadline-headlinefont"><input id="form-header-subheadline-headlinefont" name="header-subheadline-headlinefont" type="checkbox" checked>&nbsp;Písmo hlavičky</label></td>
+                                    <td><label for="form-header-subheadline-font-size"><input name="header-subheadline-font-size" id="form-header-subheadline-font-size" type="number" title="Velikost písma podtitulku" placeholder="Velikost v pixelech" min="5" max="100" data-default-value="20" data-postfix="px"></label></td>
+                                </tr>
+                                <tr>
+                                    <th><label for="form-header-subheadline-inverse">Efekty</label></th>
+                                    <td><label for="form-header-subheadline-inverse"><input id="form-header-subheadline-inverse" name="header-subheadline-inverse" type="checkbox">&nbsp;Inverzní zobrazení</label></td>
+                                    <td><label for="form-header-subheadline-hands"><input id="form-header-subheadline-hands" name="header-subheadline-hands" type="checkbox">&nbsp;Zobrazit ruce</label></td>
+                                </tr>
+                                <tr>
+                                    <th>Zobrazení</th>
+                                    <td colspan="2"><label for="form-header-show"><input id="form-header-show" name="header-show" type="checkbox" data-default-value="no">&nbsp;Zobrazit hlavičku</label></td>
+                            </tbody>
                             <thead>
                                 <tr>
                                     <th colspan="3"><h3 data-accordeon="table-block-title">Titulek &amp; datum</h3></th>
@@ -205,6 +308,10 @@ Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tem
                                     <th><label for="form-article-align">Zarovnání</label></th>
                                     <td colspan="2"><select name="article-align" id="form-article-align" data-default-value="justify"><option value="left">doleva</option><option value="justify">do bloku</option><option value="center">na střed</option><option value="right">doprava</option></select></td>
                                 </tr>
+                                <tr>
+                                    <th><label for="form-article-thin">Zúžení</label></th>
+                                    <td colspan="2"><label for="form-article-thin"><input id="form-article-thin" name="article-thin" type="checkbox" data-default-value="no">&nbsp;Zobrazit článek zúžený</label></td>
+                                </tr>
                             </tbody>
                             <thead>
                                 <tr>
@@ -223,6 +330,14 @@ Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tem
                                 <tr>
                                     <th><label for="form-fileformat">Typ obrázku</label></th>
                                     <td colspan="2"><select id="form-fileformat" name="fileformat"><option value="jpg">JPG</option><option value="png">PNG</option></select></td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td colspan="2"><span class="eye-button" id="source-download"><i class="eye fas fa-download"></i> download zdrojového kódu</span></td>
+                                </tr>
+                                <tr>
+                                    <th></th>
+                                    <td colspan="2"><span class="eye-button" id="source-upload"><i class="eye fas fa-upload"></i> upload zdrojového kódu</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -279,6 +394,12 @@ Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tem
                                 <th>(v-)</th><td>&radic;</td>
                             </tr>
                             <tr>
+                                <th>(/o)</th><td>&oslash;</td>
+                                <th></th><td></td>
+                                <th></th><td></td>
+                                <th></th><td></td>
+                            </tr>
+                            <tr>
                                 <th>(+-)</th><td>&dagger;</td>
                                 <th>(++)</th><td>&Dagger;</td>
                                 <th>(SS)</th><td>&sect;</td>
@@ -309,22 +430,22 @@ Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tem
                                 <th>(C)</th><td>&cent;</td>
                             </tr>
                             <tr>
+                                <th>(o)</th><td>&bull;</td>
                                 <th>(r)</th><td>&reg;</td>
                                 <th>(c)</th><td>&copy;</td>
                                 <th>(tm)</th><td>&trade;</td>
-                                <th></th><td></td>
                             </tr>
                             <tr>
-                                <th>---</th><td>&mdash;</td>
-                                <th>--</th><td>&ndash;</td>
+                                <th title="pomlčka">--</th><td title="pomlčka">&ndash;</td>
+                                <th title="dlouhá pomlčka">---</th><td title="dlouhá pomlčka">&mdash;</td>
                                 <th>^?</th><td>&iquest;</td>
                                 <th>^!</th><td>&iexcl;</td>
                             </tr>
                             <tr>
-                                <th>...</th><td>&hellip;</td>
-                                <th>__</th><td>&#95;</td>
-                                <th>(_)</th><td><sup>*</sup></td>
-                                <th>(-)</th><td><sup>*</sup></td>
+                                <th title="trojtečka">...</th><td title="trojtečka">&hellip;</td>
+                                <th title="typografické podtržítko">__</th><td title="typografické podtržítko">&#95;</td>
+                                <th title="pevná mezera">(_)</th><td title="pevná mezera"><sup>*</sup></td>
+                                <th title="podmíněné dělení slova">(-)</th><td title="podmíněné dělení slova"><sup>*</sup></td>
                             </tr>
                         </tbody>
                     </table>

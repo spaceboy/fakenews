@@ -1,6 +1,7 @@
 class Examples {
     static #example = {
         "vrsovice": {
+            "form-header-show": false,
             "form-title": "Kdo nebyl v sobotu v Ďolíčku, žije zbytečně, shodují se učenci",
             "form-perex": "Nejuznávanější znalci z mezinárodní společnosti životního stylu a(_)vol(-)ného času promluvili jasnou řečí. To nejlepší, co člověk může v(_)Pra(-)ze přes neděli udělat, je návštěva vršovického Ďolíčku.",
             "form-image-url": "gfx/praha-1905.jpg",
@@ -15,6 +16,7 @@ class Examples {
             "form-template": "retro"
         },
         "mars": {
+            "form-header-show": false,
             "form-title": "Zdražují nejen aerolinky. Cestování na Mars podražilo o(_)miliony procent",
             "form-perex": "Náročnější cestovatelé, kteří vyhledávají méně obvyklé turistické des(-)ti(-)na(-)ce, musejí letos do peněženky sáhnout poněkud hlouběji. Alespoň pokud zatouží podívat se s(_)Elonem Muskem na Mars.",
             "form-perex-position": "before",
@@ -52,7 +54,7 @@ class Examples {
             }
             if (el.tagName === "SELECT") {
                 var elem = Elem.from(el);
-                elem.value(elem.options(0).value).trigger(change);
+                Elem.from(el).value(elem.options(0).value).trigger(change);
                 return;
             }
             Elem.from(el).value("").trigger(change);
@@ -74,14 +76,104 @@ class Examples {
         if (Examples.#example[label].hasOwnProperty("form-image-url")) {
             LoadImage.fromUrl(
                 Examples.#example[label]["form-image-url"],
-                (srcElement) => {
-                    CanvasImage.imageLoad(srcElement);
+                (srcElement, onSuccess, onError, onFinally, params) => {
+                    CanvasImage.imageLoad(srcElement, params);
                     Examples.#applyValues(Examples.#example[label]);
                 },
-                (err) => Elem.from("#form-image-url").addClass("error")
+                (err) => Elem.from("#form-image-url").addClass("error"),
+                null,
+                {
+                    "imageElem": Elem.from("#canvas-image .image"),
+                    "pictureElem": Elem.from("#canvas-image .image .picture"),
+                    "formElem": Elem.from("#form-image-height")
+                }
             );
         } else {
             Examples.#applyValues(Examples.#example[label]);
         }
     }
+}
+
+function save () {
+    var data = {};
+    Each
+    .for([
+        "form-header-text",
+        "form-header-font-family",
+        "form-header-font-size",
+        "form-header-text-align",
+        "form-header-shadow",
+        "form-header-margin-top",
+        "form-header-margin-bottom",
+        "form-header-margin-left",
+        "form-header-margin-right",
+        "form-header-subheadline-text",
+        "form-header-subheadline-align",
+        "form-header-subheadline-headlinefont",
+        "form-header-subheadline-font-size",
+        "form-header-subheadline-inverse",
+        "form-header-subheadline-hands",
+        "form-header-show",
+        "form-title",
+        "form-title-align",
+        "form-date",
+        "form-perex",
+        "form-perex-align",
+        "form-perex-position",
+        "form-image-height",
+        "form-image-width",
+        "form-image-align-horizontal",
+        "form-image-filter-blur",
+        "form-image-filter-grayscale",
+        "form-image-filter-sepia",
+        "form-image-filter-contrast",
+        "form-image-blured-border",
+        "form-image-raster",
+        "form-image-raster-size",
+        "form-image-raster-granularity",
+        "form-image-raster-opacity",
+        "form-image-raster-light",
+        "form-image-description",
+        "form-image-author",
+        "form-agency",
+        "form-article",
+        "form-article-align",
+        "form-template",
+        "form-filename",
+        "form-fileformat"
+    ])
+    .do((id) => {
+        data[id] = Elem.from(document.getElementById(id)).value();
+    });
+
+    data["form-image"] = "";
+    data["form-image-url"] = Elem.from("#canvas-image .image .picture").style("backgroundImage");
+
+    data["form-header-image"] = "";
+    data["form-header-image-url"] = "";
+
+    return ""
+        + "#  _____     _          _   _                   _\n"
+        + "# |  ___|_ _| | _____  | \\ | | _____      _____| |\n"
+        + "# | |_ / _` | |/ / _ \\ |  \\| |/ _ \\ \\ /\\ / / __| |\n"
+        + "# |  _| (_| |   <  __/ | |\\  |  __/\\ V  V /\\__ \\_|\n"
+        + "# |_|  \\__,_|_|\\_\\___| |_| \\_|\\___| \\_/\\_/ |___(_)\n"
+        + "#\n"
+        + "# Fake News! web application configuration file.\n"
+        + "# Don't modify it, unless you understand its format.\n"
+        + "#\n"
+        + JSON.stringify(
+            {
+                "header": {
+                    "application": {
+                        "name": "FakeNews",
+                        "url": "https://spaceboy.github.io/fakenews/",
+                        "version": "1.0"
+                    }
+                },
+                "data": data
+            },
+            null,
+            4
+        );
 }
