@@ -88,14 +88,12 @@ class SourceCode {
             .for(this.inputField)
             .do((id) => {
                 var el = document.getElementById(id);
-                Elem
-                    .from(el)
-                    .val(
-                        this.filterApply.hasOwnProperty(id)
-                        ? this.filterApply[id](data["data"][id])
-                        : data["data"][id]
-                    );
-                Evnt.trigger(el, "change", true);
+                if (this.filterApply.hasOwnProperty(id)) {
+                    this.filterApply[id](data["data"][id]);
+                } else {
+                    Elem.from(el).val(data["data"][id]);
+                    Evnt.trigger(el, "change", true);
+                }
             });
         return this;
     }
@@ -171,8 +169,8 @@ class SourceCodeFakeNews extends SourceCode {
 
     filterApply = {
         "form-image-url": (value) => {
-            Elem.from("form-image").val("");
-            Elem.from("form-image-url").val("[Obrázek načtený ze souboru]");
+            Elem.from("#form-image").val("");
+            Elem.from("#form-image-url").val("[Obrázek načtený ze souboru]");
             Elem.from("#canvas-image .image .picture").style("background-image", value);
         }
     }
