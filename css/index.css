@@ -197,6 +197,11 @@ span.ball-inverse {
   top: 0;
   width: 100%;
 }
+#canvas .image .picture.flipped {
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
 #canvas .image .raster {
   /* Rastr: */
   background-image: radial-gradient(black 35%, transparent 35%), radial-gradient(black 35%, transparent 35%);

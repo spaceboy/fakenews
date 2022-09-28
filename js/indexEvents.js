@@ -198,6 +198,9 @@ Evnt.on("#form-main", {
                     Elem.valueById("form-image-align-horizontal") + " " + Elem.valueById("form-image-align-vertical")
                 );
                 break;
+            case "image-flip-horizontally":
+                Elem.from("#canvas-image .image .picture").switchClass("flipped", t.checked);
+                break;
             case "blur":
             case "grayscale":
             case "sepia":
