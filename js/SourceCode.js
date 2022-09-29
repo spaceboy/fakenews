@@ -139,8 +139,6 @@ class SourceCodeFakeNews extends SourceCode {
         "form-perex",
         "form-perex-align",
         "form-perex-position",
-        "form-image-width",
-        "form-image-height",
         "form-image-align-horizontal",
         "form-image-flip-horizontally",
         "form-image-filter-blur",
@@ -161,7 +159,9 @@ class SourceCodeFakeNews extends SourceCode {
         "form-template",
         "form-filename",
         "form-fileformat",
-        "form-image-url"
+        "form-image-url",
+        "form-image-width",
+        "form-image-height"
     ]
 
     filterGet = {
