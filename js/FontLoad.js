@@ -1,5 +1,10 @@
 class FontLoad {
 
+    // Name of SCRIPT HTML attribute containing query-selector of HTML SELECT tags designated to create/extend its OPTION list.
+    attributeNameElementsSelector = "data-font-load-select-elements";
+
+    attributeNameOptionsMode = "data-font-load-mode";
+
     scriptNode;
 
     constructor () {
@@ -15,22 +20,33 @@ class FontLoad {
         s.innerHTML = content;
         this.scriptNode.parentNode.insertBefore(s, this.scriptNode);
 
-        // Create OPTIONS list and place it into SELECT element:
-        if (this.scriptNode.hasAttribute("data-select-fill-options")) {
-            var a = [], o = [], r = s.sheet.cssRules;
-            for (var i = 0, l = r.length; i < l; ++i) {
-                var ff = r[i].style.cssText.match(/font-family: \"([^\"]*)\"/);
-                if (ff && ff.length >= 2) {
-                    a[ff[1]] = '';
-                }
-            };
-            for (var i in a) {
-                o.push(`<option value="${i}">${i}</option>`);
-            };
-            for (var e of document.querySelectorAll(this.scriptNode.getAttribute("data-select-fill-options"))) {
-                e.innerHTML = o.join("");
-            };
+        if (!this.scriptNode.hasAttribute(this.attributeNameElementsSelector)) {
+            return;
         }
+
+        // Create OPTIONS list:
+        var a = [], o = [], r = s.sheet.cssRules;
+        for (var i = 0, l = r.length; i < l; ++i) {
+            var ff = r[i].style.cssText.match(/font-family: \"([^\"]*)\"/);
+            if (ff && ff.length >= 2) {
+                a[ff[1]] = '';
+            }
+        };
+
+        // Place OPTIONS list to target elements
+        for (var i in a) {
+            o.push(`<option value="${i}">${i}</option>`);
+        };
+        for (var e of document.querySelectorAll(this.scriptNode.getAttribute(this.attributeNameElementsSelector))) {
+            switch (this.scriptNode.getAttribute(this.attributeNameOptionsMode)) {
+                case "replace":
+                    e.innerHTML = o.join("");
+                    break;
+                case "append":
+                default:
+                    e.innerHTML = e.innerHTML + o.join("");
+            }
+        };
     }
 
     load (url) {
