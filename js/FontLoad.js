@@ -17,7 +17,7 @@ class FontLoad {
 
         // Create OPTIONS list and place it into SELECT element:
         if (this.scriptNode.hasAttribute("data-select-fill-options")) {
-            var a = [], o = [], r = document.querySelector("head > style").sheet.cssRules;
+            var a = [], o = [], r = s.sheet.cssRules;
             for (var i = 0, l = r.length; i < l; ++i) {
                 var ff = r[i].style.cssText.match(/font-family: \"([^\"]*)\"/);
                 if (ff && ff.length >= 2) {
