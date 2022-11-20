@@ -108,32 +108,28 @@ span.ball-inverse
         #subheadline
             display: block
             line-height: 1em
-            &.hands
-                &::before
-                    color: #666
-                    content:"\f0a4"
-                    float: left
-                    font-family: "Font Awesome 5 Free"
-                    margin-left: 0
-                    margin-right: .5em
-                &::after
-                    color: #666
-                    content:"\f0a5"
-                    float: right
-                    font-family: "Font Awesome 5 Free"
-                    margin-left: .5em
-                    margin-right: 0
+            &::before
+                color: #666
+                float: left
+                font-family: "Font Awesome 5 Free"
+                margin-left: 0
+                margin-right: .5em
+            &::after
+                color: #666
+                float: right
+                font-family: "Font Awesome 5 Free"
+                margin-left: .5em
+                margin-right: 0
             &.inverse
                 background: #666
                 color: white
                 font-weight: bold
                 padding: .25em .5em
                 width: calc(100% - 1em)
-                &.hands
-                    &::before
-                        color: white
-                    &::after
-                        color: white
+                &::before
+                    color: white
+                &::after
+                    color: white
 
     #article
         &.thin
@@ -644,3 +640,99 @@ table.entities-list
         & .eye
             background: #222
             box-shadow: 0 0 7px #0004
+
+
+/* ------------------------------------------------------ */
+/* Subheadline decorations                                */
+/* ------------------------------------------------------ */
+#subheadline
+    &.hands
+        &::before
+            content: "\f0a4"
+        &::after
+            content: "\f0a5"
+    &.yin-yang
+        &::before
+            content: "\f6ad"
+        &::after
+            content: "\f6ad"
+    &.wine-glass
+        &::before
+            content: "\f5ce"
+        &::after
+            content: "\f5ce"
+    &.venus
+        &::before
+            content: "\f221"
+        &::after
+            content: "\f221"
+    &.mars
+        &::before
+            content: "\f222"
+        &::after
+            content: "\f222"
+    &.user
+        &::before
+            content: "\f007"
+        &::after
+            content: "\f007"
+    &.trophy
+        &::before
+            content: "\f091"
+        &::after
+            content: "\f091"
+    &.tree
+        &::before
+            content: "\f1bb"
+        &::after
+            content: "\f1bb"
+    &.theater
+        &::before
+            content: "\f630"
+        &::after
+            content: "\f630"
+    &.stethoscope
+        &::before
+            content: "\f0f1"
+        &::after
+            content: "\f0f1"
+    &.star
+        &::before
+            content: "\f005"
+        &::after
+            content: "\f005"
+    &.spider
+        &::before
+            content: "\f717"
+        &::after
+            content: "\f717"
+    &.skull
+        &::before
+            content: "\f54c"
+        &::after
+            content: "\f54c"
+    &.mask
+        &::before
+            content: "\f6fa"
+        &::after
+            content: "\f6fa"
+    &.futbol
+        &::before
+            content: "\f1e3"
+        &::after
+            content: "\f1e3"
+    &.fire
+        &::before
+            content: "\f7e4"
+        &::after
+            content: "\f7e4"
+    &.compass
+        &::before
+            content: "\f14e"
+        &::after
+            content: "\f14e"
+    &.lightbulb
+        &::before
+            content: "\f0eb"
+        &::after
+            content: "\f0eb"

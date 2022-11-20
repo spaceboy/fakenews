@@ -118,17 +118,15 @@ span.ball-inverse {
   display: block;
   line-height: 1em;
 }
-#canvas #header #subheadline.hands::before {
+#canvas #header #subheadline::before {
   color: #666;
-  content: "\f0a4";
   float: left;
   font-family: "Font Awesome 5 Free";
   margin-left: 0;
   margin-right: 0.5em;
 }
-#canvas #header #subheadline.hands::after {
+#canvas #header #subheadline::after {
   color: #666;
-  content: "\f0a5";
   float: right;
   font-family: "Font Awesome 5 Free";
   margin-left: 0.5em;
@@ -141,10 +139,10 @@ span.ball-inverse {
   padding: 0.25em 0.5em;
   width: calc(100% - 1em);
 }
-#canvas #header #subheadline.inverse.hands::before {
+#canvas #header #subheadline.inverse::before {
   color: white;
 }
-#canvas #header #subheadline.inverse.hands::after {
+#canvas #header #subheadline.inverse::after {
   color: white;
 }
 #canvas #article.thin {
@@ -710,4 +708,116 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 .eye-button:hover .eye {
   background: #222;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.2666666667);
+}
+
+/* ------------------------------------------------------ */
+/* Subheadline decorations                                */
+/* ------------------------------------------------------ */
+#subheadline.hands::before {
+  content: "\f0a4";
+}
+#subheadline.hands::after {
+  content: "\f0a5";
+}
+#subheadline.yin-yang::before {
+  content: "\f6ad";
+}
+#subheadline.yin-yang::after {
+  content: "\f6ad";
+}
+#subheadline.wine-glass::before {
+  content: "\f5ce";
+}
+#subheadline.wine-glass::after {
+  content: "\f5ce";
+}
+#subheadline.venus::before {
+  content: "\f221";
+}
+#subheadline.venus::after {
+  content: "\f221";
+}
+#subheadline.mars::before {
+  content: "\f222";
+}
+#subheadline.mars::after {
+  content: "\f222";
+}
+#subheadline.user::before {
+  content: "\f007";
+}
+#subheadline.user::after {
+  content: "\f007";
+}
+#subheadline.trophy::before {
+  content: "\f091";
+}
+#subheadline.trophy::after {
+  content: "\f091";
+}
+#subheadline.tree::before {
+  content: "\f1bb";
+}
+#subheadline.tree::after {
+  content: "\f1bb";
+}
+#subheadline.theater::before {
+  content: "\f630";
+}
+#subheadline.theater::after {
+  content: "\f630";
+}
+#subheadline.stethoscope::before {
+  content: "\f0f1";
+}
+#subheadline.stethoscope::after {
+  content: "\f0f1";
+}
+#subheadline.star::before {
+  content: "\f005";
+}
+#subheadline.star::after {
+  content: "\f005";
+}
+#subheadline.spider::before {
+  content: "\f717";
+}
+#subheadline.spider::after {
+  content: "\f717";
+}
+#subheadline.skull::before {
+  content: "\f54c";
+}
+#subheadline.skull::after {
+  content: "\f54c";
+}
+#subheadline.mask::before {
+  content: "\f6fa";
+}
+#subheadline.mask::after {
+  content: "\f6fa";
+}
+#subheadline.futbol::before {
+  content: "\f1e3";
+}
+#subheadline.futbol::after {
+  content: "\f1e3";
+}
+#subheadline.fire::before {
+  content: "\f7e4";
+}
+#subheadline.fire::after {
+  content: "\f7e4";
+}
+#subheadline.compass::before {
+  content: "\f14e";
+}
+#subheadline.compass::after {
+  content: "\f14e";
+}
+#subheadline.lightbulb::before {
+  content: "\f0eb";
+}
+#subheadline.lightbulb::after {
+  content: "\f0eb";
 }/*# sourceMappingURL=index.css.map */

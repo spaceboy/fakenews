@@ -96,8 +96,30 @@ Evnt.on("#form-main", {
             case "header-subheadline-inverse":
                 Elem.from("#subheadline").switchClass("inverse", t.checked);
                 break;
-            case "header-subheadline-hands":
-                Elem.from("#subheadline").switchClass("hands", t.checked);
+            case "header-subheadline-style":
+                Elem.from("#subheadline").toggleClass(
+                    v,
+                    [
+                        "hands",
+                        "yin-yang",
+                        "wine-glass",
+                        "venus",
+                        "mars",
+                        "user",
+                        "trophy",
+                        "tree",
+                        "theater",
+                        "stethoscope",
+                        "star",
+                        "spider",
+                        "skull",
+                        "mask",
+                        "futbol",
+                        "fire",
+                        "compass",
+                        "lightbulb"
+                    ]
+                );
                 break;
             case "header-show":
                 Elem.from("#header").style("display", (t.checked ? "block" : "none"));
