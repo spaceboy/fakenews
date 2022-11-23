@@ -40,17 +40,6 @@ Evnt.on("#form-main", {
                 Elem.from("#form-header-image-url").value("");
                 break;
             */
-            case "header-text":
-                var headline = StringConvert.line(v);
-                Elem.from("#headline").html(headline);
-                if (headline) {
-                    document.title = `${headline} [Fakenews]`
-                    .replace(/\&[^;]*;/g, "")
-                    .replace(/\<[^\>]*\>/g, "")
-                    .trim();
-                }
-                Elem.from("#form-header-show").checked(headline).trigger("change", {"bubbles": true});
-                break;
             case "header-font-family":
                 Elem.from("#headline").style("font-family", v);
                 if (Elem.from("#form-header-subheadline-headlinefont").get().checked) {
@@ -77,9 +66,6 @@ Evnt.on("#form-main", {
                 break;
             case "header-shadow":
                 Elem.from("#headline").style("textShadow", v);
-                break;
-            case "header-subheadline-text":
-                Elem.from("#subheadline").html(StringConvert.line(v));
                 break;
             case "header-subheadline-align":
                 Elem.from("#subheadline").style("text-align", v);
@@ -126,9 +112,6 @@ Evnt.on("#form-main", {
                 Elem.from("#form-article-thin").checked(t.checked).trigger("change", {"bubbles": true});
                 break;
             // Titulek & datum:
-            case "title":
-                Elem.from("#canvas-title").html(StringConvert.line(v));
-                break;
             case "title-align":
                 Elem.from("#canvas-title").style("textAlign", v);
                 break;
@@ -142,9 +125,6 @@ Evnt.on("#form-main", {
                 }
                 break;
             // Perex:
-            case "perex":
-                Elem.from("#canvas .perex").html(StringConvert.multiline(v));
-                break;
             case "perex-align":
                 Elem.from("#canvas .perex").style("textAlign", v);
                 break;
@@ -267,13 +247,6 @@ Evnt.on("#form-main", {
                 break;
             case "agency":
             // Článek:
-            case "article":
-                Elem.from("#canvas .article").html((function () {
-                    var agency = Elem.valueById("form-agency").trim();
-                    var article = Elem.valueById("form-article");
-                    return StringConvert.multiline(agency ? `<b>${agency} &bull;</b> ` + article : article);
-                })());
-                break;
             case "article-align":
                 Elem.from("#canvas .article").style("textAlign", v);
                 break;
@@ -288,6 +261,43 @@ Evnt.on("#form-main", {
             // Šablona:
             case "template":
                 Elem.from("#canvas").toggleClass(v, ["web", "press", "retro", "vintage", "vintage2", "historic"]);
+                break;
+        }
+    }
+});
+
+Evnt.on("#form-main", {
+    "keyup": (e) => {
+        e.preventDefault();
+        let t = e.target;
+        let v = Elem.from(t).value();
+        switch (t.getAttribute("name")) {
+            case "header-text":
+                var headline = StringConvert.line(v);
+                Elem.from("#headline").html(headline);
+                if (headline) {
+                    document.title = `${headline} [Fakenews]`
+                    .replace(/\&[^;]*;/g, "")
+                    .replace(/\<[^\>]*\>/g, "")
+                    .trim();
+                }
+                Elem.from("#form-header-show").checked(headline).trigger("change", {"bubbles": true});
+                break;
+            case "header-subheadline-text":
+                Elem.from("#subheadline").html(StringConvert.line(v));
+                break;
+            case "title":
+                Elem.from("#canvas-title").html(StringConvert.line(v));
+                break;
+            case "perex":
+                Elem.from("#canvas .perex").html(StringConvert.multiline(v));
+                break;
+            case "article":
+                Elem.from("#canvas .article").html((function () {
+                    var agency = Elem.valueById("form-agency").trim();
+                    var article = Elem.valueById("form-article");
+                    return StringConvert.multiline(agency ? `<b>${agency} &bull;</b> ` + article : article);
+                })());
                 break;
         }
     }

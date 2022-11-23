@@ -131,7 +131,7 @@ class SourceCodeFakeNews extends SourceCode {
         "form-header-subheadline-headlinefont",
         "form-header-subheadline-font-size",
         "form-header-subheadline-inverse",
-        "form-header-subheadline-hands",
+        "form-header-subheadline-style",
         "form-header-show",
         "form-title",
         "form-title-align",
