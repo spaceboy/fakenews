@@ -249,6 +249,7 @@ class Elem {
         return this;
     }
 
+    // Add or remove given CSS class to/from active element.
     switchClass (className, set) {
         if (set) {
             return this.addClass(className);
