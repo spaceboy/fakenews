@@ -51,3 +51,7 @@ Evnt.fire(
 
 // Inicializace menu:
 Menu.init("#menu-main");
+
+// Inicializace editorů:
+new Editor(document.getElementById("form-perex"));
+new Editor(document.getElementById("form-article"));
