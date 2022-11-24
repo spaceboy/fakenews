@@ -71,7 +71,7 @@ Evnt.on("#form-main", {
                 Elem.from("#subheadline").style("text-align", v);
                 break;
             case "header-subheadline-margin-bottom":
-                Elem.from("#subheadline").style("margin-bottom", v);
+                Elem.from("#canvas-title").style("margin-top", v);
                 break;
             case "header-subheadline-headlinefont":
                 Elem.from("#subheadline").style("font-family", (t.checked ? Elem.from("#headline").style("font-family") : "inherit"));
