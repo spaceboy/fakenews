@@ -37,7 +37,7 @@ Evnt.fire('h3[data-accordeon="table-block-title"]', "click");
 // Nastavit defaultní hodnoty:
 Each.all("#form-main *[data-default-value]").do((el) => {
     Elem.from(el).val(el.getAttribute("data-default-value"));
-    Evnt.fire(el, "change", true);
+    Evnt.fire(el, (el.hasAttribute("data-load-event") ? el.getAttribute("data-load-event") : "change"), true);
 });
 // Dafaultní hodnota pro datum:
 Evnt.fire(
