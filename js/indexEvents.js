@@ -236,16 +236,6 @@ Evnt.on("#form-main", {
                     "opacity": Elem.valueById("form-image-raster-opacity")
                 });
                 break;
-            case "image-description":
-            case "image-author":
-                let text = StringConvert.line(Elem.valueById("form-image-description").trim());
-                var author = Elem.valueById("form-image-author").trim();
-                if (text && author) {
-                    author = ` &bull; ${author}`;
-                }
-                Elem.from("#canvas-image-description").html(text + author);
-                break;
-            case "agency":
             // Článek:
             case "article-align":
                 Elem.from("#canvas .article").style("textAlign", v);
@@ -292,6 +282,16 @@ Evnt.on("#form-main", {
             case "perex":
                 Elem.from("#canvas .perex").html(StringConvert.multiline(v));
                 break;
+            case "image-description":
+            case "image-author":
+                let text = StringConvert.line(Elem.valueById("form-image-description").trim());
+                var author = Elem.valueById("form-image-author").trim();
+                if (text && author) {
+                    author = ` &bull; ${author}`;
+                }
+                Elem.from("#canvas-image-description").html(text + author);
+                break;
+            case "agency":
             case "article":
                 Elem.from("#canvas .article").html((function () {
                     var agency = Elem.valueById("form-agency").trim();

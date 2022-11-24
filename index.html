@@ -101,7 +101,7 @@
                                 -->
                                 <tr>
                                     <th><label for="form-header-text">Titul</label></th>
-                                    <td colspan="2"><input name="header-text" id="form-header-text" type="text" placeholder="Sem vepište název novin"></td>
+                                    <td colspan="2"><input name="header-text" id="form-header-text" type="text" placeholder="Sem vepište název novin" data-load-event="keyup"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-header-font-family">Písmo</label></th>
@@ -154,7 +154,7 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-header-subheadline-text">Podtitulek</label></th>
-                                    <td colspan="2"><input name="header-subheadline-text" id="form-header-subheadline-text" type="text" placeholder="Text podnadpisu"></td>
+                                    <td colspan="2"><input name="header-subheadline-text" id="form-header-subheadline-text" type="text" placeholder="Text podnadpisu" data-load-event="keyup"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-header-subheadline-align">Zarov.</label> / <label for="form-header-subheadline-margin-bottom">odsaz.</label></th>
@@ -212,7 +212,7 @@
                             <tbody id="table-block-title">
                                 <tr>
                                     <th><label for="form-title">Titulek</label></th>
-                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"></td>
+                                    <td colspan="2"><input name="title" id="form-title" type="text" placeholder="Sem vepište titulek zprávy" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit" data-load-event="keyup"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-title-align">Zarovnání</label></th>
@@ -231,7 +231,7 @@
                             <tbody id="table-block-perex">
                                 <tr>
                                     <th><label for="form-perex">Perex</label></th>
-                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est."></textarea></td>
+                                    <td colspan="2"><textarea name="perex" id="form-perex" placeholder="Sem vepište perex, zvýrazněný první odstavec článku" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Donec ipsum massa, ullamcorper in, auctor et, scelerisque sed, est." data-load-event="keyup"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-perex-align">Zarovnání</label></th>
@@ -315,11 +315,11 @@
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-description">Popisek</label></th>
-                                    <td colspan="2"><textarea name="image-description" id="form-image-description" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit"></textarea></td>
+                                    <td colspan="2"><textarea name="image-description" id="form-image-description" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit" data-load-event="keyup"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-image-author">Autor</label></th>
-                                    <td colspan="2"><input name="image-author" id="form-image-author" type="text" value="foto ČTK" placeholder="foto ČTK"></textarea></td>
+                                    <td colspan="2"><input name="image-author" id="form-image-author" type="text" placeholder="foto ČTK" data-load-event="keyup"></textarea></td>
                                 </tr>
                             </tbody>
                             <thead>
@@ -330,13 +330,13 @@
                             <tbody id="table-block-article">
                                 <tr>
                                     <th><label for="form-agency">Agentura</label></th>
-                                    <td colspan="2"><input name="agency" id="form-agency" type="text" placeholder="Praha (ČTK)"></td>
+                                    <td colspan="2"><input name="agency" id="form-agency" type="text" placeholder="Praha (ČTK)" data-load-event="keyup"></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-article">Článek</label></th>
                                     <td colspan="2"><textarea name="article" id="form-article" data-default-value="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam eget nisl. Vivamus luctus egestas leo. Morbi leo mi, nonummy eget tristique non, rhoncus non leo. Maecenas lorem. Etiam dui sem, fermentum vitae, sagittis id, malesuada in, quam. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Nullam faucibus mi quis velit. Nulla quis diam. Nulla accumsan, elit sit amet varius semper, nulla mauris mollis quam, tempor suscipit diam nulla vel leo. Pellentesque sapien. Nulla quis diam.
 Nunc dapibus tortor vel mi dapibus sollicitudin. Nulla est. Nulla non lectus sed nisl molestie malesuada. Curabitur bibendum justo non orci. Fusce aliquam vestibulum ipsum. Mauris elementum mauris vitae tortor. In sem justo, commodo ut, suscipit at, pharetra vitae, orci. In convallis. Sed convallis magna eu sem. Maecenas lorem. Etiam neque. Nullam lectus justo, vulputate eget mollis sed, tempor sed magna. Duis sapien nunc, commodo et, interdum suscipit, sollicitudin et, dolor. Etiam bibendum elit eget erat. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci.
-Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean fermentum risus id tortor. Suspendisse nisl. Nunc auctor."></textarea></td>
+Mauris dolor felis, sagittis at, luctus sed, aliquam non, tellus. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Aenean fermentum risus id tortor. Suspendisse nisl. Nunc auctor." data-load-event="keyup"></textarea></td>
                                 </tr>
                                 <tr>
                                     <th><label for="form-article-align">Zarovnání</label></th>

@@ -266,7 +266,9 @@ class Elem {
         for (var i = 0, l = classList.length; i < l; ++i) {
             this.element.classList.remove(classList[i]);
         }
-        this.element.classList.add(className);
+        if (className) {
+            this.element.classList.add(className);
+        }
         return this;
     }
 

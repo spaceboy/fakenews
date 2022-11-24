@@ -92,7 +92,7 @@ class SourceCode {
                     this.filterApply[id](data["data"][id]);
                 } else {
                     Elem.from(el).val(data["data"][id]);
-                    Evnt.trigger(el, "change", true);
+                    Evnt.trigger(el, (el.hasAttribute("data-load-event") ? el.getAttribute("data-load-event") : "change"), true);
                 }
             });
         return this;
