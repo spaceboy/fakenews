@@ -3,6 +3,15 @@
 /* Načtení fontů                                          */
 /* ------------------------------------------------------ */
 @font-face {
+  font-family: "Boecklins-universe";
+  src: url("fonts/Boecklins Universe.ttf") format("truetype");
+}
+.font-boecklins-universe {
+  font-family: "Boecklins-universe";
+  font-size: 100%;
+}
+
+@font-face {
   font-family: "Volkszeitung-21";
   src: url("fonts/Volkszeitung 21.ttf") format("truetype");
 }
@@ -48,6 +57,15 @@
 }
 
 @font-face {
+  font-family: "Roboto";
+  src: url("fonts/Roboto-Regular.ttf") format("truetype");
+}
+.font-roboto-regular,
+.font-cardo-regular b {
+  font-family: "Roboto Bold";
+}
+
+@font-face {
   font-family: "Roboto Bold";
   src: url("fonts/Roboto-Bold.ttf") format("truetype");
 }
@@ -64,7 +82,6 @@
   font-family: "Roboto Bold";
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Aladin&family=Amatic+SC:wght@700&family=Aref+Ruqaa+Ink&family=Bangers&family=Berkshire+Swash&family=BioRhyme&family=Bubblegum+Sans&family=Bungee+Inline&family=Calistoga&family=Courgette&family=Eagle+Lake&family=Fondamento&family=Grenze+Gotisch&family=Jockey+One&family=Kreon&family=Lilita+One&family=Lobster&family=Norican&family=Oleo+Script&family=Oleo+Script+Swash+Caps&family=Pacifico&family=Pirata+One&family=Playfair+Display+SC&family=Pridi&family=Rammetto+One&family=Rubik+Burned&family=Rubik+Dirt&family=Rubik+Distressed&family=Rubik+Marker+Hatch&family=Rubik+Moonrocks&family=Rye&family=Sedgwick+Ave+Display&family=Shrikhand&family=Spectral+SC&family=Suez+One&family=Tiro+Devanagari+Hindi&display=swap'); */
 /* ------------------------------------------------------ */
 /* Přepsání stylů z "global" šablony                      */
 /* ------------------------------------------------------ */
@@ -274,6 +291,7 @@ span.ball-inverse {
 }
 
 #canvas.press,
+#canvas.press-bask,
 #canvas.retro,
 #canvas.vintage,
 #canvas.vintage2,
@@ -282,6 +300,7 @@ span.ball-inverse {
   font-family: serif;
 }
 #canvas.press #canvas-title,
+#canvas.press-bask #canvas-title,
 #canvas.retro #canvas-title,
 #canvas.vintage #canvas-title,
 #canvas.vintage2 #canvas-title,
@@ -290,6 +309,7 @@ span.ball-inverse {
   font-family: serif;
 }
 #canvas.press .perex,
+#canvas.press-bask .perex,
 #canvas.retro .perex,
 #canvas.vintage .perex,
 #canvas.vintage2 .perex,
@@ -297,6 +317,7 @@ span.ball-inverse {
   text-align: left;
 }
 #canvas.press #canvas-image .image .border,
+#canvas.press-bask #canvas-image .image .border,
 #canvas.retro #canvas-image .image .border,
 #canvas.vintage #canvas-image .image .border,
 #canvas.vintage2 #canvas-image .image .border,
@@ -304,6 +325,7 @@ span.ball-inverse {
   border-color: white;
 }
 #canvas.press .article p,
+#canvas.press-bask .article p,
 #canvas.retro .article p,
 #canvas.vintage .article p,
 #canvas.vintage2 .article p,
@@ -312,6 +334,7 @@ span.ball-inverse {
   text-indent: 1em;
 }
 #canvas.press .article p:first-child,
+#canvas.press-bask .article p:first-child,
 #canvas.retro .article p:first-child,
 #canvas.vintage .article p:first-child,
 #canvas.vintage2 .article p:first-child,
@@ -333,6 +356,24 @@ span.ball-inverse {
 }
 #canvas.press .filter {
   background: rgba(0, 0, 0, 0.031372549);
+}
+
+#canvas.press-bask {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+}
+#canvas.press-bask #canvas-title {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  line-height: 1.25em;
+}
+#canvas.press-bask .perex {
+  font-family: "Libre Baskerville";
+  font-weight: 400;
+  font-weight: normal;
+}
+#canvas.press-bask .filter {
+  background: rgba(240, 160, 32, 0.0156862745);
 }
 
 #canvas.retro {
@@ -588,8 +629,7 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 }
 #splash-screen > div > i,
 #popup-background > div > i {
-  -webkit-animation: splash-screen 3s infinite;
-          animation: splash-screen 3s infinite;
+  animation: splash-screen 3s infinite;
   border-radius: 50%;
   border: 0.25em solid darkgray;
   display: inline-block;
@@ -603,18 +643,6 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
   color: whitesmoke;
   cursor: wait;
   z-index: 10000;
-}
-
-@-webkit-keyframes splash-screen {
-  0% {
-    transform: rotate(0);
-  }
-  85% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
 }
 
 @keyframes splash-screen {
@@ -652,18 +680,6 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
   -o-object-fit: contain;
      object-fit: contain;
   width: 100%;
-}
-
-@-webkit-keyframes flashing {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 @keyframes flashing {

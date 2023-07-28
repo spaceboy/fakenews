@@ -250,7 +250,7 @@ Evnt.on("#form-main", {
                 break;
             // Šablona:
             case "template":
-                Elem.from("#canvas").toggleClass(v, ["web", "press", "retro", "vintage", "vintage2", "historic"]);
+                Elem.from("#canvas").toggleClass(v, ["web", "press-bask", "press", "retro", "vintage", "vintage2", "historic"]);
                 break;
         }
     }
