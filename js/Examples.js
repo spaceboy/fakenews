@@ -28,7 +28,7 @@ class Examples {
             "form-image-filter-grayscale": 100,
             "form-image-raster": true,
             "form-image-raster-light": true,
-            "form-image-description": "V roce 1911 se výlet na Mars dal pořídit za deset amerických centů. Nyní vyjde na statisíce dolarů",
+            "form-image-description": "V roce 1911 se výlet na Mars dal pořídit za deset amerických centů. Nyní vyjde na statisíce dolarů.",
             "form-image-author": "",
             "form-article": "",
             "form-template": "press",
@@ -36,7 +36,6 @@ class Examples {
     };
 
     static #applyValues (data) {
-        var change = new Event("change", {"bubbles": true});
         Each.of("#form-main", "input, select, textarea").do((el) => {
             if (el.id === "form-image") {
                 return;
@@ -44,20 +43,24 @@ class Examples {
             if (el.id === "form-image-url") {
                 return;
             }
+
+            let elem = Elem.from(el);
+            let change = new Event(
+                (el.hasAttribute("data-load-event") ? el.getAttribute("data-load-event") : "change"),
+                {
+                    "bubbles": true
+                }
+            );
+            var value = "";
+
             if (data.hasOwnProperty(el.id)) {
-                Elem.from(el).value(data[el.id]).trigger(change);
-                return;
+                value = data[el.id];
+            } else if (el.hasAttribute("data-default-value")) {
+                value = el.getAttribute("data-default-value");
+            } else if (el.tagName === "SELECT") {
+                value = elem.options(0).value;
             }
-            if (el.hasAttribute("data-default-value")) {
-                Elem.from(el).value(el.getAttribute("data-default-value")).trigger(change);
-                return;
-            }
-            if (el.tagName === "SELECT") {
-                var elem = Elem.from(el);
-                Elem.from(el).value(elem.options(0).value).trigger(change);
-                return;
-            }
-            Elem.from(el).value("").trigger(change);
+            Elem.from(el).val(value).trigger(change);
         });
         // Oprava pro speciální případy (např. přepsané změnou další položky):
         Each.for(["form-image-height"]).do((id) => {
@@ -77,7 +80,14 @@ class Examples {
             LoadImage.fromUrl(
                 Examples.#example[label]["form-image-url"],
                 (srcElement, onSuccess, onError, onFinally, params) => {
-                    CanvasImage.imageLoad(srcElement, params);
+                    CanvasImage.imageLoad(
+                        srcElement,
+                        {
+                            "imageElem": Elem.from("#canvas-image .image"),
+                            "pictureElem": Elem.from("#canvas-image .image .picture"),
+                            "formElem": Elem.from("#form-image-height")
+                        }
+                    );
                     Examples.#applyValues(Examples.#example[label]);
                 },
                 (err) => Elem.from("#form-image-url").addClass("error"),
@@ -96,53 +106,53 @@ class Examples {
 
 function save () {
     var data = {};
-    Each
-    .for([
-        "form-header-text",
-        "form-header-font-family",
-        "form-header-font-size",
-        "form-header-text-align",
-        "form-header-shadow",
-        "form-header-margin-top",
-        "form-header-margin-bottom",
-        "form-header-margin-left",
-        "form-header-margin-right",
-        "form-header-subheadline-text",
-        "form-header-subheadline-align",
-        "form-header-subheadline-headlinefont",
-        "form-header-subheadline-font-size",
-        "form-header-subheadline-inverse",
-        "form-header-subheadline-hands",
-        "form-header-show",
-        "form-title",
-        "form-title-align",
-        "form-date",
-        "form-perex",
-        "form-perex-align",
-        "form-perex-position",
-        "form-image-height",
-        "form-image-width",
-        "form-image-align-horizontal",
-        "form-image-filter-blur",
-        "form-image-filter-grayscale",
-        "form-image-filter-sepia",
-        "form-image-filter-contrast",
-        "form-image-blured-border",
-        "form-image-raster",
-        "form-image-raster-size",
-        "form-image-raster-granularity",
-        "form-image-raster-opacity",
-        "form-image-raster-light",
-        "form-image-description",
-        "form-image-author",
-        "form-agency",
-        "form-article",
-        "form-article-align",
-        "form-template",
-        "form-filename",
-        "form-fileformat"
-    ])
-    .do((id) => {
+    Each.for(
+        [
+            "form-header-text",
+            "form-header-font-family",
+            "form-header-font-size",
+            "form-header-text-align",
+            "form-header-shadow",
+            "form-header-margin-top",
+            "form-header-margin-bottom",
+            "form-header-margin-left",
+            "form-header-margin-right",
+            "form-header-subheadline-text",
+            "form-header-subheadline-align",
+            "form-header-subheadline-headlinefont",
+            "form-header-subheadline-font-size",
+            "form-header-subheadline-inverse",
+            "form-header-subheadline-hands",
+            "form-header-show",
+            "form-title",
+            "form-title-align",
+            "form-date",
+            "form-perex",
+            "form-perex-align",
+            "form-perex-position",
+            "form-image-height",
+            "form-image-width",
+            "form-image-align-horizontal",
+            "form-image-filter-blur",
+            "form-image-filter-grayscale",
+            "form-image-filter-sepia",
+            "form-image-filter-contrast",
+            "form-image-blured-border",
+            "form-image-raster",
+            "form-image-raster-size",
+            "form-image-raster-granularity",
+            "form-image-raster-opacity",
+            "form-image-raster-light",
+            "form-image-description",
+            "form-image-author",
+            "form-agency",
+            "form-article",
+            "form-article-align",
+            "form-template",
+            "form-filename",
+            "form-fileformat"
+        ]
+    ).do((id) => {
         data[id] = Elem.from(document.getElementById(id)).value();
     });
 

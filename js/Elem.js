@@ -24,7 +24,6 @@ class Elem {
             return;
         }
         this.element = element;
-        return;
     }
 
     static create (name) {
@@ -316,7 +315,7 @@ class Elem {
         if (this.element.type === "checkbox") {
             this.element.checked = (
                 value === true
-                || ((typeof value === "number" || value instanceof Number) && (value != 0))
+                || ((typeof value === "number" || value instanceof Number) && (value !== 0))
                 || ((typeof value === "string" || value instanceof String) && value.match(/^(1|true|yes|on)$/i))
             );
             return this;
@@ -368,7 +367,7 @@ class Elem {
     // When event is instance of Event, posts event,
     // otherwise creates new Event on event name (event) and parameters (params).
     post (event, params) {
-        var that = this;
+        let that = this;
         window.setTimeout(that.trigger(event, params), 1);
     }
 
@@ -533,7 +532,6 @@ class Elem {
             case "number":
             case "range":
                 return parseFloat(value);
-                break;
             default:
                 return value;
         }
