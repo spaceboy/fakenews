@@ -407,6 +407,8 @@ span.ball-inverse
 /* ------------------------------------------------------ */
 /* Editor                                                 */
 /* ------------------------------------------------------ */
+#form-main
+    position: fixed
 
 table.editor
     width: 100%
@@ -696,11 +698,21 @@ table.entities-list
             content: "\f221"
         &::after
             content: "\f221"
+    &.venus-mars
+        &::before
+            content: "\f221"
+        &::after
+            content: "\f222"
     &.mars
         &::before
             content: "\f222"
         &::after
             content: "\f222"
+    &.mars-venus
+        &::before
+            content: "\f222"
+        &::after
+            content: "\f221"
     &.user
         &::before
             content: "\f007"
@@ -741,6 +753,11 @@ table.entities-list
             content: "\f54c"
         &::after
             content: "\f54c"
+    &.skull-bones
+        &::before
+            content: "\f714"
+        &::after
+            content: "\f714"
     &.mask
         &::before
             content: "\f6fa"
@@ -766,3 +783,23 @@ table.entities-list
             content: "\f0eb"
         &::after
             content: "\f0eb"
+    &.horsehead
+        &::before
+            content: "\f7ab"
+        &::after
+            content: "\f7ab"
+    &.tabletennis
+        &::before
+            content: "\f45d"
+        &::after
+            content: "\f45d"
+    &.painting
+        &::before
+            content: "\f53f"
+        &::after
+            content: "\f1fc"
+    &.magnificent-glass
+        &::before
+            content: "\f002"
+        &::after
+            content: "\f002"

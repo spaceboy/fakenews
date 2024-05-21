@@ -213,6 +213,9 @@ span.ball-inverse {
   width: 100%;
 }
 #canvas .image .picture.flipped {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   filter: FlipH;
   -ms-filter: "FlipH";
@@ -448,6 +451,10 @@ span.ball-inverse {
 /* ------------------------------------------------------ */
 /* Editor                                                 */
 /* ------------------------------------------------------ */
+#form-main {
+  position: fixed;
+}
+
 table.editor {
   width: 100%;
 }
@@ -677,8 +684,7 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
   box-shadow: none;
   cursor: zoom-out;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  object-fit: contain;
   width: 100%;
 }
 
@@ -753,11 +759,23 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 #subheadline.venus::after {
   content: "\f221";
 }
+#subheadline.venus-mars::before {
+  content: "\f221";
+}
+#subheadline.venus-mars::after {
+  content: "\f222";
+}
 #subheadline.mars::before {
   content: "\f222";
 }
 #subheadline.mars::after {
   content: "\f222";
+}
+#subheadline.mars-venus::before {
+  content: "\f222";
+}
+#subheadline.mars-venus::after {
+  content: "\f221";
 }
 #subheadline.user::before {
   content: "\f007";
@@ -807,6 +825,12 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 #subheadline.skull::after {
   content: "\f54c";
 }
+#subheadline.skull-bones::before {
+  content: "\f714";
+}
+#subheadline.skull-bones::after {
+  content: "\f714";
+}
 #subheadline.mask::before {
   content: "\f6fa";
 }
@@ -836,4 +860,28 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 }
 #subheadline.lightbulb::after {
   content: "\f0eb";
-}/*# sourceMappingURL=index.css.map */
+}
+#subheadline.horsehead::before {
+  content: "\f7ab";
+}
+#subheadline.horsehead::after {
+  content: "\f7ab";
+}
+#subheadline.tabletennis::before {
+  content: "\f45d";
+}
+#subheadline.tabletennis::after {
+  content: "\f45d";
+}
+#subheadline.painting::before {
+  content: "\f53f";
+}
+#subheadline.painting::after {
+  content: "\f1fc";
+}
+#subheadline.magnificent-glass::before {
+  content: "\f002";
+}
+#subheadline.magnificent-glass::after {
+  content: "\f002";
+}

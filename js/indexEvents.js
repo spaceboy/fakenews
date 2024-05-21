@@ -90,7 +90,9 @@ Evnt.on("#form-main", {
                         "yin-yang",
                         "wine-glass",
                         "venus",
+                        "venus-mars",
                         "mars",
+                        "mars-venus",
                         "user",
                         "trophy",
                         "tree",
@@ -99,11 +101,16 @@ Evnt.on("#form-main", {
                         "star",
                         "spider",
                         "skull",
+                        "skull-bones",
                         "mask",
                         "futbol",
                         "fire",
                         "compass",
-                        "lightbulb"
+                        "lightbulb",
+                        "horsehead",
+                        "tabletennis",
+                        "painting",
+                        "magnificent-glass"
                     ]
                 );
                 break;
@@ -191,7 +198,7 @@ Evnt.on("#form-main", {
                     default:
                         Elem.from("#form-perex-position").attrRemove("disabled");
                         break;
-                };
+                }
                 break;
             case "image-align-vertical":
             case "image-align-horizontal":
