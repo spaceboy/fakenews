@@ -7,11 +7,11 @@ class Accordeon {
             displayShow = "block";
         }
         for (var title of parent.querySelectorAll(openerQuerySelector)) {
-            var id = title.getAttribute("data-accordeon");
+            let id = title.getAttribute("data-accordeon");
             if (!id) {
                 continue;
             }
-            var el = document.getElementById(id);
+            let el = document.getElementById(id);
             if (!el) {
                 continue;
             }
@@ -19,10 +19,10 @@ class Accordeon {
             title.addEventListener(
                 "click",
                 function (e) {
-                    var body = document.getElementById(e.currentTarget.getAttribute("data-accordeon"));
-                    var display = (body.style.display === "none" ? displayShow : "none");
+                    let body = document.getElementById(e.currentTarget.getAttribute("data-accordeon"));
+                    let display = (body.style.display === "none" ? displayShow : "none");
                     for (var el of parent.querySelectorAll(openerQuerySelector)) {
-                        var elem = document.getElementById(el.getAttribute("data-accordeon"));
+                        let elem = document.getElementById(el.getAttribute("data-accordeon"));
                         if (elem) {
                             elem.style.display = "none";
                             el.querySelector("i").setAttribute("class", "fas fa-chevron-down");
@@ -32,11 +32,13 @@ class Accordeon {
                     e.currentTarget.querySelector("i").setAttribute(
                         "class",
                         (
-                            display == "none"
+                            display === "none"
                             ? "fas fa-chevron-down"
                             : "fas fa-chevron-up"
                         )
                     );
+                    const formMain = document.getElementById("form-main");
+                    document.getElementById("canvas-wrapper").style.minHeight = (formMain.getClientRects()[0].height + 20) + "px";
                 }
             );
             title.setAttribute("class", "accordeon");

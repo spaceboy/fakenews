@@ -110,7 +110,8 @@ Evnt.on("#form-main", {
                         "horsehead",
                         "tabletennis",
                         "painting",
-                        "magnificent-glass"
+                        "magnificent-glass",
+                        "writings"
                     ]
                 );
                 break;
@@ -292,7 +293,7 @@ Evnt.on("#form-main", {
             case "image-description":
             case "image-author":
                 let text = StringConvert.line(Elem.valueById("form-image-description").trim());
-                var author = Elem.valueById("form-image-author").trim();
+                let author = Elem.valueById("form-image-author").trim();
                 if (text && author) {
                     author = ` &bull; ${author}`;
                 }
@@ -328,8 +329,8 @@ Evnt.on("#form-image-url", "focus", (e) => {
 
 // Download image:
 function downloadImage (dataUrl) {
-    var link = document.createElement("a");
-    var filename = Elem.valueById("form-filename");
+    let link = document.createElement("a");
+    let filename = Elem.valueById("form-filename");
     if (!filename) {
         filename = "fakenews";
     }

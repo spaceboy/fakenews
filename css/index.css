@@ -217,7 +217,7 @@ span.ball-inverse {
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  filter: FlipH;
+  filter: "FlipH";
   -ms-filter: "FlipH";
 }
 #canvas .image .raster {
@@ -884,4 +884,10 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 }
 #subheadline.magnificent-glass::after {
   content: "\f002";
+}
+#subheadline.writings::before {
+  content: "\f5ad";
+}
+#subheadline.writings::after {
+  content: "\f5ad";
 }
