@@ -891,3 +891,9 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 #subheadline.writings::after {
   content: "\f5ad";
 }
+#subheadline.construction::before {
+  content: "\f568";
+}
+#subheadline.construction::after {
+  content: "\f5ae";
+}

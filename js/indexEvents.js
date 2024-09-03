@@ -111,7 +111,8 @@ Evnt.on("#form-main", {
                         "tabletennis",
                         "painting",
                         "magnificent-glass",
-                        "writings"
+                        "writings",
+                        "construction"
                     ]
                 );
                 break;
