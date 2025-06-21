@@ -897,3 +897,9 @@ table.entities-list td:nth-child(2), table.entities-list td:nth-child(6) {
 #subheadline.construction::after {
   content: "\f5ae";
 }
+#subheadline.food::before {
+  content: "\f2e5";
+}
+#subheadline.food::after {
+  content: "\f2e7";
+}

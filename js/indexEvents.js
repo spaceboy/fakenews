@@ -112,7 +112,8 @@ Evnt.on("#form-main", {
                         "painting",
                         "magnificent-glass",
                         "writings",
-                        "construction"
+                        "construction",
+                        "food"
                     ]
                 );
                 break;
